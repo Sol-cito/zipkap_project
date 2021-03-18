@@ -1,8 +1,0 @@
-#mraidb 설정
-spring.datasource.url=jdbc:mysql://localhost:3307/test_crud?useUnicode=true&characterEncoding=utf8&verifyServerCertificate=false&useSSL=false&serverTimezone=UTC
-spring.datasource.driver-class-name=com.mariadb.jdbc.Driver
-spring.datasource.username=root
-spring.datasource.password=qudgh0602
- 
-#MyBatis 설정
-mybatis.mapper-locations=classpath*:mapper/*.xml
