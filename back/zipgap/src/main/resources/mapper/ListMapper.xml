@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTDMapper3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zipgap.mapper.ListMapper">
+
+	<select id="selectList" resultType="com.zipgap.vo.ListVO">
+		SELECT * FROM tb_api00
+		ORDER BY deal_amount
+	</select>
+
+	<select id="fetchListByID"
+		resultType="com.zipgap.vo.ListVO" parameterType="int">
+		SELECT * FROM tb_api00
+		WHERE serial_number = #{sn}
+	</select>
+
+</mapper>
