@@ -2,6 +2,5 @@ gradle/
 .idea/
 .gradle/
 build/
-### apibot
 **/jobConfiguration.json
-**/abcde.json
+apibot/APIServer/zipgapbot/abcde.json
