@@ -17,7 +17,6 @@ def setconfigure(conf):
 def conn():
     global __connection__
     conf = __configure__
-    print(conf)
     if __connection__ == None:
         _conn = pymysql.connect(host=conf["db_url"], user=conf["db_usr"], 
                                password=conf["db_pwd"], db=conf["db_name"],
@@ -43,12 +42,7 @@ def makequery(tablename, data, columnMapper,typeMapper):
     return sql
 
 def sel_pk(date,code):
-    year = date[0:4]
-    month = date[4:6]
-    month = str(int(month))
-    
-    
-    sql = "select concat(deal_year,'+',deal_month,'+',deal_day,'+',serial_number) from tb_api00 where deal_year = '" + year + "' and deal_month = '" + month + "' "
+    sql = "select concat(deal_day,'+',serial_number,'+',apartment_name,'+',floor) from tb_api00 where LEFT(deal_day,6) = '" + date +"'" 
     sql += "and regional_code = '" + code + "'"
     cur = conn().cursor()
     cur.execute(sql)
