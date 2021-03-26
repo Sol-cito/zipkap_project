@@ -15,7 +15,7 @@ def work(job,page,jobConfiguration):
         resultCode, totalCount, itemlist = apirequest.get_response(jobConfiguration["apiurl"],job)
     return totalCount, itemlist
     
-@logger.log_with_trycatch
+
 def getitemlist(joblist,columnMapper,typeMapper):
     result = {}
     for job in joblist:
@@ -33,7 +33,16 @@ def insertdata(totalCount,itemlist,indb,columnMapper,typeMapper):
     for item in itemlist:
         if '일련번호' not in item:
             continue
-        pk = '+'.join([item['년'],item['월'],item['일'],item['일련번호']])
+        item['deal_day'] = ''.join([item['년'],item['월'].zfill(2),item['일'].zfill(2)])
+        if '해제사유발생일' in item and item['해제사유발생일'] != None:
+            item['해제사유발생일'] = item['해제사유발생일'].replace(".","")
+        try:
+            del item['년']
+            del item['월']
+            del item['일']
+        except KeyError:
+            pass
+        pk = '+'.join([item['deal_day'],item['일련번호'],item['아파트'],item['층']])
         if pk in indb:
             result[pk] = 'already exist'
         else:
