@@ -14,9 +14,9 @@ def setconfigure(conf):
 
 def write(msg): 
     ymd = datetime.now().strftime("%Y%m%d")
-    with open(ymd+"_"+__configure__["logdir"],'a') as f:
+    with open(ymd+"_"+__configure__["logdir"],'a',encoding='utf8') as f:
         f.write(msg+"\n")
-    print(msg)
+    
 
 
 def logger_timestamp():
@@ -59,6 +59,7 @@ def log_with_trycatch(func):
         except Exception as e:
             nowprefix = __nestcount__ * __prefix__
             write(datetime.now().strftime("%H:%M:%S") + " " + nowprefix + func.__name__ + " --> [**ERROR**] message :"+str(e))
+            print("[**ERROR**] message :"+str(e))
             __nestcount__ -= 1
         
     return wrapper
