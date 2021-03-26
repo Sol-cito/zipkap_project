@@ -10,10 +10,11 @@ def setconfigure(conf):
             raise Exception(key + " key not exist in config")
     return __configure__
 
-def createjob(codes):
-    yyyymm = set()
-    yyyymm.add(datetime.today().strftime('%Y%m'))
-    yyyymm.add((datetime.now() - timedelta(1)).strftime('%Y%m'))
+def createjob(codes,yyyymm=None):
+    if yyyymm is None:
+        yyyymm = set()
+        yyyymm.add(datetime.today().strftime('%Y%m'))
+        yyyymm.add((datetime.now() - timedelta(1)).strftime('%Y%m'))
     joblist=[]
     for date in yyyymm:
         for code in codes:
