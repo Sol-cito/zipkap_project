@@ -1,6 +1,8 @@
 gradle/
 .idea/
 .gradle/
+.metadata
+.metadata/
 build/
 **/jobConfiguration.json
 apibot/APIServer/zipgapbot/abcde.json
