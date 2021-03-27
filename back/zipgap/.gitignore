@@ -1,5 +1,5 @@
 HELP.md
-.metadata
+.metadata/
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
