@@ -11,6 +11,6 @@ public interface ListMapper {
 
 	List<ListVO> selectList();
 
-	ListVO fetchListByID(int sn);
+	List<ListVO> fetchListByID(String dealDay);
 
 }
