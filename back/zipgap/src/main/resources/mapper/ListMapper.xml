@@ -10,9 +10,9 @@
 	</select>
 
 	<select id="fetchListByID"
-		resultType="com.zipgap.vo.ListVO" parameterType="int">
+		resultType="com.zipgap.vo.ListVO" parameterType="String">
 		SELECT * FROM tb_api00
-		WHERE serial_number = #{sn}
+		WHERE deal_day  = #{dealDay}
 	</select>
 
 </mapper>

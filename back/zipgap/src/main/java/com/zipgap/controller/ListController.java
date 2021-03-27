@@ -31,10 +31,9 @@ public class ListController {
 		return listMapper.selectList();
 	}
 
-	@GetMapping("/{sn}")
-	public ListVO fetchListByID(@PathVariable int sn) {
-		System.out.println(listMapper.fetchListByID(sn));
-		ListVO fetchList = listMapper.fetchListByID(sn);
+	@GetMapping("/{dealDay}")
+	public List<ListVO> fetchListByID(@PathVariable String dealDay) {
+		List<ListVO> fetchList = listMapper.fetchListByID(dealDay);
 		return fetchList;
 	}
 
