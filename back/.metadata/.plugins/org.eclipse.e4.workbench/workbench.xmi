@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_dLQYsIgWEeudGpu3I2ISEQ" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_dLQYsYgWEeudGpu3I2ISEQ" bindingContexts="_dLRC3IgWEeudGpu3I2ISEQ">
-  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ZipgapApplicationTests.java&quot; tooltip=&quot;zipgap/src/test/java/com/zipgap/ZipgapApplicationTests.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/test/java/com/zipgap/ZipgapApplicationTests.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;SpringBootPropertyEditor&quot; name=&quot;application.properties&quot; tooltip=&quot;zipgap/src/main/resources/application.properties&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/resources/application.properties&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;UserMapper.xml&quot; tooltip=&quot;zipgap/src/main/resources/mapper/UserMapper.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/resources/mapper/UserMapper.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserVO.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/vo/UserVO.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/vo/UserVO.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserMapper.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/mapper/UserMapper.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/mapper/UserMapper.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserController.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/controller/UserController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/controller/UserController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CORSFilter.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/config/CORSFilter.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/config/CORSFilter.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ZipgapApplication.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/ZipgapApplication.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/ZipgapApplication.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.buildship.ui.gradlebuildscripteditor&quot; name=&quot;settings.gradle&quot; tooltip=&quot;zipgap/settings.gradle&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/settings.gradle&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.buildship.ui.gradlebuildscripteditor&quot; name=&quot;build.gradle&quot; tooltip=&quot;zipgap/build.gradle&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/build.gradle&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.PropertiesFileEditor&quot; name=&quot;gradle-wrapper.properties&quot; tooltip=&quot;zipgap/gradle/wrapper/gradle-wrapper.properties&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/gradle/wrapper/gradle-wrapper.properties&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
+  <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;SpringBootPropertyEditor&quot; name=&quot;application.properties&quot; tooltip=&quot;zipgap/src/main/resources/application.properties&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/resources/application.properties&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ZipgapApplicationTests.java&quot; tooltip=&quot;zipgap/src/test/java/com/zipgap/ZipgapApplicationTests.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/test/java/com/zipgap/ZipgapApplicationTests.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart&quot; name=&quot;UserMapper.xml&quot; tooltip=&quot;zipgap/src/main/resources/mapper/UserMapper.xml&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/resources/mapper/UserMapper.xml&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserVO.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/vo/UserVO.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/vo/UserVO.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserMapper.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/mapper/UserMapper.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/mapper/UserMapper.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;UserController.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/controller/UserController.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/controller/UserController.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CORSFilter.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/config/CORSFilter.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/config/CORSFilter.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ZipgapApplication.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/ZipgapApplication.java&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/src/main/java/com/zipgap/ZipgapApplication.java&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.buildship.ui.gradlebuildscripteditor&quot; name=&quot;settings.gradle&quot; tooltip=&quot;zipgap/settings.gradle&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/settings.gradle&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.buildship.ui.gradlebuildscripteditor&quot; name=&quot;build.gradle&quot; tooltip=&quot;zipgap/build.gradle&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/build.gradle&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.PropertiesFileEditor&quot; name=&quot;gradle-wrapper.properties&quot; tooltip=&quot;zipgap/gradle/wrapper/gradle-wrapper.properties&quot;>&#xD;&#xA;&lt;persistable path=&quot;/zipgap/gradle/wrapper/gradle-wrapper.properties&quot;/>&#xD;&#xA;&lt;/file>&#xD;&#xA;&lt;/mruList>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_dLQYsYgWEeudGpu3I2ISEQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_dLQYsogWEeudGpu3I2ISEQ" label="%trimmedwindow.label.eclipseSDK" x="563" y="366" width="1024" height="932">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_dLQYsYgWEeudGpu3I2ISEQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_dLQYsogWEeudGpu3I2ISEQ" label="%trimmedwindow.label.eclipseSDK" x="-7" y="0" width="1294" height="1447">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="isRestored" value="true"/>
@@ -72,7 +72,7 @@
           <tags>persp.viewSC:org.eclipse.ant.ui.views.AntView</tags>
           <children xsi:type="basic:PartSashContainer" xmi:id="_dLQYtYgWEeudGpu3I2ISEQ" selectedElement="_dLQYwYgWEeudGpu3I2ISEQ" horizontal="true">
             <children xsi:type="basic:PartSashContainer" xmi:id="_dLQYtogWEeudGpu3I2ISEQ" containerData="2500" selectedElement="_dLQYt4gWEeudGpu3I2ISEQ">
-              <children xsi:type="basic:PartSashContainer" xmi:id="_dLQYt4gWEeudGpu3I2ISEQ" containerData="6000" selectedElement="_dLQYvYgWEeudGpu3I2ISEQ">
+              <children xsi:type="basic:PartSashContainer" xmi:id="_dLQYt4gWEeudGpu3I2ISEQ" containerData="6000" selectedElement="_dLQYuIgWEeudGpu3I2ISEQ">
                 <children xsi:type="basic:PartStack" xmi:id="_dLQYuIgWEeudGpu3I2ISEQ" elementId="left" containerData="6600" selectedElement="_dLQYuYgWEeudGpu3I2ISEQ">
                   <tags>org.eclipse.e4.primaryNavigationStack</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_dLQYuYgWEeudGpu3I2ISEQ" elementId="org.eclipse.jdt.ui.PackageExplorer" ref="_dLQ__4gWEeudGpu3I2ISEQ" closeable="true">
@@ -93,7 +93,6 @@
                   </children>
                 </children>
                 <children xsi:type="basic:PartStack" xmi:id="_dLQYvYgWEeudGpu3I2ISEQ" elementId="org.springframework.ide.eclipse.boot.dash.views.BootDashViewMStack" containerData="3400" selectedElement="_dLQYvogWEeudGpu3I2ISEQ">
-                  <tags>active</tags>
                   <tags>noFocus</tags>
                   <children xsi:type="advanced:Placeholder" xmi:id="_dLQYvogWEeudGpu3I2ISEQ" elementId="org.springframework.ide.eclipse.boot.dash.views.BootDashView" ref="_dLRApYgWEeudGpu3I2ISEQ" closeable="true">
                     <tags>View</tags>
@@ -108,7 +107,7 @@
                 </children>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_dLQYwYgWEeudGpu3I2ISEQ" containerData="7500" selectedElement="_dLQYyYgWEeudGpu3I2ISEQ">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_dLQYwYgWEeudGpu3I2ISEQ" containerData="7500" selectedElement="_dLQYwogWEeudGpu3I2ISEQ">
               <children xsi:type="basic:PartSashContainer" xmi:id="_dLQYwogWEeudGpu3I2ISEQ" containerData="5788" selectedElement="_dLQYw4gWEeudGpu3I2ISEQ" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_dLQYw4gWEeudGpu3I2ISEQ" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_dLQ_14gWEeudGpu3I2ISEQ"/>
                 <children xsi:type="basic:PartStack" xmi:id="_dLQYxIgWEeudGpu3I2ISEQ" elementId="right" containerData="2500" selectedElement="_dLQYxYgWEeudGpu3I2ISEQ">
@@ -204,9 +203,10 @@
       <tags>categoryTag:Help</tags>
     </sharedElements>
     <sharedElements xsi:type="advanced:Area" xmi:id="_dLQ_14gWEeudGpu3I2ISEQ" elementId="org.eclipse.ui.editorss" selectedElement="_dLQ_2IgWEeudGpu3I2ISEQ">
-      <children xsi:type="basic:PartStack" xmi:id="_dLQ_2IgWEeudGpu3I2ISEQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_dLQ_-4gWEeudGpu3I2ISEQ">
+      <children xsi:type="basic:PartStack" xmi:id="_dLQ_2IgWEeudGpu3I2ISEQ" elementId="org.eclipse.e4.primaryDataStack" selectedElement="_dLQ_3IgWEeudGpu3I2ISEQ">
         <tags>org.eclipse.e4.primaryDataStack</tags>
         <tags>EditorStack</tags>
+        <tags>active</tags>
         <children xsi:type="basic:Part" xmi:id="_dLQ_2YgWEeudGpu3I2ISEQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="gradle-wrapper.properties" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/file_obj.png" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.PropertiesFileEditor&quot; name=&quot;gradle-wrapper.properties&quot; partName=&quot;gradle-wrapper.properties&quot; title=&quot;gradle-wrapper.properties&quot; tooltip=&quot;zipgap/gradle/wrapper/gradle-wrapper.properties&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/zipgap/gradle/wrapper/gradle-wrapper.properties&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;202&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
@@ -226,10 +226,12 @@
           <tags>org.eclipse.buildship.ui.gradlebuildscripteditor</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_dLQ_3IgWEeudGpu3I2ISEQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="application.properties" iconURI="platform:/plugin/org.springframework.tooling.boot.ls/icons/spring_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;SpringBootPropertyEditor&quot; name=&quot;application.properties&quot; partName=&quot;application.properties&quot; title=&quot;application.properties&quot; tooltip=&quot;zipgap/src/main/resources/application.properties&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/zipgap/src/main/resources/application.properties&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;362&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;SpringBootPropertyEditor&quot; name=&quot;application.properties&quot; partName=&quot;application.properties&quot; title=&quot;application.properties&quot; tooltip=&quot;zipgap/src/main/resources/application.properties&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/zipgap/src/main/resources/application.properties&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;370&quot; selectionTopPixel=&quot;0&quot;/>&#xD;&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>removeOnHide</tags>
           <tags>SpringBootPropertyEditor</tags>
+          <tags>active</tags>
+          <tags>activeOnClose</tags>
         </children>
         <children xsi:type="basic:Part" xmi:id="_dLQ_4IgWEeudGpu3I2ISEQ" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="CORSFilter.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.png" closeable="true">
           <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;CORSFilter.java&quot; partName=&quot;CORSFilter.java&quot; title=&quot;CORSFilter.java&quot; tooltip=&quot;zipgap/src/main/java/com/zipgap/config/CORSFilter.java&quot;>&#xD;&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/zipgap/src/main/java/com/zipgap/config/CORSFilter.java&quot;/>&#xD;&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;1271&quot; selectionTopPixel=&quot;33&quot;/>&#xD;&#xA;&lt;/editor>"/>
@@ -395,7 +397,6 @@
       <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;view/>"/>
       <tags>View</tags>
       <tags>categoryTag:Other</tags>
-      <tags>active</tags>
       <menus xmi:id="_dLRApogWEeudGpu3I2ISEQ" elementId="org.springframework.ide.eclipse.boot.dash.views.BootDashView">
         <tags>ViewMenu</tags>
         <tags>menuContribution:menu</tags>
@@ -421,7 +422,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_dLRA1YgWEeudGpu3I2ISEQ" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_dLRA3YgWEeudGpu3I2ISEQ" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_dLS2zYgWEeudGpu3I2ISEQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_YxLe4IycEeueq-F7JSw0ow" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" command="_dLS2zYgWEeudGpu3I2ISEQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_dLRA4ogWEeudGpu3I2ISEQ" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -443,7 +444,7 @@
       <children xsi:type="menu:ToolBar" xmi:id="_dLRBEYgWEeudGpu3I2ISEQ" elementId="org.eclipse.search.searchActionSet">
         <tags>Draggable</tags>
       </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_dLRBFYgWEeudGpu3I2ISEQ" elementId="org.eclipse.ui.edit.text.actionSet.presentation">
+      <children xsi:type="menu:ToolBar" xmi:id="_dLRBFYgWEeudGpu3I2ISEQ" elementId="org.eclipse.ui.edit.text.actionSet.presentation" visible="false">
         <tags>Draggable</tags>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_dLRBH4gWEeudGpu3I2ISEQ" elementId="group.nav" toBeRendered="false">
@@ -452,13 +453,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_dLRBIYgWEeudGpu3I2ISEQ" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_dLRBJ4gWEeudGpu3I2ISEQ" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_dLS2hogWEeudGpu3I2ISEQ"/>
-      </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_dLRBLIgWEeudGpu3I2ISEQ" elementId="SpringBootPropertyEditor" visible="false">
-        <tags>Draggable</tags>
-      </children>
-      <children xsi:type="menu:ToolBar" xmi:id="_dLRBLYgWEeudGpu3I2ISEQ" elementId="org.eclipse.jdt.ui.CompilationUnitEditor" visible="false">
-        <tags>Draggable</tags>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_YxNUEYycEeueq-F7JSw0ow" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_dLS2hogWEeudGpu3I2ISEQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_dLRBLogWEeudGpu3I2ISEQ" elementId="org.eclipse.wst.xml.ui.internal.tabletree.XMLMultiPageEditorPart" visible="false">
         <tags>Draggable</tags>
@@ -1493,18 +1488,18 @@
     <tags>View</tags>
     <tags>categoryTag:MyBatis</tags>
   </descriptors>
-  <trimContributions xmi:id="_dLSQA4gWEeudGpu3I2ISEQ" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
-    <children xsi:type="menu:ToolControl" xmi:id="_dLSQBIgWEeudGpu3I2ISEQ" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+  <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
+    <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
       <tags>glue</tags>
       <tags>move_after:PerspectiveSpacer</tags>
       <tags>SHOW_RESTORE_MENU</tags>
     </children>
-    <children xsi:type="menu:ToolControl" xmi:id="_dLSQBYgWEeudGpu3I2ISEQ" elementId="SearchField" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.quickaccess.SearchField">
+    <children xsi:type="menu:ToolControl" xmi:id="_8tJPcF9tEeO-yojH_y4TJA" elementId="SearchField" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.quickaccess.SearchField">
       <tags>move_after:Spacer Glue</tags>
       <tags>HIDEABLE</tags>
       <tags>SHOW_RESTORE_MENU</tags>
     </children>
-    <children xsi:type="menu:ToolControl" xmi:id="_dLSQBogWEeudGpu3I2ISEQ" elementId="Search-PS Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+    <children xsi:type="menu:ToolControl" xmi:id="_9LgmcF9tEeO-yojH_y4TJA" elementId="Search-PS Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
       <tags>glue</tags>
       <tags>move_after:SearchField</tags>
       <tags>SHOW_RESTORE_MENU</tags>
