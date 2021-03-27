@@ -13,5 +13,5 @@ public interface ListRepository extends JpaRepository<ListEntity, Long> {
 	public List<ListEntity> findById(String id);
 	
 	public List<ListEntity> findByAPTName(String name);
-
+	
 }
