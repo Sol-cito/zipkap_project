@@ -17,8 +17,6 @@ public class ListVO { // 나중에 정제된 테이블에서 정제된 명칭으
 	String road_name_seq;
 	String road_name_basement_code;
 	String road_name;
-	String deal_year;
-	String deal_month;
 	String deal_day;
 
 }
