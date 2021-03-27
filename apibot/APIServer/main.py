@@ -65,7 +65,7 @@ if __name__ == "__main__":
     jobs.setconfigure(jobConfiguration)
 
     apiurl = jobConfiguration["apiurl"]
-    joblist = jobs.createjob(regnCodes)
+    joblist = jobs.createjob(regnCodes,['202102'])
     result = getitemlist(joblist,columnMapper,{'deal_amount':'int'})
 
 
