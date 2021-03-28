@@ -1,4 +1,18 @@
-# 버전 관리
+# zipkap_project
+
+Collaborative WEB project
+
+<https://github.com/Sol-cito/zipkap_project>
+
+<localhost:3000>
+
+<localhost:8080>
+
+<aug18th.com>
+
+<https://zipgap.monday.com>
+
+## 버전 관리
 
 origin/dev 를 풀하여 받는다
 
@@ -18,20 +32,14 @@ creact pull request 발생 , 이를 머지한다.
 
 -> dev 브랜치로 변경 한 뒤 main으로 (ex : dev->origin : main), 마찬가지로 pull request 머지
 
-dev 에서 main(운영) 통합전까지는 dev 를 기준으로 소스코드 버전 확인
+dev 에서 main(운영) 통합전까지는 dev 를 기준으로 소스코드 버전 확인.
 
-# 프로젝트 빌드
+## 프로젝트 빌드
 
 zipkap_project 전체 깃 풀
 
-yarn, nodejs 설치 후 vscode 에서 yarn , yarn start -> localhost:3000
+yarn, nodejs 설치 후 vscode 에서 yarn , yarn start
 
-intellij 에서 gradle 빌드, 프로젝트 빌드, ZipgapApplication.java 실행 -> localhost:8080
+intellij 에서 gradle 빌드, 프로젝트 빌드, ZipgapApplication.java 실행
 
-기본적인 gitignore 은 설정 되어 있음 (ide 설정 파일 포함)
-
-# zipkap_project
-
-Collaborative WEB project
-
-https://zipgap.monday.com/
+기본적인 gitignore 은 설정 되어 있음 (ide 설정 파일 포함).
