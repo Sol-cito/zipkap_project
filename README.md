@@ -10,11 +10,13 @@ origin/dev 를 풀하여 받는다
 
 푸시할때 origin: 을 수정한다 (ex : b0ho->origin : dev)
 
+creact pull request 발생 , 이를 머지한다.
+
 -> 개발환경에 반영완료
 
 모든개발이 완료되면 운영환경에 반영한다
 
--> dev 브랜치로 변경 한 뒤 main으로 (ex : dev->origin : main)
+-> dev 브랜치로 변경 한 뒤 main으로 (ex : dev->origin : main), 마찬가지로 pull request 머지
 
 dev 에서 main(운영) 통합전까지는 dev 를 기준으로 소스코드 버전 확인
 
