@@ -4,11 +4,11 @@ Collaborative WEB project
 
 <https://github.com/Sol-cito/zipkap_project>
 
-<localhost:3000>
+<http://localhost:3000>
 
-<localhost:8080>
+<http://localhost:8080>
 
-<aug18th.com>
+<http://aug18th.com>
 
 <https://zipgap.monday.com>
 
@@ -43,3 +43,9 @@ yarn, nodejs 설치 후 vscode 에서 yarn , yarn start
 intellij 에서 gradle 빌드, 프로젝트 빌드, ZipgapApplication.java 실행
 
 기본적인 gitignore 은 설정 되어 있음 (ide 설정 파일 포함).
+
+주의 : 언어 인코딩은 가급적 UTF-8 로 통일
+
+자바 버전은 adopt-openjdk 11(HotSpot) 버전 사용 
+
+-> intellij 에서 빌드 시 gradle 빌드 도구, 프로젝트 구성 등 확인
