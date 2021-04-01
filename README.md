@@ -46,7 +46,6 @@ intellij 에서 gradle 빌드, 프로젝트 빌드, ZipgapApplication.java 실�
 
 주의 : 언어 인코딩은 가급적 UTF-8 로 통일
 
-자바 버전은 open-jdk 11 버전 사용 
+자바 버전은 adopt-openjdk 11(HotSpot) 버전 사용 
 
-
--> intellij 에서 빌드 시 빌드 도구, 프로젝트 구성 등 확인
+-> intellij 에서 빌드 시 gradle 빌드 도구, 프로젝트 구성 등 확인
