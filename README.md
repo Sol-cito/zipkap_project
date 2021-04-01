@@ -4,11 +4,11 @@ Collaborative WEB project
 
 <https://github.com/Sol-cito/zipkap_project>
 
-<localhost:3000>
+<http://localhost:3000>
 
-<localhost:8080>
+<http://localhost:8080>
 
-<aug18th.com>
+<http://aug18th.com>
 
 <https://zipgap.monday.com>
 
