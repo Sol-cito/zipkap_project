@@ -1,22 +1,21 @@
+
 import React, { useEffect, useState } from "react";
 import SearchBar from './SearchBar';
-import APICallTest from './APICallTest';
 import "./Style.css";
+import GetList from "./GetList";
 
-const Home = () => {
+function Home() {
   return (
     <div>
       <span>이건 홈 화면</span>
       <div>
         <SearchBar />
       </div>
-      <div>
-        <APICallTest />
-      </div>
+      <GetList />
       <span>이건 끝</span>
     </div>
-  )
-};
+  );
+}
 
 
 export default Home;
