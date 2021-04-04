@@ -1,5 +1,6 @@
-import React from "react";
-import SearchBar from "./SearchBar";
+
+import React, { useEffect, useState } from "react";
+import SearchBar from './SearchBar';
 import "./Style.css";
 import GetList from "./GetList";
 
@@ -15,5 +16,6 @@ function Home() {
     </div>
   );
 }
+
 
 export default Home;
