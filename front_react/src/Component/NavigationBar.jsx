@@ -16,7 +16,6 @@ function NavigationBar() {
                     <Link to="/Login">로그인</Link>
                 </div>
                 <div className='navElement'>
-                    <a>|</a>
                 </div>
                 <div className='navElement'>
                     <Link to="/Registration">회원가입</Link>
