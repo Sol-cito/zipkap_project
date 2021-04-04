@@ -1,8 +1,7 @@
-
 import React, { useEffect, useState } from "react";
 import SearchBar from './SearchBar';
 import "./Style.css";
-import GetList from "./GetList";
+import GetList from "./List/GetList";
 
 function Home() {
   return (
@@ -16,6 +15,5 @@ function Home() {
     </div>
   );
 }
-
 
 export default Home;
