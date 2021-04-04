@@ -3,13 +3,24 @@ import axios from "axios";
 import SearchBar from "./SearchBar";
 import "./Style.css";
 
-const Home = () => {
-  const LIST_API_BASE_URL = "http://localhost:8080/lists";
+function Home() {
+  const LIST_API_BASE_URL = "http://localhost:8080/lists/20210101";
 
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  async function fetchUrl() {
+    const response = await fetch(LIST_API_BASE_URL);
+    const json = await response.json();
+  }
 
   useEffect(() => {
-    axios.get(LIST_API_BASE_URL).then((result) => setData(result.data));
+    axios
+      .get(LIST_API_BASE_URL)
+      .then((result) => setData(result.data))
+      .catch((e) => {
+        console.error(e);
+      });
   }, []);
 
   return (
@@ -18,16 +29,10 @@ const Home = () => {
       <div>
         <SearchBar />
       </div>
-      <ul>
-        {data.map((item) => (
-          <li key={item.result}>
-            {item.result}: {item.result}
-          </li>
-        ))}
-      </ul>
-      <span>이건 끝</span>
+      {setData.apartment_name}:{data.apartment_name}
+      {setData}:<span>이건 끝</span>
     </div>
   );
-};
+}
 
 export default Home;
