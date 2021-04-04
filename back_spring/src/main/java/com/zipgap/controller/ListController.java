@@ -2,6 +2,8 @@ package com.zipgap.controller;
 
 import java.util.List;
 
+import com.zipgap.mapper.ListMapper;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zipgap.mapper.ListMapper;
 import com.zipgap.vo.ListVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
