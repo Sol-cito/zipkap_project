@@ -1,0 +1,18 @@
+.registration_div{
+}
+
+.registration_form{
+    display: inline-block;
+    width: 40%;
+}
+
+.registration_input{
+    width: 300px;
+    height: 30px;
+    margin: 20px 0 0 0
+}
+
+.registration_submit{
+    height: 30px;
+    margin: 20px 0 0 0
+}
