@@ -8,13 +8,13 @@ import Registration from "../Registration";
 const AppRouter = () => {
   return (
     <div>
-      <NavigationBar />
       <BrowserRouter>
+      <NavigationBar />
         <div style={style}>
           <Switch>
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/Login" exact={true} component={Login} />
-            <Route path="/Registration" exact={true} component={Registration} />
+            <Route exact path="/" component={Home} />
+            <Route path="/Login" component={Login} />
+            <Route path="/Registration" component={Registration} />
           </Switch>
         </div>
       </BrowserRouter>
@@ -23,7 +23,7 @@ const AppRouter = () => {
 };
 
 const style = {
-  color: "red",
+  color: "blue",
   margin: "10px",
 };
 
