@@ -2,6 +2,7 @@
   "name": "front_react",
   "version": "0.1.0",
   "private": true,
+  
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -13,6 +14,9 @@
     "axios": "^0.21.1",
     "web-vitals": "^1.1.1"
   },
+
+  "proxy" : "http://localhost:8080",
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -20,20 +24,20 @@
     "eject": "react-scripts eject"
   },
 
-  "proxy": "http://localhost:8080", 
-
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+
   "browserslist": {
     "production": [
       ">0.2%",
       "not dead",
       "not op_mini all"
     ],
+
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
