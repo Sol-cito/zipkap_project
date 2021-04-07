@@ -4,9 +4,11 @@ import com.zipgap.dao.UserDao;
 import com.zipgap.vo.userVO.RegistrationVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
+@Transactional // 트랜잭션 관리
 public class UserService implements IUserService {
     /*
     * 스프링에서는 @Autowired 보다 생성자를 이용한 주입을 권장함.
@@ -18,6 +20,6 @@ public class UserService implements IUserService {
 
     @Override
     public void userRegistration(RegistrationVO registrationVO) {
-
+        userDao.registration(registrationVO);
     }
 }
