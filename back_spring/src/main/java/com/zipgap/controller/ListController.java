@@ -18,7 +18,7 @@ import com.zipgap.vo.ListVO;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/lists1")
+@RequestMapping("/lists2")
 public class ListController {
 
     @Autowired
