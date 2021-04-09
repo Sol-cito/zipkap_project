@@ -16,7 +16,7 @@ function APICallTest() {
 const APItest = () => {
     axios(
       {
-        url: '/lists/20210101',
+        url: '/api/lists/20210101',
         method: 'get',
         // baseURL: 'http://localhost:8080',
         // withCredentials: true,
