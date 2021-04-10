@@ -1,7 +1,7 @@
 import React from "react";
 import SearchBar from './SearchBar';
 import "./Style.css";
-import GetList from "./List/GetList";
+import GetRecentList from "./List/GetRecentList";
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
       <div>
         <SearchBar />
       </div>
-      <GetList />
+      <GetRecentList />
       <span>이건 끝</span>
     </div>
   );
