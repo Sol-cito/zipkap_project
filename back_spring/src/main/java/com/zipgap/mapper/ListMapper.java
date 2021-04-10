@@ -11,8 +11,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ListMapper {
 
-    List<ListVO> selectList();
+    List<ListVO> fetchListByDealDay(String dealDay);
 
-    List<ListVO> fetchListByID(String dealDay);
+    //계약일 기준 최신순으로 실거래 조회
+    List<ListVO> fetchListByRecentDealDay();
 
 }
