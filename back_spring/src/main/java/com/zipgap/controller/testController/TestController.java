@@ -1,4 +1,4 @@
-package com.zipgap.controller;
+package com.zipgap.controller.testController;
 
 
 import org.springframework.web.bind.annotation.GetMapping;

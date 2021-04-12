@@ -1,4 +1,4 @@
-package com.zipgap.controller;
+package com.zipgap.controller.testController;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

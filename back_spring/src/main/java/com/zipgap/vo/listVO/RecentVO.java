@@ -1,10 +1,15 @@
-package com.zipgap.vo;
+package com.zipgap.vo.listVO;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-//필요한 데이터들
 @Data
-public class ListVO {
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class RecentVO {
 
     String serial_number;
     String apartment_name;
