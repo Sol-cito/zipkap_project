@@ -12,7 +12,7 @@ function GetRecentList() {
         setError(null);
         setLists(null);
         setLoading(true);
-        const response = await axios.get("/lists");
+        const response = await axios.get("/api/lists");
         setLists(response.data);
       } catch (e) {
         setError(e);
