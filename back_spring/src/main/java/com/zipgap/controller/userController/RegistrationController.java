@@ -1,6 +1,5 @@
 package com.zipgap.controller.userController;
 
-
 import com.zipgap.service.memberService.UserService;
 import com.zipgap.vo.userVO.RegistrationVO;
 import lombok.RequiredArgsConstructor;
