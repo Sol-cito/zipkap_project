@@ -16,7 +16,7 @@ public class RegistrationController {
 
     private final UserService userService;
 
-    @PostMapping(value = "/user/registration")
+    @PostMapping(value = "/api/user/registration")
     @ResponseBody
     public RegistrationVO registration(
             @RequestBody RegistrationVO registrationVO
