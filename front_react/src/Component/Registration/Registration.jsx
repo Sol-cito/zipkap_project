@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 // import { useForm } from 'react-hook-form'; // form 검증을 도와주는 라이브러리
 import axios from 'axios';
 import { checkEmailValidity, checkNicknameValidity, checkPasswordValidity } from './RegistrationRegExp';
@@ -12,13 +13,16 @@ function Registration() {
     const [password, setPassword] = useState(null);
     const [passwordCheck, setPasswordCheck] = useState(null);
 
-    /* 회원가입 유효성 검증 ('이름'은 유효성검증 안함) */
+    /* 회원가입 유효성 검증  */
     const [isValidEmail, setEmailValidity] = useState(false);
     const [isNameFillt, setNameValidity] = useState(false);
     const [isValidNickname, setNicknameValidity] = useState(false);
     const [isValidPassword, setPasswordValidity] = useState(false);
     const [isValidPasswordCheck, setPasswordCheckValidity] = useState(false);
-    
+
+    /* 회원가입 완료 시 redirec를 위한 boolean */
+    const [shouldRedirect, setRedirect] = useState(false);
+
     /* 비밀번호 및 비밀번호 확인 관련 메시지를 dynamic하게 보여주기 위해 설정 */
     useEffect(() => {
         comparePasswordAndPasswordCheck();
@@ -126,7 +130,7 @@ function Registration() {
             }
         ).then(function (response) {
             alert("회원가입 성공");
-            console.log(response.data);
+            setRedirect(true);
         }).catch(function (error) {
             if (error.response) {
                 alert("[ERROR] 서버의 응답에 문제가 있습니다. \n"
@@ -138,7 +142,10 @@ function Registration() {
             }
         });
     }
-
+    /* 회원가입 완료 시 Home화면으로 redirect */
+    if (shouldRedirect) {
+        return <Redirect to="/RegistrationSuccess" />
+    }
     return (
         <div className="registration_div">
             <div>
