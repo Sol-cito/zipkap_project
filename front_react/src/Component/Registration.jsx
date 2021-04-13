@@ -5,16 +5,15 @@ import { checkEmailValidity, checkNicknameValidity, checkPasswordValidity } from
 
 
 function Registration() {
-    /* 회원가입 초기값 -1 로 세팅 */
-    const [email, setEmail] = useState(-1);
-    const [name, setName] = useState(-1);
-    const [nickName, setNickname] = useState(-1);
-    const [password, setPassword] = useState(-1);
-    const [passwordCheck, setPasswordCheck] = useState(-1);
+    /* 회원가입 초기값 null 로 세팅 */
+    const [email, setEmail] = useState(null);
+    const [name, setName] = useState(null);
+    const [nickName, setNickname] = useState(null);
+    const [password, setPassword] = useState(null);
+    const [passwordCheck, setPasswordCheck] = useState(null);
 
-    /* 회원가입 유효성 검증 */
+    /* 회원가입 유효성 검증 ('이름'은 유효성검증 안함) */
     const [isValidEmail, setEmailValidity] = useState(false);
-    const [isNameFillt, setNameValidity] = useState(false);
     const [isValidNickname, setNicknameValidity] = useState(false);
     const [isValidPassword, setPasswordValidity] = useState(false);
     const [isValidPasswordCheck, setPasswordCheckValidity] = useState(false);
@@ -34,6 +33,7 @@ function Registration() {
 
     /* form input 이 변경될 때마다 hook을 set하는 리스너 함수 */
     const handleFromChange = (e) => {
+        console.log("핸들 폼 체인지");
         switch (e.target.name) {
             case "email":
                 if (checkEmailValidity(e.target.value)) {
@@ -45,11 +45,6 @@ function Registration() {
                 }
                 break;
             case "name":
-                if (e.target.value === "") {
-                    setNameValidity(false);
-                } else {
-                    setNameValidity(true);
-                }
                 setName(e.target.value);
                 break;
             case "nickName":
@@ -76,7 +71,7 @@ function Registration() {
 
     /* 회원가입의 모든 boolean값이 true인지 검증 */
     const finalValidationCheck = () => {
-        return isValidEmail && isNameFillt && isValidNickname && isValidPassword && isValidPasswordCheck;
+        return isValidEmail && isValidNickname && isValidPassword && isValidPasswordCheck;
     }
 
 
@@ -98,22 +93,27 @@ function Registration() {
 
         console.log("[REACT] 회원가입 formData : " + JSON.stringify(formData));
 
-        try {
-            axios(
-                {
-                    url: '/user/registration',
-                    method: 'post',
-                    headers: { "Content-Type": `application/json ; charset=utf-8` }, // data 방식을 json으로 세팅
-                    // json으로 변환하여 전송
-                    data: JSON.stringify(formData)
-                }
-            ).then(function (response) {
-                alert("가죠염 : " + response.data);
-                console.log(response.data);
-            });
-        } catch (e) {
-            alert("[ERROR] 서버와의 통신에 실패하였습니다");
-        }
+        axios(
+            {
+                url: '/api/user/registration',
+                method: 'post',
+                headers: { "Content-Type": `application/json ; charset=utf-8` }, // data 방식을 json으로 세팅
+                // json으로 변환하여 전송
+                data: JSON.stringify(formData)
+            }
+        ).then(function (response) {
+            alert("회원가입 성공");
+            console.log(response.data);
+        }).catch(function (error) {
+            if (error.response) {
+                alert("[ERROR] 서버의 응답에 문제가 있습니다. \n"
+                    + " - 상태코드 : " + error.response.status)
+            } else if (error.request) {
+                alert("[ERROR] 서버가 요청에 응답하지 않습니다.")
+            } else {
+                alert("[ERROR] 요청 설정 중에 문제가 발생하였습니다.")
+            }
+        });
     }
 
     return (
@@ -123,7 +123,7 @@ function Registration() {
             </div>
             <form className="registration_form" onSubmit={submitClick}>
                 <input className="registration_input" name="email" placeholder="이메일 주소" onChange={handleFromChange} />
-                {email !== -1 ? (isValidEmail ? (
+                {email !== null ? (isValidEmail ? (
                     <div>
                         <span>사용가능한 Email 입니다</span>
                     </div>
@@ -134,7 +134,7 @@ function Registration() {
                 )) : null}
                 <input id="name" className="registration_input" name="name" placeholder="성명" onChange={handleFromChange} />
                 <input className="registration_input" name="nickName" placeholder="닉네임" onChange={handleFromChange} />
-                {nickName !== -1 ? (isValidNickname ? (
+                {nickName !== null ? (isValidNickname ? (
                     <div>
                         <span>사용가능한 닉네임입니다</span>
                     </div>
@@ -144,7 +144,7 @@ function Registration() {
                     </div>
                 )) : null}
                 <input className="registration_input" name="password" type="password" placeholder="비밀번호" onChange={handleFromChange} />
-                {password !== -1 ? (isValidPassword ? (
+                {password !== null ? (isValidPassword ? (
                     <div>
                         <span>사용가능한 비밀번호입니다</span>
                     </div>
@@ -154,7 +154,7 @@ function Registration() {
                     </div>
                 )) : null}
                 <input className="registration_input" name="passwordCheck" type="password" placeholder="비밀번호 확인" onChange={handleFromChange} />
-                {passwordCheck !== -1 ? (isValidPasswordCheck ? (
+                {passwordCheck !== null ? (isValidPasswordCheck ? (
                     <div>
                         <span>비밀번호가 일치합니다</span>
                     </div>
