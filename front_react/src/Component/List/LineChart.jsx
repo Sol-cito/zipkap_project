@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./List.css";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
 
 function GetRecentList() {
   const [lists, setLists] = useState(null);
@@ -30,15 +39,24 @@ function GetRecentList() {
 
   return (
     <div className="recentList">
-      <ol>
-        {lists.map((list) => (
-          <li key={list.deal_day}>
-            {list.apartment_name} ({list.deal_amount}000원) 계약일 :{" "}
-            {list.deal_day} <br />
-            {list.road_name} {list.floor}층
-          </li>
-        ))}
-      </ol>
+      <LineChart
+        width={500}
+        height={300}
+        data={lists}
+        margin={{
+          top: 5,
+          right: 20,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="20 20" />
+        <XAxis dataKey="apartment_name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line dataKey="deal_amount" stroke="#8884d8" activeDot={{ r: 8 }} />
+      </LineChart>
     </div>
   );
 }
