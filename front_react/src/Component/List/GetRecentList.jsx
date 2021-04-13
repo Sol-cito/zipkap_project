@@ -32,7 +32,8 @@ function GetRecentList() {
       <ol>
         {lists.map((list) => (
           <li key={list.deal_day}>
-            {list.apartment_name} ({list.deal_amount}000원) 계약일 : {list.deal_day} <br/>
+            {list.apartment_name} ({list.deal_amount}000원) 계약일 :{" "}
+            {list.deal_day} <br />
             {list.road_name} {list.floor}층
           </li>
         ))}
