@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function GetList() {
+function GetDayList() {
   const [lists, setLists] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,9 +12,7 @@ function GetList() {
         setError(null);
         setLists(null);
         setLoading(true);
-        const response = await axios.get(
-          "/lists/20210101"
-        );
+        const response = await axios.get("/api/list/20210101");
         setLists(response.data);
       } catch (e) {
         setError(e);
@@ -30,14 +28,16 @@ function GetList() {
   if (!lists) return null;
 
   return (
-    <ul>
-      {lists.map((list) => (
-        <li key={list.deal_day}>
-          {list.apartment_name} ({list.deal_amount}000원)
-        </li>
-      ))}
-    </ul>
+    <div className="dayList">
+      <ul>
+        {lists.map((list) => (
+          <li key={list.deal_day}>
+            {list.apartment_name} ({list.deal_amount}000원)
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-export default GetList;
+export default GetDayList;

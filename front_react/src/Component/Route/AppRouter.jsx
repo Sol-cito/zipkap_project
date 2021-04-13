@@ -10,23 +10,20 @@ const AppRouter = () => {
   return (
     <div>
       <BrowserRouter>
-      <NavigationBar />
-        <div style={style}>
+        <NavigationBar />
+        <div className="route">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/Login" component={Login} />
             <Route path="/Registration" component={Registration} />
-            <Route path="/RegistrationSuccess" component={RegistrationSuccess} />
+            <Route
+              path="/RegistrationSuccess"
+              component={RegistrationSuccess}
+            />
           </Switch>
         </div>
       </BrowserRouter>
     </div>
   );
 };
-
-const style = {
-  color: "blue",
-  margin: "10px",
-};
-
 export default AppRouter;
