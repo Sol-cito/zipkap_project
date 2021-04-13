@@ -1,7 +1,9 @@
 import React from "react";
-import SearchBar from './SearchBar';
 import "./Style.css";
+import SearchBar from "./SearchBar";
 import GetRecentList from "./List/GetRecentList";
+import LineChart from "./List/LineChart";
+import RedarChart from "./List/RedarChart";
 
 function Home() {
   return (
@@ -11,6 +13,8 @@ function Home() {
         <SearchBar />
       </div>
       <GetRecentList />
+      <LineChart />
+      <RedarChart />
       <span>이건 끝</span>
     </div>
   );
