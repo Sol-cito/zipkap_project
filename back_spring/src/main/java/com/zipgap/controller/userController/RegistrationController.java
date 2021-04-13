@@ -1,7 +1,7 @@
 package com.zipgap.controller.userController;
 
-import com.zipgap.service.memberService.UserService;
-import com.zipgap.vo.userVO.RegistrationVO;
+import com.zipgap.service.userService.UserService;
+import com.zipgap.vo.userVO.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,11 +17,11 @@ public class RegistrationController {
 
     @PostMapping(value = "/api/user/registration")
     @ResponseBody
-    public RegistrationVO registration(
-            @RequestBody RegistrationVO registrationVO
+    public UserVO registration(
+            @RequestBody UserVO userVO
     ) {
         logger.debug("==========로깅 테스트  !!!!!!!!!!!!");
-        userService.userRegistration(registrationVO);
-        return registrationVO;
+        userService.userRegistration(userVO);
+        return userVO;
     }
 }

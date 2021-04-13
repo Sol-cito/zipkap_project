@@ -2,8 +2,8 @@ package com.zipgap.controller.userController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zipgap.service.memberService.UserService;
-import com.zipgap.vo.userVO.RegistrationVO;
+import com.zipgap.service.userService.UserService;
+import com.zipgap.vo.userVO.UserVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class RegistrationControllerTest {
     ObjectMapper objectMapper; // data를 JSON으로 바꿔주는 라이브러리
 
     /* 테스트를 위한 VO 생성 */
-    RegistrationVO registrationVO = RegistrationVO.builder()
+    UserVO userVO = UserVO.builder()
             .email("test@test.com")
             .name("test")
             .nickName("testNickname")
@@ -43,17 +43,17 @@ public class RegistrationControllerTest {
     }
 
     /* objectMapper 를 이용해 VO를 jsonString으로 변환 */
-    private String convertIntoString(RegistrationVO registrationVO) throws JsonProcessingException {
-        return objectMapper.writeValueAsString(registrationVO);
+    private String convertIntoString(UserVO userVO) throws JsonProcessingException {
+        return objectMapper.writeValueAsString(userVO);
     }
 
 
     @Test
     public void returnTest() throws Exception {
-        mvc.perform(post("/user/registration")
+        mvc.perform(post("/api/user/registration")
                 .contentType(MediaType.APPLICATION_JSON) // JSON타입으로 헤더 설정
                 .accept(MediaType.APPLICATION_JSON)
-                .content(convertIntoString(registrationVO)) //jsonString으로 변환
+                .content(convertIntoString(userVO)) //jsonString으로 변환
         )
                 .andExpect(status().isOk()); // 결과가 200 인지
 ////                .andExpect(content().string(returnValue));
