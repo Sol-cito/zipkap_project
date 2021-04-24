@@ -39,6 +39,12 @@ public class UserRepositoryTest {
                 .password(password)
                 .build());
         Optional<User> user = userRepository.findById(email);
-        Assertions.assertNotNull(user);
+        System.out.println("테스트-----------------------");
+        user.ifPresent(selectUser -> {
+            System.out.println("UserEmail : " + selectUser.getEmail());
+            System.out.println("UserNickname : " + selectUser.getNickName());
+        });
+        /* 아래 코드로 user의 존재를 확인함. findById로 조회되지 않으면 false를 리턴함 */
+        Assertions.assertTrue(user.isPresent());
     }
 }
