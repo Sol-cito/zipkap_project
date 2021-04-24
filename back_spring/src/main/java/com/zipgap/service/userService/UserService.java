@@ -1,10 +1,14 @@
 package com.zipgap.service.userService;
 
+import com.zipgap.entity.userEntity.User;
 import com.zipgap.entity.userEntity.UserRepository;
 import com.zipgap.vo.userVO.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -22,6 +26,27 @@ public class UserService implements IUserService {
     private final UserRepository userRepository;
 
     public void userRegistration(UserVO userVO) {
-        userRepository.save(userVO.toEnity()).getEmail();
+        userRepository.save(userVO.toEnity());
+    }
+
+    /*
+     * 옵셔널 객체가 보유한 값이 Null인지 아닌지 검사.
+     * Null이면(아이디 중복이 없으면) false를 반환한다.
+     * Null이 아니면(아이디가 중복되면) true를 반환한다.
+     */
+    public boolean checkDuplicateEmail(UserVO userVO) {
+        System.out.println("============이메일 중복검사 수행===========");
+        return userRepository.existsById(userVO.getEmail());
+    }
+
+    public boolean checkDuplicateNickName(UserVO userVO) {
+        System.out.println("============닉네임 중복검사 수행===========");
+        List<User> userList = userRepository.findAll();
+        for (User user : userList) {
+            if (user.getNickName().equals(userVO.getNickName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
