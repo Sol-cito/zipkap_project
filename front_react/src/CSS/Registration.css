@@ -1,6 +1,10 @@
+.registration_div{
+    text-align: center;
+}
+
 .registration_form {
+    width: 500px;
     display: inline-block;
-    width: 40%;
 }
 
 .registration_input {
@@ -16,4 +20,8 @@
 
 .inValidForm {
     color: red;
+}
+
+.validForm{
+    color: blue;
 }
