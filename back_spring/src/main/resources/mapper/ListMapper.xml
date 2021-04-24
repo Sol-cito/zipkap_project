@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTDMapper3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zipgap.mapper.ListMapper">
 
-    <select id="selectList" resultType="com.zipgap.vo.ListVO">
+    <select id="selectList" resultType="com.zipgap.vo.listVO.RecentVO">
+        //테이블 전체 조회
         SELECT * FROM tb_api00
         ORDER BY deal_amount
     </select>
 
-    <select id="fetchListByID"
-            resultType="com.zipgap.vo.ListVO" parameterType="String">
+    <select id="fetchListByDealDay" resultType="com.zipgap.vo.listVO.RecentVO" parameterType="String">
         SELECT * FROM tb_api00
-        WHERE deal_day  = #{dealDay}
+        WHERE deal_day = #{dealDay}
+    </select>
+
+    <!--계약일 기준 최신순으로 실거래 조회-->
+    <select id="fetchListByRecentDealDay" resultType="com.zipgap.vo.listVO.RecentVO" parameterType="String">
+        SELECT * FROM tb_api00
+        WHERE deal_day > '20210300'
+        ORDER BY deal_day DESC
+        limit 50
     </select>
 
 </mapper>
