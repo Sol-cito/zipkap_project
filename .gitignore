@@ -7,4 +7,4 @@ gradle/
 build/
 **/jobConfiguration.json
 apibot/APIServer/zipgapbot/abcde.json
-.properties
+application.properties
