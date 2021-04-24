@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 // import { useForm } from 'react-hook-form'; // form 검증을 도와주는 라이브러리
-import axios from 'axios';
+import '../../CSS/Registration.css'
 import { checkEmailValidity, checkNicknameValidity, checkPasswordValidity } from './RegistrationRegExp';
-
+import checkEmailAndNickNameExistence from './CheckEmailAndNickNameAxios.jsx';
+import registrationRequestAxios from './RegistrationRequestAxios.jsx'
 
 function Registration() {
     /* 회원가입 초기값 null 로 세팅 */
@@ -19,6 +20,10 @@ function Registration() {
     const [isValidNickname, setNicknameValidity] = useState(false);
     const [isValidPassword, setPasswordValidity] = useState(false);
     const [isValidPasswordCheck, setPasswordCheckValidity] = useState(false);
+
+    /* 이메일 및 닉네임 중복여부 검증 */
+    const [isDuplicateEmail, setEmailDuplication] = useState(false);
+    const [isDuplicateNickname, setNicknameDuplication] = useState(false);
 
     /* 회원가입 완료 시 redirec를 위한 boolean */
     const [shouldRedirect, setRedirect] = useState(false);
@@ -36,6 +41,36 @@ function Registration() {
         password === passwordCheck ? setPasswordCheckValidity(true) :
             setPasswordCheckValidity(false);
     }
+
+    /* input에서 onBlur(리액트에서는 onFocusOut 대신 onBlur를 쓴다)할 때 중복검사를 한다 */
+    const handleOnBlur = (e) => {
+        console.log("haneldEmailOnBlur");
+
+        /* 데이터 검증을 위해 전송할 JSON 객체 */
+        const formData = {
+            email: email,
+            name: name,
+            nickName: nickName,
+            password: password
+        }
+
+        switch (e.target.name) {
+            case "email":
+                checkEmailAndNickNameExistence("email", formData, (response) => {
+                    setEmailDuplication(response);
+                })
+                break;
+            case "nickName":
+                checkEmailAndNickNameExistence("nickName", formData, (response) => {
+                    setNicknameDuplication(response);
+                })
+                break;
+            default:
+                break;
+
+        }
+    }
+
 
     /* form input 이 변경될 때마다 hook을 set하는 리스너 함수 */
     const handleFromChange = (e) => {
@@ -76,6 +111,8 @@ function Registration() {
             case "passwordCheck":
                 setPasswordCheck(e.target.value);
                 break;
+            default:
+                break;
         }
     }
 
@@ -88,11 +125,11 @@ function Registration() {
 
     /* 회원가입의 모든 boolean값이 true인지 최종 유효성 검증, false면 focue를 준다 */
     const finalValidationCheck = () => {
-        if (!isValidEmail) {
+        if (!isValidEmail || isDuplicateEmail) {
             return emailRef.current.focus();
         } else if (!isNameFillt) {
             return nameRef.current.focus();
-        } else if (!isValidNickname) {
+        } else if (!isValidNickname || isDuplicateNickname) {
             return nickNameRef.current.focus();
         } else if (!isValidPassword) {
             return passwordRef.current.focus();
@@ -118,28 +155,10 @@ function Registration() {
             password: password
         }
 
-        console.log("[REACT] 회원가입 formData : " + JSON.stringify(formData));
-
-        axios(
-            {
-                url: '/api/user/registration',
-                method: 'post',
-                headers: { "Content-Type": `application/json ; charset=utf-8` }, // data 방식을 json으로 세팅
-                // json으로 변환하여 전송
-                data: JSON.stringify(formData)
-            }
-        ).then(function (response) {
-            alert("회원가입 성공");
-            setRedirect(true);
-        }).catch(function (error) {
-            if (error.response) {
-                alert("[ERROR] 서버의 응답에 문제가 있습니다. \n"
-                    + " - 상태코드 : " + error.response.status)
-            } else if (error.request) {
-                alert("[ERROR] 서버가 요청에 응답하지 않습니다.")
-            } else {
-                alert("[ERROR] 요청 설정 중에 문제가 발생하였습니다.")
-            }
+        /* 회원가입 로직 함수 호출 --> 비동기이므로 콜백으로 응답을 받는다 */
+        registrationRequestAxios(formData, (response) => {
+            console.log("회원가입 콜백 결과 : " + response);
+            setRedirect(response); // 콜백결과(true)로 redirect를 세팅한다 -> setState
         });
     }
     /* 회원가입 완료 시 Home화면으로 redirect */
@@ -152,11 +171,17 @@ function Registration() {
                 <h1>회원가입</h1>
             </div>
             <form className="registration_form" onSubmit={submitClick}>
-                <input className="registration_input" name="email" placeholder="이메일 주소" ref={emailRef} onChange={handleFromChange} />
+                <input className="registration_input" name="email" placeholder="이메일 주소" ref={emailRef} onChange={handleFromChange} onBlur={handleOnBlur} />
                 {email !== null ? (isValidEmail ? (
-                    <div>
-                        <span>사용가능한 Email 입니다</span>
-                    </div>
+                    isDuplicateEmail ? (
+                        <div>
+                            <span className="inValidForm">* 중복 Email 입니다</span>
+                        </div>
+                    ) : (
+                        <div>
+                            <span className="validForm">사용가능한 Email 입니다</span>
+                        </div>
+                    )
                 ) : (
                     <div>
                         <span className='inValidForm'>* 잘못된 Email 양식입니다</span>
@@ -165,27 +190,32 @@ function Registration() {
                 <input id="name" className="registration_input" name="name" placeholder="성명" ref={nameRef} onChange={handleFromChange} />
                 {name !== null ? (isNameFillt ? (
                     <div>
-                        <span>멋진 이름이네요!</span>
+                        <span className="validForm">멋진 이름이네요!</span>
                     </div>
                 ) : (
                     <div>
                         <span className='inValidForm'> * 이름을 입력해주세요</span>
                     </div>
                 )) : null}
-                <input className="registration_input" name="nickName" placeholder="닉네임" ref={nickNameRef} onChange={handleFromChange} />
-                {nickName !== null ? (isValidNickname ? (
-                    <div>
-                        <span>사용가능한 닉네임입니다</span>
-                    </div>
-                ) : (
-                    <div>
-                        <span className='inValidForm'>* 닉네임은 1자 이상 8자 이하로 입력하셔야 합니다</span>
-                    </div>
-                )) : null}
+                <input className="registration_input" name="nickName" placeholder="닉네임" ref={nickNameRef} onChange={handleFromChange} onBlur={handleOnBlur} />
+                {nickName !== null ? (isValidNickname ?
+                    isDuplicateNickname ? (
+                        <div>
+                            <span className="inValidForm">* 중복 닉네임 입니다</span>
+                        </div>
+                    ) : (
+                        <div>
+                            <span className="validForm">사용가능한 닉네임입니다</span>
+                        </div>
+                    ) : (
+                        <div>
+                            <span className='inValidForm'>* 닉네임은 1자 이상 8자 이하로 입력하셔야 합니다</span>
+                        </div>
+                    )) : null}
                 <input className="registration_input" name="password" type="password" placeholder="비밀번호" ref={passwordRef} onChange={handleFromChange} />
                 {password !== null ? (isValidPassword ? (
                     <div>
-                        <span>사용가능한 비밀번호입니다</span>
+                        <span className="validForm">사용가능한 비밀번호입니다</span>
                     </div>
                 ) : (
                     <div>
@@ -195,7 +225,7 @@ function Registration() {
                 <input className="registration_input" name="passwordCheck" type="password" placeholder="비밀번호 확인" ref={passwordCheckRef} onChange={handleFromChange} />
                 {passwordCheck !== null ? (isValidPasswordCheck ? (
                     <div>
-                        <span>비밀번호가 일치합니다</span>
+                        <span className="validForm">비밀번호가 일치합니다</span>
                     </div>
                 ) : (
                     <div>
