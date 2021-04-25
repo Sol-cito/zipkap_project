@@ -2,13 +2,13 @@ package com.zipgap.service.userService;
 
 import com.zipgap.entity.userEntity.User;
 import com.zipgap.entity.userEntity.UserRepository;
+import com.zipgap.vo.userVO.LoginInfoVO;
 import com.zipgap.vo.userVO.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -44,6 +44,17 @@ public class UserService implements IUserService {
         List<User> userList = userRepository.findAll();
         for (User user : userList) {
             if (user.getNickName().equals(userVO.getNickName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /* id, password가 DB에 있는지 확인 */
+    public boolean loginUser(LoginInfoVO loginInfoVO) {
+        List<User> userList = userRepository.findAll();
+        for (User user : userList) {
+            if (user.getEmail().equals(loginInfoVO.getId()) && user.getPassword().equals(loginInfoVO.getPassword())) {
                 return true;
             }
         }
