@@ -2,3 +2,13 @@
     color: rgb(120, 0, 0);
     text-align: left;
 }
+
+.searchRecentList {
+    text-align: left;
+    margin-left: 40px;
+}
+
+.searchDayList {
+    text-align: left;
+    margin-left: 40px;
+}

@@ -17,16 +17,15 @@ public class ListDao {
     @Autowired
     ListMapper listMapper;
 
-    @GetMapping("/{dealDay}")
-    public List<RecentVO> fetchListByDealDay(@PathVariable String dealDay) {
-        List<RecentVO> fetchList = listMapper.fetchListByDealDay(dealDay);
-        return fetchList;
-    }
-
-    //계약일 기준 최신순으로 실거래 조회
     @GetMapping()
     public List<RecentVO> fetchListByRecentDealDay() {
         List<RecentVO> fetchList = listMapper.fetchListByRecentDealDay();
+        return fetchList;
+    }
+
+    @GetMapping()
+    public List<RecentVO> fetchListByDealDay(@PathVariable String dealDay) {
+        List<RecentVO> fetchList = listMapper.fetchListByDealDay(dealDay);
         return fetchList;
     }
 

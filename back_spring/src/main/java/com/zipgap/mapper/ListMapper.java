@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface ListMapper {
 
-    List<RecentVO> fetchListByDealDay(String dealDay);
-
     List<RecentVO> fetchListByRecentDealDay();
+
+    List<RecentVO> fetchListByDealDay(String dealDay);
 
 }
