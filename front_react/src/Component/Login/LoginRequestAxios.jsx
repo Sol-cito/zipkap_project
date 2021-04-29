@@ -5,21 +5,23 @@ axios.defaults.withCredentials = true;
 
 const loginRequestAxios = (formData, callback) => {
     console.log("[REACT] 로그인 formData : " + JSON.stringify(formData));
-
     axios(
         {
             url: '/api/user/login',
             method: 'post',
-            headers: { 
-                "Content-Type": `application/json ; charset=utf-8` }, // data 방식을 json으로 세팅
+            headers: {
+                "Content-Type": `application/json ; charset=utf-8`
+            }, // data 방식을 json으로 세팅
             // json으로 변환하여 전송
             data: JSON.stringify(formData)
         }
     ).then(function (response) {
-        alert("로그인 성공 : " + response.JSON);
-        /*  JWT 토큰 */
-        const { accessToken } = response.data;
-        callback(true); // 콜백으로 비동기 응답을 넘긴다.
+        console.log("로그인 결과 : " + response.data)
+        if (response.data === "LoginSuccess") {
+            callback(true);
+        } else {
+            callback(false);
+        }
     }).catch(function (error) {
         if (error.response) {
             alert("[ERROR] 서버의 응답에 문제가 있습니다. \n"
