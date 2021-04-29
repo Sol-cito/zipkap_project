@@ -2,7 +2,7 @@ package com.zipgap.service.userService;
 
 import com.zipgap.entity.userEntity.User;
 import com.zipgap.entity.userEntity.UserRepository;
-import com.zipgap.vo.userVO.LoginInfoVO;
+import com.zipgap.dto.LoginInfoDTO;
 import com.zipgap.vo.userVO.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -51,10 +51,10 @@ public class UserService implements IUserService {
     }
 
     /* id, password가 DB에 있는지 확인 */
-    public boolean loginUser(LoginInfoVO loginInfoVO) {
+    public boolean loginUser(LoginInfoDTO loginInfoDTO) {
         List<User> userList = userRepository.findAll();
         for (User user : userList) {
-            if (user.getEmail().equals(loginInfoVO.getId()) && user.getPassword().equals(loginInfoVO.getPassword())) {
+            if (user.getEmail().equals(loginInfoDTO.getId()) && user.getPassword().equals(loginInfoDTO.getPassword())) {
                 return true;
             }
         }
