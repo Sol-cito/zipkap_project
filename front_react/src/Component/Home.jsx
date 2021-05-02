@@ -15,9 +15,9 @@ function Home() {
         <SearchBar />
       </div>
       <ShowList />
+      <GetDayList />
       {/* <GetRecentList/> */}
        {/*<LineChart />
-      <GetDayList />
       <RedarChart /> */}
       <span>이건 끝</span>
     </div>

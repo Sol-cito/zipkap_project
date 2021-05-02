@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface IListService {
     List<RecentVO> fetchListByRecentDealDay();
+    List<RecentVO> fetchListByRecentDealDay2();
 
     List<RecentVO> fetchListByDealDay(String dealDay);
 }
