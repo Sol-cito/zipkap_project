@@ -5,6 +5,7 @@ import GetRecentList from "./List/GetRecentList";
 import GetDayList from "./List/GetDayList";
 import LineChart from "./List/LineChart";
 import RedarChart from "./List/RedarChart";
+import ShowList from "./List/ShowList";
 
 function Home() {
   return (
@@ -13,10 +14,11 @@ function Home() {
       <div>
         <SearchBar />
       </div>
+      <ShowList />
+      {/* <GetRecentList/> */}
+       {/*<LineChart />
       <GetDayList />
-      <GetRecentList/>
-      <LineChart />
-      <RedarChart />
+      <RedarChart /> */}
       <span>이건 끝</span>
     </div>
   );

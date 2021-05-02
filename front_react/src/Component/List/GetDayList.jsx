@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function GetDayList() {
+const GetDayList = () => {
   const [lists, setLists] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
