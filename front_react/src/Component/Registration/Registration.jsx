@@ -56,11 +56,17 @@ function Registration() {
 
         switch (e.target.name) {
             case "email":
+                if(email == null){
+                    return;
+                }
                 checkEmailAndNickNameExistence("email", formData, (response) => {
                     setEmailDuplication(response);
                 })
                 break;
             case "nickName":
+                if(nickName == null){
+                    return;
+                }
                 checkEmailAndNickNameExistence("nickName", formData, (response) => {
                     setNicknameDuplication(response);
                 })
