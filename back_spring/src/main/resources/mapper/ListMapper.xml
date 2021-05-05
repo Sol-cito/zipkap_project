@@ -8,17 +8,18 @@
         ORDER BY deal_amount
     </select>
 
-    <select id="fetchListByDealDay" resultType="com.zipgap.vo.listVO.RecentVO" parameterType="String">
-        SELECT * FROM tb_api00
-        WHERE deal_day = #{dealDay}
-    </select>
-
     <!--계약일 기준 최신순으로 실거래 조회-->
     <select id="fetchListByRecentDealDay" resultType="com.zipgap.vo.listVO.RecentVO" parameterType="String">
         SELECT * FROM tb_api00
         WHERE deal_day > '20210300'
         ORDER BY deal_day DESC
         limit 50
+    </select>
+
+    <!--계약일 기준 특정 일자 실거래 조회-->
+    <select id="fetchListByDealDay" resultType="com.zipgap.vo.listVO.RecentVO" parameterType="String">
+        SELECT * FROM tb_api00
+        WHERE deal_day = #{dealDay}
     </select>
 
 </mapper>

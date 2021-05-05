@@ -1,4 +1,13 @@
-.recentList {
-    color: rgb(120, 0, 0);
+.showList {
+    color: rgb(20, 9, 78);
     text-align: left;
+    margin-left: 40px;
+}
+
+.getListButton {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 1px solid rgb(230, 230, 230);
+    border-bottom: 1px solid rgb(230, 230, 230);
 }

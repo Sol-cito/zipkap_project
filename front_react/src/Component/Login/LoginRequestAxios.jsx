@@ -1,21 +1,27 @@
 import axios from 'axios';
 
-/* 회원가입 로직 따로 모듈화함 */
+/* refreshToken cookie를 주고받기 위한 설정 */
+axios.defaults.withCredentials = true;
 
-const registrationRequestAxios = (formData, callback) => {
-    console.log("[REACT] 회원가입 formData : " + JSON.stringify(formData));
-
+const loginRequestAxios = (formData, callback) => {
+    console.log("[REACT] 로그인 formData : " + JSON.stringify(formData));
     axios(
         {
-            url: '/api/user/registration',
+            url: '/api/user/login',
             method: 'post',
-            headers: { "Content-Type": `application/json ; charset=utf-8` }, // data 방식을 json으로 세팅
+            headers: {
+                "Content-Type": `application/json ; charset=utf-8`
+            }, // data 방식을 json으로 세팅
             // json으로 변환하여 전송
             data: JSON.stringify(formData)
         }
     ).then(function (response) {
-        alert("회원가입 성공");
-        callback(true); // 콜백으로 비동기 응답을 넘긴다.
+        console.log("로그인 결과 : " + response.data)
+        if (response.data === "LoginSuccess") {
+            callback(true);
+        } else {
+            callback(false);
+        }
     }).catch(function (error) {
         if (error.response) {
             alert("[ERROR] 서버의 응답에 문제가 있습니다. \n"
@@ -30,4 +36,4 @@ const registrationRequestAxios = (formData, callback) => {
     });
 };
 
-export default registrationRequestAxios;
+export default loginRequestAxios;

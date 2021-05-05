@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function GetDayList() {
+const GetDayList = () => {
   const [lists, setLists] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ function GetDayList() {
         setError(null);
         setLists(null);
         setLoading(true);
-        const response = await axios.get("/api/list/20210101");
+        const response = await axios.get("/api/list/dealDay/20210101");
         setLists(response.data);
       } catch (e) {
         setError(e);

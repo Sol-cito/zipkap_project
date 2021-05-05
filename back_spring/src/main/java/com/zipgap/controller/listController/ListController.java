@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,6 +28,14 @@ public class ListController {
     public List<RecentVO> fetchListByRecentDealDay() {
         logger.debug("==========로깅 테스트==========");
         List<RecentVO> fetchList = listService.fetchListByRecentDealDay();
+        return fetchList;
+    }
+
+    @RequestMapping("/dealDay/{dealDay}")
+    @ResponseBody
+    public List<RecentVO> fetchListByDealDay(String dealDay) {
+        logger.debug("==========로깅 테스트==========");
+        List<RecentVO> fetchList = listService.fetchListByDealDay(dealDay);
         return fetchList;
     }
 

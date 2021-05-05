@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import GetDayList from "./GetDayList";
 import axios from "axios";
 import "./List.css";
 
@@ -30,6 +31,12 @@ function GetRecentList() {
 
   return (
     <div className="recentList">
+      <button className="searchRecentList" onClick={GetRecentList}>
+        최신목록조회
+      </button>
+      <form className="searchDayList" onSubmit={GetDayList}>
+        <button type="submit">일자별목록조회</button>
+      </form>
       <ol>
         {lists.map((list) => (
           <li key={list.deal_day}>
