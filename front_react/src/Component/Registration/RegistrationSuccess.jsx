@@ -15,6 +15,7 @@ const RegistrationSuccess = () => {
   }
   return (
     <div>
+      <br/>
       <h1> 회원가입을 축하드립니다!</h1>
       <h5> {second} 초 후 Redirect 됩니다...</h5>
     </div>

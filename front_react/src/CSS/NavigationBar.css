@@ -46,3 +46,39 @@
     cursor: pointer;
     color: blue;
 }
+
+/* 중간 크기 */
+@media screen and (min-width: 501px) and (max-width: 1000px) {
+    .iconImage {
+        height: 50%;
+        width: 30px;
+        margin-left: 20px;
+    }
+
+    .homeTitle {
+        width: 100px;
+        font-weight: 500;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+/* 작은 크기 */
+@media screen and (max-width: 500px) {
+    .iconImage {
+        height: 50%;
+        width: 30px;
+        margin-left: 20px;
+    }
+
+    .homeTitle {
+        width: 100px;
+        font-weight: 500;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}

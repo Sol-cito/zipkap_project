@@ -4,6 +4,7 @@ import "./Style.css";
 import "../CSS/NavigationBar.css";
 import apartment_icon from "../img/apartment_icon.ico";
 import { useCookies } from 'react-cookie';
+import axios from 'axios';
 
 
 function NavigationBar() {
@@ -23,6 +24,45 @@ function NavigationBar() {
       window.location.replace("/"); // 로그아웃 시 새로고침
     }
   }
+
+  /*  쿠키 테스트  */
+  const handleCookieTest = () => {
+
+    alert(cookies.loginDone);
+    alert(cookies.session);
+    alert(document.cookie);
+
+    const formData = {
+      id: "testId",
+      password: "testPassword"
+    }
+
+
+    axios(
+        {
+            url: '/api/user/cookieTest',
+            method: 'post',
+            headers: {
+                "Content-Type": `application/json ; charset=utf-8`
+            }, // data 방식을 json으로 세팅
+            // json으로 변환하여 전송
+            data: JSON.stringify(formData)
+        }
+    ).then(function (response) {
+        console.log("결과 : " + response.data)
+    }).catch(function (error) {
+        if (error.response) {
+            alert("[ERROR] 서버의 응답에 문제가 있습니다. \n"
+                + " - 상태코드 : " + error.response.status)
+        } else if (error.request) {
+            alert("[ERROR] 서버가 요청에 응답하지 않습니다.")
+        } else {
+            alert("[ERROR] 요청 설정 중에 문제가 발생하였습니다.")
+            console.log(error);
+            console.log(error)
+        }
+    });
+};
 
   return (
     <div className="navBody">
@@ -45,6 +85,10 @@ function NavigationBar() {
             <div className="navClickableMenu" onClick={handleOnClick}>
               로그아웃
             </div>
+
+            <div className="navClickableMenu" onClick={handleCookieTest}>
+              쿠키테스트
+          </div>
           </div>
         ) : (
           <div>
@@ -58,7 +102,7 @@ function NavigationBar() {
           </div>
         )}
       </div>
-    </div>
+    </div >
   )
 };
 
