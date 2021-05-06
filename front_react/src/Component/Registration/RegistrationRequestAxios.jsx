@@ -14,7 +14,6 @@ const registrationRequestAxios = (formData, callback) => {
             data: JSON.stringify(formData)
         }
     ).then(function (response) {
-        alert("회원가입 성공");
         callback(true); // 콜백으로 비동기 응답을 넘긴다.
     }).catch(function (error) {
         if (error.response) {
