@@ -173,7 +173,7 @@ function Registration() {
     }
     return (
         <div className="registration_div">
-            <div className="internalForm_div">
+            <div className="internalRegistrtionForm_div">
                 <div>
                     <h1>ZIP GAP</h1>
                     <p className="subtitle">전국의 집값 정보를 알고 싶으시면 가입하세요.</p>
