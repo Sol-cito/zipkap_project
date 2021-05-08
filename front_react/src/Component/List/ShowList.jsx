@@ -24,14 +24,15 @@ const ShowList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (button === 1) {
-      setUrl("/api/list/recent");
-      console.log(url);
-    } else if (button === 2) {
-      setUrl("/api/list/dealDay/" + day);
-      console.log(url);
-    }
+    // if (button === 1) {
+    //   setUrl("/api/list/recent");
+    //   console.log(url);
+    // } else if (button === 2) {
+    //   setUrl("/api/list/dealDay/" + day);
+    //   console.log(url);
+    // }
 
+    alert(url);
     const getRecentList = async () => {
       try {
         setError(null);
@@ -45,7 +46,7 @@ const ShowList = () => {
       setLoading(false);
     };
     getRecentList();
-  }, [button]);
+  }, [url]);
 
   if (loading) return <div>로딩중입니다</div>;
   if (error) return <div>에러가 발생했습니다</div>;
@@ -54,11 +55,12 @@ const ShowList = () => {
   return (
     <div className="showList">
       <div className="getListButton">
-        <button onClick={() => setButtons(1)}>최신목록</button>
+        <button onClick={() => setUrl("/api/list/recent")}>최신목록</button>
+        <button onClick={() => setUrl("/api/list/recent2")}>최신목록2</button>
         <button
           onClick={() => {
-            setButtons(2);
-            setDay("20210102");
+            //setDay("");
+            setUrl("/api/list/dealDay/20210302");
           }}
         >
           날짜별목록

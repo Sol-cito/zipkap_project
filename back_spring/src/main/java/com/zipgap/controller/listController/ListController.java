@@ -31,6 +31,14 @@ public class ListController {
         return fetchList;
     }
 
+    @RequestMapping("/recent2")
+    @ResponseBody
+    public List<RecentVO> fetchListByRecentDealDay2() {
+        logger.debug("==========로깅 테스트==========");
+        List<RecentVO> fetchList = listService.fetchListByRecentDealDay2();
+        return fetchList;
+    }
+
     @RequestMapping("/dealDay/{dealDay}")
     @ResponseBody
     public List<RecentVO> fetchListByDealDay(String dealDay) {

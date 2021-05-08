@@ -11,6 +11,7 @@ import java.util.List;
 public interface ListMapper {
 
     List<RecentVO> fetchListByRecentDealDay();
+    List<RecentVO> fetchListByRecentDealDay2();
 
     List<RecentVO> fetchListByDealDay(String dealDay);
 
