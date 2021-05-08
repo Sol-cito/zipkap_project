@@ -16,23 +16,12 @@ import {
 } from "recharts";
 
 const ShowList = () => {
-  const [button, setButtons] = useState(1);
-  const [day, setDay] = useState("20210101");
   const [url, setUrl] = useState("/api/list/recent");
   const [lists, setLists] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // if (button === 1) {
-    //   setUrl("/api/list/recent");
-    //   console.log(url);
-    // } else if (button === 2) {
-    //   setUrl("/api/list/dealDay/" + day);
-    //   console.log(url);
-    // }
-
-    alert(url);
     const getRecentList = async () => {
       try {
         setError(null);
