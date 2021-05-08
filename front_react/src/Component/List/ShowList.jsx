@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./List.css";
+import "react-datepicker/dist/react-datepicker.css";
+
 import {
   LineChart,
   Line,
@@ -14,24 +17,17 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from "recharts";
+import DatePicker from "react-datepicker";
 
 const ShowList = () => {
-  const [button, setButtons] = useState(1);
-  const [day, setDay] = useState("20210101");
   const [url, setUrl] = useState("/api/list/recent");
   const [lists, setLists] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (button === 1) {
-      setUrl("/api/list/recent");
-      console.log(url);
-    } else if (button === 2) {
-      setUrl("/api/list/dealDay/" + day);
-      console.log(url);
-    }
+  const [day, setDay] = useState(new Date());
 
+  useEffect(() => {
     const getRecentList = async () => {
       try {
         setError(null);
@@ -45,7 +41,7 @@ const ShowList = () => {
       setLoading(false);
     };
     getRecentList();
-  }, [button]);
+  }, [url]);
 
   if (loading) return <div>로딩중입니다</div>;
   if (error) return <div>에러가 발생했습니다</div>;
@@ -54,11 +50,39 @@ const ShowList = () => {
   return (
     <div className="showList">
       <div className="getListButton">
-        <button onClick={() => setButtons(1)}>최신목록</button>
         <button
           onClick={() => {
-            setButtons(2);
-            setDay("20210102");
+            const day = "recent";
+            alert(day);
+            setUrl("/api/list/" + day);
+          }}
+        >
+          최신목록
+        </button>
+        <button
+          onClick={() => {
+            const day = "recent2";
+            alert(day);
+            setUrl("/api/list/" + day);
+          }}
+        >
+          최신목록2
+        </button>
+      </div>
+      <div>
+        <DatePicker
+          selected={day}
+          onChange={(date) => {
+            setDay(date);
+            alert(day);
+          }}
+          name="day"
+          dateFormat="MM/dd/yyyy"
+        />
+        <button
+          onClick={() => {
+            alert(day);
+            setUrl("/api/list/dealDay/" + { day });
           }}
         >
           날짜별목록
