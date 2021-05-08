@@ -59,7 +59,6 @@ def log_with_trycatch(func):
         except Exception as e:
             nowprefix = __nestcount__ * __prefix__
             write(datetime.now().strftime("%H:%M:%S") + " " + nowprefix + func.__name__ + " --> [**ERROR**] message :"+str(e))
-            print("[**ERROR**] message :"+str(e))
             __nestcount__ -= 1
         
     return wrapper
