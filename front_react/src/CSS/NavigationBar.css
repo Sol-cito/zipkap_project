@@ -1,0 +1,84 @@
+.navBody {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+
+.homeTitle {
+    width: 200px;
+    font-weight: 500;
+    font-size: 40px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.navBlock {
+    display: inline-block;
+    text-align: right;
+    width: 100%;
+}
+
+.navElement {
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 50px;
+    text-align: right;
+}
+
+
+.iconImage {
+    width: 50px;
+    margin-left: 20px;
+}
+
+.navClickableMenu{
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 50px;
+    text-align: right;
+    cursor: pointer;
+    color: blue;
+}
+
+/* 중간 크기 */
+@media screen and (min-width: 501px) and (max-width: 1000px) {
+    .iconImage {
+        height: 50%;
+        width: 30px;
+        margin-left: 20px;
+    }
+
+    .homeTitle {
+        width: 100px;
+        font-weight: 500;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+/* 작은 크기 */
+@media screen and (max-width: 500px) {
+    .iconImage {
+        height: 50%;
+        width: 30px;
+        margin-left: 20px;
+    }
+
+    .homeTitle {
+        width: 100px;
+        font-weight: 500;
+        font-size: 20px;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
