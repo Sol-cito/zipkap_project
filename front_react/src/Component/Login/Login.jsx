@@ -76,36 +76,34 @@ function Login() {
   }
   return (
     <div className="login_div">
-      <h1> 로그인</h1>
-      <form className="login_form" onSubmit={handleOnSubmit}>
-        <input className="login_input" name="id" placeholder="아이디(Email)" ref={idRef} onChange={handleOnChange} />
-        {id !== null ? (
-          id.length == 0 ? (
-            <div>
-              <span className="inValidForm"> * 아이디를 입력해주세요 </span>
-            </div>
-          ) : (null)
-        ) : null}
-        <input className="login_input" type="password" name="password" placeholder="비밀번호" ref={passwordRef} onChange={handleOnChange} />
-        {password !== null ? (
-          password.length == 0 ? (
-            <div>
-              <span className="inValidForm"> * 비밀번호를 입력해주세요 </span>
-            </div>
-          ) : (null)
-        ) : null}
-        <div>
+      <div className="internalLoginForm_div">
+        <h1> Log in </h1>
+        <form className="login_form" onSubmit={handleOnSubmit}>
+          <input className="login_input" name="id" placeholder="아이디(Email)" ref={idRef} onChange={handleOnChange} />
+          {id !== null ? (
+            id.length == 0 ? (
+              <div>
+                <span className="inValidForm"> * 아이디를 입력해주세요 </span>
+              </div>
+            ) : (null)
+          ) : null}
+          <input className="login_input" type="password" name="password" placeholder="비밀번호" ref={passwordRef} onChange={handleOnChange} />
+          {password !== null ? (
+            password.length == 0 ? (
+              <div>
+                <span className="inValidForm"> * 비밀번호를 입력해주세요 </span>
+              </div>
+            ) : (null)
+          ) : null}
           <button className="login_submit" type="submit">로그인</button>
-        </div>
-      </form>
-      { isLoginInfoValid !== null && !isLoginInfoValid ?
-        (
-          <div>
-            <span className="inValidForm"> * 아이디 또는 비밀번호를 확인해주셈
-            </span>
-          </div>)
-        :
-        (null)}
+          {isLoginInfoValid !== null && !isLoginInfoValid ?
+            (
+              <p className="inValidForm"> * 아이디 또는 비밀번호를 확인해주세요 </p>
+            )
+            :
+            (null)}
+        </form>
+      </div>
     </div>
   );
 }
