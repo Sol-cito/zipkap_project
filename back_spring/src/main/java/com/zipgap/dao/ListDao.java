@@ -29,7 +29,9 @@ public class ListDao {
     }
 
     @GetMapping()
-    public List<RecentVO> fetchListByDealDay(@PathVariable String dealDay) {
+    public List<RecentVO> fetchListByDealDay(String dealDay) {
+        System.out.println(dealDay);
+        System.out.println(3);
         List<RecentVO> fetchList = listMapper.fetchListByDealDay(dealDay);
         return fetchList;
     }
