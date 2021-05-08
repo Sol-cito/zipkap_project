@@ -13,4 +13,8 @@ public class SessionGetter {
     public String getSessionId() {
         return httpSession.getId();
     }
+
+    public void setSessionAttribute(String name, String value) {
+        httpSession.setAttribute(name, value);
+    }
 }
