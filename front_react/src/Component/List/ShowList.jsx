@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./List.css";
+import "react-datepicker/dist/react-datepicker.css";
+
 import {
   LineChart,
   Line,
@@ -14,12 +17,15 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from "recharts";
+import DatePicker from "react-datepicker";
 
 const ShowList = () => {
   const [url, setUrl] = useState("/api/list/recent");
   const [lists, setLists] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const [day, setDay] = useState(new Date());
 
   useEffect(() => {
     const getRecentList = async () => {
@@ -44,12 +50,39 @@ const ShowList = () => {
   return (
     <div className="showList">
       <div className="getListButton">
-        <button onClick={() => setUrl("/api/list/recent")}>최신목록</button>
-        <button onClick={() => setUrl("/api/list/recent2")}>최신목록2</button>
         <button
           onClick={() => {
-            //setDay("");
-            setUrl("/api/list/dealDay/20210302");
+            const day = "recent";
+            alert(day);
+            setUrl("/api/list/" + day);
+          }}
+        >
+          최신목록
+        </button>
+        <button
+          onClick={() => {
+            const day = "recent2";
+            alert(day);
+            setUrl("/api/list/" + day);
+          }}
+        >
+          최신목록2
+        </button>
+      </div>
+      <div>
+        <DatePicker
+          selected={day}
+          onChange={(date) => {
+            setDay(date);
+            alert(day);
+          }}
+          name="day"
+          dateFormat="MM/dd/yyyy"
+        />
+        <button
+          onClick={() => {
+            alert(day);
+            setUrl("/api/list/dealDay/" + { day });
           }}
         >
           날짜별목록

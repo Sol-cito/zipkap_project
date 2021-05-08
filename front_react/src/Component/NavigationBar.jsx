@@ -6,7 +6,7 @@ import apartment_icon from "../img/apartment_icon.ico";
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
-
+//패키지 추가 후 로컬 실행하려면 yarn 해줘야함
 function NavigationBar() {
 
   /* 리액트 전역 쿠키로 메뉴를 변경한다 */
