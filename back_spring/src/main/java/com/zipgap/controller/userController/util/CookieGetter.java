@@ -7,8 +7,8 @@ public class CookieGetter {
 
     public CookieGetter(String sessionID) {
         cookie = new Cookie("zipgabCookie", sessionID);
-        cookie.setDomain("zipgab.info");
         cookie.setComment("zipgab's login cookie");
+        cookie.setHttpOnly(true);
     }
 
     public Cookie getCookie() {
