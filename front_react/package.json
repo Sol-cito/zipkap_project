@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "date-fns": "^2.21.3",
+    "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-cookie": "^4.0.3",
     "react-cookies": "^0.1.1",
