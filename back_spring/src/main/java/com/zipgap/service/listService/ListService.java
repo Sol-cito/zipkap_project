@@ -15,19 +15,19 @@ public class ListService implements IListService {
 
     private final ListDao listDao;
 
-    @Override
     public List<RecentVO> fetchListByRecentDealDay() {
         List<RecentVO> fetchList = listDao.fetchListByRecentDealDay();
         return fetchList;
     }
-    @Override
+
     public List<RecentVO> fetchListByRecentDealDay2() {
         List<RecentVO> fetchList = listDao.fetchListByRecentDealDay2();
         return fetchList;
     }
 
-    @Override
     public List<RecentVO> fetchListByDealDay(String dealDay) {
+        System.out.println(dealDay);
+        System.out.println(2);
         List<RecentVO> fetchList = listDao.fetchListByDealDay(dealDay);
         return fetchList;
     }

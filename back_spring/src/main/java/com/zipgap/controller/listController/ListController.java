@@ -6,16 +6,13 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
-@Controller
+@RestController
 @RequestMapping("/api/list")
 public class ListController {
 
@@ -39,10 +36,11 @@ public class ListController {
         return fetchList;
     }
 
-    @RequestMapping("/dealDay/{dealDay}")
-    @ResponseBody
-    public List<RecentVO> fetchListByDealDay(String dealDay) {
+    @GetMapping("/{dealDay}")
+    public List<RecentVO> fetchListByDealDay(@PathVariable String dealDay) {
         logger.debug("==========로깅 테스트==========");
+        System.out.println(dealDay);
+        System.out.println(1);
         List<RecentVO> fetchList = listService.fetchListByDealDay(dealDay);
         return fetchList;
     }

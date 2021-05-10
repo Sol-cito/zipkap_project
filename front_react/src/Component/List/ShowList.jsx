@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./List.css";
-import "react-datepicker/dist/react-datepicker.css";
 
+//차트 사용을 위한 선언
 import {
   LineChart,
   Line,
@@ -17,7 +17,11 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from "recharts";
+
+//달력 사용을 위한 선언
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 
 const ShowList = () => {
   const [url, setUrl] = useState("/api/list/recent");
@@ -26,6 +30,7 @@ const ShowList = () => {
   const [error, setError] = useState(null);
 
   const [day, setDay] = useState(new Date());
+  const [yyyymmdd, setYyyyMmDd] = useState("20210307");
 
   useEffect(() => {
     const getRecentList = async () => {
@@ -33,7 +38,7 @@ const ShowList = () => {
         setError(null);
         setLists(null);
         setLoading(true);
-        const response = await axios.get(url);
+        const response = await axios(url);
         setLists(response.data);
       } catch (e) {
         setError(e);
@@ -49,6 +54,7 @@ const ShowList = () => {
 
   return (
     <div className="showList">
+      {/* 버튼 클릭시 day 를 기준으로 조회 */}
       <div className="getListButton">
         <button
           onClick={() => {
@@ -69,26 +75,28 @@ const ShowList = () => {
           최신목록2
         </button>
       </div>
-      <div>
+      <div className="showCalendar">
+        {/* 달력 표시 */}
         <DatePicker
           selected={day}
           onChange={(date) => {
-            setDay(date);
-            alert(day);
+            setYyyyMmDd(moment(date).format("YYYYMMDD"));
+            alert(yyyymmdd);
           }}
           name="day"
-          dateFormat="MM/dd/yyyy"
+          dateFormat="yyyy-mm-dd"
         />
         <button
           onClick={() => {
-            alert(day);
-            setUrl("/api/list/dealDay/" + { day });
+            const day = "20210101";
+            setUrl("/api/list/" + yyyymmdd);
           }}
         >
           날짜별목록
         </button>
       </div>
       <div className="showListUl">
+        {/* 조회된 목록 표시 */}
         <ul>
           {lists.map((list) => (
             <li key={list.deal_day}>
@@ -97,7 +105,8 @@ const ShowList = () => {
           ))}
         </ul>
       </div>
-      <div>
+      <div className="showChart">
+        {/* 차트 표시 */}
         <LineChart
           width={500}
           height={300}

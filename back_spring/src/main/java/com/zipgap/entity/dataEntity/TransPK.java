@@ -1,12 +1,15 @@
 package com.zipgap.entity.dataEntity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
+@Data
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,4 +31,6 @@ public class TransPK implements Serializable {
 
     @Column(name="road_name_id", nullable = false)
     private int roadNameId;
+
+
 }
