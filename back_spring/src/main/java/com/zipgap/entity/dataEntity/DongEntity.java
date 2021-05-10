@@ -1,17 +1,16 @@
 package com.zipgap.entity.dataEntity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@ToString
 @Table(name = "tb_dong",
         uniqueConstraints={
         @UniqueConstraint(
@@ -31,7 +30,7 @@ public class DongEntity  implements Serializable {
     private String eubmyundongCode;
 
     @Column(name = "regional_code")
-    private double regionalCode;
+    private String regionalCode;
 
     @Id
     @Column(name = "dong_id")
