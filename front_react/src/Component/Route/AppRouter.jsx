@@ -5,6 +5,7 @@ import Login from "../Login/Login";
 import Home from "../Home";
 import Registration from "../Registration/Registration";
 import RegistrationSuccess from "../Registration/RegistrationSuccess";
+import MyPage from "../MyPage/MyPage";
 
 const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ const AppRouter = () => {
               path="/RegistrationSuccess"
               component={RegistrationSuccess}
             />
+            <Route path="/MyPage" component={MyPage} />
           </Switch>
         </div>
       </BrowserRouter>

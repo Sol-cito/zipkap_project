@@ -34,7 +34,7 @@ public class LoginController {
         if (!isLoginSuccess) { //로그인 실패 시 바로 리턴
             return new ResponseEntity<>(LOGIN_FAIL, null, HttpStatus.OK);
         }
-        /* 세션 속성을 세팅한 후 response로 돌려줌 */
+        /* 세션 속성을 세팅 */
         SessionGetter sessionGetter = new SessionGetter(request);
         sessionGetter.setSessionAttribute("user", "login");
         return new ResponseEntity<>(LOGIN_SUCCESS, null, HttpStatus.OK);
