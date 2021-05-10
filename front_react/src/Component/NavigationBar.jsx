@@ -2,11 +2,12 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Style.css";
 import "../CSS/NavigationBar.css";
+import logoutRequestAxios from "./Login/LogoutRequestAxios.jsx"
 import apartment_icon from "../img/apartment_icon.ico";
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 
-
+//패키지 추가 후 로컬 실행하려면 yarn 해줘야함
 function NavigationBar() {
 
   /* 리액트 전역 쿠키로 메뉴를 변경한다 */
@@ -20,8 +21,14 @@ function NavigationBar() {
   /* 로그아웃 시 confirm으로 질의 */
   const handleOnClick = (e) => {
     if (window.confirm("정말로 로그아웃 하시겠습니까?")) {
-      removeCookie('loginDone', { path: '/' });
-      window.location.replace("/"); // 로그아웃 시 새로고침
+      logoutRequestAxios((isLogoutSuccess) => {
+        if (isLogoutSuccess) {
+          removeCookie('loginDone', { path: '/' });
+          window.location.replace("/"); // 로그아웃 시 새로고침
+        } else {
+          alert("[ERROR] 로그아웃에 문제가 발생하였습니다.");
+        }
+      });
     }
   }
 
@@ -39,30 +46,30 @@ function NavigationBar() {
 
 
     axios(
-        {
-            url: '/api/user/cookieTest',
-            method: 'post',
-            headers: {
-                "Content-Type": `application/json ; charset=utf-8`
-            }, // data 방식을 json으로 세팅
-            // json으로 변환하여 전송
-            data: JSON.stringify(formData)
-        }
+      {
+        url: '/api/user/cookieTest',
+        method: 'post',
+        headers: {
+          "Content-Type": `application/json ; charset=utf-8`
+        }, // data 방식을 json으로 세팅
+        // json으로 변환하여 전송
+        data: JSON.stringify(formData)
+      }
     ).then(function (response) {
-        console.log("결과 : " + response.data)
+      console.log("결과 : " + response.data)
     }).catch(function (error) {
-        if (error.response) {
-            alert("[ERROR] 서버의 응답에 문제가 있습니다. \n"
-                + " - 상태코드 : " + error.response.status)
-        } else if (error.request) {
-            alert("[ERROR] 서버가 요청에 응답하지 않습니다.")
-        } else {
-            alert("[ERROR] 요청 설정 중에 문제가 발생하였습니다.")
-            console.log(error);
-            console.log(error)
-        }
+      if (error.response) {
+        alert("[ERROR] 서버의 응답에 문제가 있습니다. \n"
+          + " - 상태코드 : " + error.response.status)
+      } else if (error.request) {
+        alert("[ERROR] 서버가 요청에 응답하지 않습니다.")
+      } else {
+        alert("[ERROR] 요청 설정 중에 문제가 발생하였습니다.")
+        console.log(error);
+        console.log(error)
+      }
     });
-};
+  };
 
   return (
     <div className="navBody">
