@@ -1,13 +1,14 @@
-package com.zipgap.dto;
+package com.zipgap.dto.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
+@ToString
 public class RawApiDTO {
     private int dealAmount;
     private String        buildYear;
@@ -27,7 +28,7 @@ public class RawApiDTO {
     private String           landCode;
     private String   apartmentName;
     private String          serialNumber;
-    private double   areaForExclusiveUse;
+    private int   areaForExclusiveUse;
     private String           jibun;
     private String   regionalCode;
     private int           floor;

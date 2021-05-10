@@ -24,6 +24,7 @@ def dictfromxml(xmlStr):
 
 
 def get_response(url,params):
+    print(params)
     res = requests.get(url,params=params)
     time.sleep(0.1)
     return dictfromxml(res.text)

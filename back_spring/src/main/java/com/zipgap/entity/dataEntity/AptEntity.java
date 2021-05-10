@@ -1,18 +1,16 @@
 package com.zipgap.entity.dataEntity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@ToString
 @Table(name = "tb_apt",
         uniqueConstraints={
         @UniqueConstraint(
@@ -33,7 +31,7 @@ public class AptEntity implements Serializable {
     private String buildYear;
 
     @Column(name = "area_for_exclusive_use")
-    private double areaForExclusiveUse;
+    private int areaForExclusiveUse;
 
     @Id
     @Column(name = "apt_id")

@@ -9,6 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface AptRepository extends JpaRepository<AptEntity, Integer> {
-    Optional<AptEntity> findFirstBySerialNumberAndAreaForExclusiveUse(String sn, double area);
+    Optional<AptEntity> findFirstBySerialNumberAndAreaForExclusiveUse(String sn, int area);
 
 }

@@ -2,13 +2,14 @@ package com.zipgap.entity.dataEntity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -34,7 +35,7 @@ public class RoadNameEntity  implements Serializable {
     @Id
     @Column(name = "road_name_id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private double roadNameId;
+    private int roadNameId;
 
 
 }
