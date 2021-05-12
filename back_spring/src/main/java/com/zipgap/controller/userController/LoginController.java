@@ -35,8 +35,8 @@ public class LoginController {
             return new ResponseEntity<>(LOGIN_FAIL, null, HttpStatus.OK);
         }
         /* 세션 속성을 세팅 */
-        SessionGetter sessionGetter = new SessionGetter(request);
-        sessionGetter.setSessionAttribute("user", "login");
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("id", loginInfoDTO.getId());
         return new ResponseEntity<>(LOGIN_SUCCESS, null, HttpStatus.OK);
     }
 }
