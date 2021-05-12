@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import loginRequestAxios from './LoginRequestAxios'
-import { Redirect } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import '../../CSS/Login.css'
 
