@@ -43,12 +43,21 @@
     margin-bottom: 40px;
 }
 
-.mypage_span_2{
+.mypage_p_2{
     font-size: 15px;
     color:  rgb(124, 124, 124);
     font-weight: bolder;
     margin: 0 0 10px 80px;
 }
+
+.mypage_p_clickable{
+    font-size: 15px;
+    color:  rgb(124, 124, 124);
+    font-weight: bolder;
+    margin: 0 0 10px 80px;
+    cursor: pointer;
+}
+
 
 .mypage_input{
     width: 40%;
