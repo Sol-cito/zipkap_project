@@ -1,11 +1,6 @@
-import React from "react";
 import "./Style.css";
 import "../CSS/Home.css";
 import SearchBar from "./SearchBar";
-import GetRecentList from "./List/GetRecentList";
-import GetDayList from "./List/GetDayList";
-import LineChart from "./List/LineChart";
-import RedarChart from "./List/RedarChart";
 import ShowList from "./List/ShowList";
 
 function Home() {
@@ -16,10 +11,6 @@ function Home() {
         <SearchBar />
       </div>
       <ShowList />
-      <GetDayList />
-      {/* <GetRecentList/> */}
-       {/*<LineChart />
-      <RedarChart /> */}
       <span>이건 끝</span>
     </div>
   );
