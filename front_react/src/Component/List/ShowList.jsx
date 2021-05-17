@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableBody from "@material-ui/core/TableBody";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
 import "./List.css";
 
 //차트 사용을 위한 선언
@@ -58,18 +63,14 @@ const ShowList = () => {
       <div className="getListButton">
         <button
           onClick={() => {
-            const day = "recent";
-            alert(day);
-            setUrl("/api/list/" + day);
+            setUrl("/api/list/recent");
           }}
         >
           최신목록
         </button>
         <button
           onClick={() => {
-            const day = "recent2";
-            alert(day);
-            setUrl("/api/list/" + day);
+            setUrl("/api/list/recent2");
           }}
         >
           최신목록2
@@ -78,38 +79,54 @@ const ShowList = () => {
       <div className="showCalendar">
         {/* 달력 표시 */}
         <DatePicker
+          dateFormat="yyyy-MM-dd"
           selected={day}
           onChange={(date) => {
             setYyyyMmDd(moment(date).format("YYYYMMDD"));
-            alert(yyyymmdd);
+            setDay(date);
           }}
-          name="day"
-          dateFormat="yyyy-mm-dd"
         />
         <button
           onClick={() => {
-            const day = "20210101";
+            alert(yyyymmdd);
             setUrl("/api/list/" + yyyymmdd);
           }}
         >
           날짜별목록
         </button>
       </div>
-      <div className="showListUl">
-        {/* 조회된 목록 표시 */}
-        <ul>
-          {lists.map((list) => (
-            <li key={list.deal_day}>
-              {list.apartment_name} ({list.deal_amount}000원)
-            </li>
-          ))}
-        </ul>
+      <div className="showTable">
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>아파트 이름</TableCell>
+              <TableCell>거래일자</TableCell>
+              <TableCell>거래가격</TableCell>
+              <TableCell>아파트 주소</TableCell>
+              <TableCell>층수</TableCell>
+              <TableCell>면적</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {lists.map((list) => (
+              <TableRow key={list.deal_day}>
+                <TableCell>{list.apartment_name}</TableCell>
+                <TableCell>{list.deal_day}</TableCell>
+                <TableCell>{list.deal_amount}000원</TableCell>
+                <TableCell>{list.road_name}</TableCell>
+                <TableCell>{list.floor}층</TableCell>
+                <TableCell>{list.area_for_exclusive_use} 제곱 미터</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
+
       <div className="showChart">
         {/* 차트 표시 */}
         <LineChart
-          width={500}
-          height={300}
+          width={1000}
+          height={900}
           data={lists}
           margin={{
             top: 5,
@@ -126,11 +143,11 @@ const ShowList = () => {
           <Line dataKey="deal_amount" stroke="#8884d8" activeDot={{ r: 8 }} />
         </LineChart>
         <RadarChart
-          cx={300}
-          cy={250}
+          cx={1000}
+          cy={850}
           outerRadius={150}
-          width={500}
-          height={500}
+          width={1000}
+          height={1000}
           data={lists}
         >
           <PolarGrid />
@@ -140,6 +157,17 @@ const ShowList = () => {
           <PolarRadiusAxis />
           <Radar dataKey="deal_amount" stroke="#8884d8" fillOpacity={0.6} />
         </RadarChart>
+      </div>
+
+      <div className="showListUl">
+        {/* 조회된 목록 표시 */}
+        <ul>
+          {lists.map((list) => (
+            <li key={list.deal_day}>
+              {list.apartment_name} ({list.deal_amount}000원)
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
