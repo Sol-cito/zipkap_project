@@ -2,6 +2,7 @@ package com.zipgap.dao;
 
 import com.zipgap.mapper.ListMapper;
 import com.zipgap.vo.listVO.RecentVO;
+import com.zipgap.vo.listVO.ApartVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -36,4 +37,9 @@ public class ListDao {
         return fetchList;
     }
 
+    @GetMapping()
+    public List<ApartVO> fetchListByApartment() {
+        List<ApartVO> fetchList = listMapper.fetchListByApartment();
+        return fetchList;
+    }
 }

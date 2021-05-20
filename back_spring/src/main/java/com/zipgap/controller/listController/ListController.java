@@ -2,6 +2,7 @@ package com.zipgap.controller.listController;
 
 import com.zipgap.service.listService.IListService;
 import com.zipgap.vo.listVO.RecentVO;
+import com.zipgap.vo.listVO.ApartVO;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,4 +46,11 @@ public class ListController {
         return fetchList;
     }
 
+    @RequestMapping("/apartment_name")
+    @ResponseBody
+    public List<ApartVO> fetchListByApartment() {
+        logger.debug("==========로깅 테스트==========");
+        List<ApartVO> fetchList = listService.fetchListByApartment();
+        return fetchList;
+    }
 }

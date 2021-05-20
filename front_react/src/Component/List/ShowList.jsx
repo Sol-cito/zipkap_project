@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Table from "@material-ui/core/Table";
-import TableHead from "@material-ui/core/TableHead";
-import TableBody from "@material-ui/core/TableBody";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
 import "./List.css";
+import axios from "axios";
+
+//테이블 사용을 위한 선언
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@material-ui/core/";
 
 //차트 사용을 위한 선언
 import {
@@ -21,12 +25,65 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
+  Treemap,
 } from "recharts";
 
 //달력 사용을 위한 선언
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
+
+const GetApart = () => {
+  const [apartUrl, setApartUrl] = useState("/api/list/apartment_name");
+  const [apartLists, setapartLists] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getApartList = async () => {
+      try {
+        setError(null);
+        setapartLists(null);
+        setLoading(true);
+        const response = await axios(apartUrl);
+        setapartLists(response.data);
+      } catch (e) {
+        setError(e);
+      }
+      setLoading(false);
+    };
+    getApartList();
+  }, [apartUrl]);
+
+  if (loading) return <div>로딩중입니다</div>;
+  if (error) return <div>에러가 발생했습니다</div>;
+  if (!apartLists) return null;
+
+  return (
+    <div className="showChart">
+      <button
+        onClick={() => {
+          setApartUrl("/api/list/apartment_name");
+        }}
+      >
+        아파트별(임시)
+      </button>
+      {/* 차트 표시 */}
+
+      <LineChart
+        width={400}
+        height={400}
+        data={apartLists}
+        margin={{
+          top: 5,
+          right: 20,
+          left: 20,
+          bottom: 5,
+        }}
+      />
+    </div>
+  );
+};
 
 const ShowList = () => {
   const [url, setUrl] = useState("/api/list/recent");
@@ -59,6 +116,7 @@ const ShowList = () => {
 
   return (
     <div className="showList">
+      <GetApart></GetApart>
       {/* 버튼 클릭시 day 를 기준으로 조회 */}
       <div className="getListButton">
         <button
@@ -99,6 +157,7 @@ const ShowList = () => {
         <Table>
           <TableHead>
             <TableRow>
+              <TableCell>순번</TableCell>
               <TableCell>아파트 이름</TableCell>
               <TableCell>거래일자</TableCell>
               <TableCell>거래가격</TableCell>
@@ -110,6 +169,7 @@ const ShowList = () => {
           <TableBody>
             {lists.map((list) => (
               <TableRow key={list.deal_day}>
+                <TableCell>{list.rownum}</TableCell>
                 <TableCell>{list.apartment_name}</TableCell>
                 <TableCell>{list.deal_day}</TableCell>
                 <TableCell>{list.deal_amount}000원</TableCell>
@@ -121,12 +181,23 @@ const ShowList = () => {
           </TableBody>
         </Table>
       </div>
-
       <div className="showChart">
         {/* 차트 표시 */}
+
+        <Treemap
+          width={400}
+          height={200}
+          data={lists}
+          dataKey="deal_amount"
+          content="apartment_name"
+          ratio={4 / 3}
+          stroke="#fff"
+          fill="#8884d8"
+        />
+
         <LineChart
           width={1000}
-          height={900}
+          height={1000}
           data={lists}
           margin={{
             top: 5,
@@ -143,8 +214,8 @@ const ShowList = () => {
           <Line dataKey="deal_amount" stroke="#8884d8" activeDot={{ r: 8 }} />
         </LineChart>
         <RadarChart
-          cx={1000}
-          cy={850}
+          cx={500}
+          cy={500}
           outerRadius={150}
           width={1000}
           height={1000}
@@ -158,7 +229,6 @@ const ShowList = () => {
           <Radar dataKey="deal_amount" stroke="#8884d8" fillOpacity={0.6} />
         </RadarChart>
       </div>
-
       <div className="showListUl">
         {/* 조회된 목록 표시 */}
         <ul>
