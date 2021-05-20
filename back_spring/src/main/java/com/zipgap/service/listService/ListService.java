@@ -2,6 +2,7 @@ package com.zipgap.service.listService;
 
 import com.zipgap.dao.ListDao;
 import com.zipgap.vo.listVO.RecentVO;
+import com.zipgap.vo.listVO.ApartVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +30,13 @@ public class ListService implements IListService {
         System.out.println(dealDay);
         System.out.println(2);
         List<RecentVO> fetchList = listDao.fetchListByDealDay(dealDay);
+        return fetchList;
+    }
+
+
+    public List<ApartVO> fetchListByApartment() {
+        System.out.println(4);
+        List<ApartVO> fetchList = listDao.fetchListByApartment();
         return fetchList;
     }
 
