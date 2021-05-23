@@ -12,5 +12,7 @@ public interface IListService {
 
     List<RecentVO> fetchListByDealDay(String dealDay);
 
-    List<ApartVO> fetchListByApartment();
+    List<ApartVO> fetchListByApartment(String apartment_name);
+
+    List<ApartVO> fetchListByApartment2();
 }

@@ -6,6 +6,7 @@ import Home from "../Home";
 import Registration from "../Registration/Registration";
 import RegistrationSuccess from "../Registration/RegistrationSuccess";
 import MyPage from "../MyPage/MyPage";
+import Footer from "../Footer";
 
 const AppRouter = () => {
   return (
@@ -24,6 +25,7 @@ const AppRouter = () => {
             <Route path="/MyPage" component={MyPage} />
           </Switch>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );

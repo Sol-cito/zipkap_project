@@ -38,8 +38,14 @@ public class ListDao {
     }
 
     @GetMapping()
-    public List<ApartVO> fetchListByApartment() {
-        List<ApartVO> fetchList = listMapper.fetchListByApartment();
+    public List<ApartVO> fetchListByApartment(String apartment_name) {
+        List<ApartVO> fetchList = listMapper.fetchListByApartment(apartment_name);
+        return fetchList;
+    }
+
+    @GetMapping()
+    public List<ApartVO> fetchListByApartment2() {
+        List<ApartVO> fetchList = listMapper.fetchListByApartment2();
         return fetchList;
     }
 }
