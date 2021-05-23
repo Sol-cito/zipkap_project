@@ -26,7 +26,7 @@ public class LogoutController {
                                         HttpServletRequest request,
                                         HttpServletResponse response) {
         HttpSession httpSession = request.getSession();
-        if (httpSession.getAttribute("user") == null) {
+        if (httpSession.getAttribute("id") == null) {
             System.out.println("로그아웃 실패");
             return new ResponseEntity<>(LOGOUT_FAIL, null, HttpStatus.OK);
         }
