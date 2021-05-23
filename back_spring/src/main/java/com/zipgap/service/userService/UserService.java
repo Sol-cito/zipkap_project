@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -62,7 +63,11 @@ public class UserService implements IUserService {
     }
 
     /* 회원 탈퇴 기능을 수행하는 메소드 */
-    public void withDraw(String userId) {
+    public void withdraw(String userId) {
         userRepository.deleteById(userId);
+    }
+
+    public User getBasicInfo(String id) {
+        return userRepository.findById(id).get();
     }
 }

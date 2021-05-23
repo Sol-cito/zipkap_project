@@ -2,9 +2,23 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../../CSS/MyPage.css'
 import { useCookies } from 'react-cookie';
 import withdrawalRequestAxios from './WithdrawalRequestAxios';
+import BasicInfoRequestAxios from './BasicInfoRequestAxios';
 
 
 function MyPage() {
+
+    const [userEmail, setEmail] = useState(null);
+    const [userName, setName] = useState(null);
+    const [userNickName, setNickName] = useState(null);
+
+    useEffect(() => {
+        BasicInfoRequestAxios((response) => {
+            setEmail(response.data.email);
+            setName(response.data.name);
+            setNickName(response.data.nickName);
+        });
+    }, []);
+
     const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
     if (cookies.loginDone == undefined) {
         window.location.replace("/"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
@@ -44,16 +58,16 @@ function MyPage() {
                 <hr className="mypage_hr" />
                 <div className="mypage_input_div">
                     <p className="mypage_p_2">이메일</p>
-                    <input className="mypage_input" placeholder="테스트 이메일"></input>
+                    <input className="mypage_input" placeholder={userEmail}></input>
                 </div>
                 <div className="mypage_input_div">
                     <p className="mypage_p_2">이름</p>
-                    <input className="mypage_input" placeholder="테스트 이름"></input>
+                    <input className="mypage_input" placeholder={userName}></input>
                     <span> 변경하기 </span>
                 </div>
                 <div className="mypage_input_div">
                     <p className="mypage_p_2">닉네임</p>
-                    <input className="mypage_input" placeholder="테스트 닉네임"></input>
+                    <input className="mypage_input" placeholder={userNickName}></input>
                 </div>
                 <div className="mypage_input_div">
                     <p className="mypage_p_clickable" onClick={handlePasswordChange} >비밀번호변경</p>
