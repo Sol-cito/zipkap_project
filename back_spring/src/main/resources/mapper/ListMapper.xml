@@ -46,6 +46,19 @@
         from
             tb_api00
         where
+            apartment_name = #{apartment_name}
+        order by deal_day
+        ]]>
+    </select>
+
+    <!--특정 아파트의 실거래 내역 조회-->
+    <select id="fetchListByApartment2" resultType="com.zipgap.vo.listVO.ApartVO" parameterType="String">
+        <![CDATA[
+        select
+            *
+        from
+            tb_api00
+        where
             apartment_name = '초원그린타운'
             and road_name = '신촌4로'
         order by deal_day 
