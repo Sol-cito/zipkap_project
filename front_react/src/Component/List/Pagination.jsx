@@ -1,5 +1,3 @@
-import React from "react";
-
 const Pagination = ({ listsPerPage, totalLists, paginate }) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalLists / listsPerPage); i++) {

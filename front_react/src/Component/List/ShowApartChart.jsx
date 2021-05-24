@@ -1,7 +1,3 @@
-import React from "react";
-import "./List.css";
-
-//차트 사용을 위한 선언
 import {
   LineChart,
   ScatterChart,
@@ -20,7 +16,7 @@ const ShowApartChart = ({ lists, loading }) => {
       {loading && <div>loading...</div>}
       {/* 차트 표시 */}
       <div className="showChart">
-      {lists[0].apartment_name}
+        {lists[0].apartment_name}
         <ScatterChart
           width={500}
           height={400}

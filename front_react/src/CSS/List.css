@@ -4,6 +4,29 @@
     margin-left: 40px;
 }
 
+.tableRowApartName:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #3b5aa8;
+}
+
+.tableRowLike:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #ff0845;
+}
+
+.tableRowGoDetail:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #4ba150;
+}
+
+.tableRow:hover {
+    cursor: pointer;
+    background-color: rgb(248, 202, 202);
+}
+
 .getListButton {
     text-align: center;
     margin-top: 10px;
