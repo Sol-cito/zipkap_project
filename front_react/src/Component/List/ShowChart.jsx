@@ -1,7 +1,3 @@
-import React from "react";
-import "./List.css";
-
-//차트 사용을 위한 선언
 import {
   LineChart,
   ScatterChart,

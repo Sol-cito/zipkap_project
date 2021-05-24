@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../../CSS/List.css";
 import ShowList from "./ShowList";
 import ShowChart from "./ShowChart";
 import Pagination from "./Pagination";
-import "./List.css";
 import GetApart from "./GetApart";
 
 //달력 사용을 위한 선언
@@ -14,6 +14,7 @@ import moment from "moment";
 function GetList() {
   const [url, setUrl] = useState("/api/list/recent");
   const [lists, setLists] = useState([]);
+  const [apartUrl, setApartUrl] = useState("/api/list/apart/apartment_name");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -88,7 +89,11 @@ function GetList() {
           날짜별목록
         </button>
       </div>
-      <ShowList lists={currentLists(lists)} loading={loading}></ShowList>
+      <ShowList
+        lists={currentLists(lists)}
+        setApartUrl={setApartUrl}
+        loading={loading}
+      ></ShowList>
       <Pagination
         listsPerPage={listsPerPage}
         totalLists={lists.length}
@@ -96,7 +101,14 @@ function GetList() {
       ></Pagination>
       <ShowChart lists={currentLists(lists)} loading={loading}></ShowChart>
 
-      <GetApart />
+      <button
+        onClick={() => {
+          setApartUrl("/api/list/apart/천성리버타운");
+        }}
+      >
+        아파트별(임시)
+      </button>
+      <GetApart apartUrl={apartUrl}></GetApart>
     </div>
   );
 }

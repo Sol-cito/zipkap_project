@@ -1,8 +1,3 @@
-import React from "react";
-import "./List.css";
-import GetApart from "./GetApart";
-
-//테이블 사용을 위한 선언
 import {
   Table,
   TableHead,
@@ -11,7 +6,7 @@ import {
   TableCell,
 } from "@material-ui/core/";
 
-const ShowList = ({ lists, loading }) => {
+const ShowList = ({ lists, setApartUrl, loading }) => {
   return (
     <>
       {loading && <div>loading...</div>}
@@ -28,16 +23,19 @@ const ShowList = ({ lists, loading }) => {
                 <TableCell>층수</TableCell>
                 <TableCell>면적</TableCell>
                 <TableCell>찜하기</TableCell>
+                <TableCell>상세보기</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {lists &&
                 lists.map((list) => (
-                  <TableRow key={list.deal_day}>
+                  <TableRow className="tableRow" key={list.deal_day}>
                     <TableCell>{list.rownum}</TableCell>
                     <TableCell
+                      className="tableRowApartName"
                       onClick={() => {
-                        alert("차트 변경");
+                        alert(list.apartment_name + " 차트로 변경합니다");
+                        setApartUrl("/api/list/apart/" + list.apartment_name);
                       }}
                     >
                       {list.apartment_name}
@@ -50,11 +48,20 @@ const ShowList = ({ lists, loading }) => {
                       {list.area_for_exclusive_use} 제곱 미터
                     </TableCell>
                     <TableCell
+                      className="tableRowLike"
                       onClick={() => {
-                        alert("좋아요");
+                        alert("장바구니에 추가합니다");
                       }}
                     >
                       좋아요
+                    </TableCell>
+                    <TableCell
+                      className="tableRowGoDetail"
+                      onClick={() => {
+                        alert("상세보기 화면으로 이동합니다");
+                      }}
+                    >
+                      이동
                     </TableCell>
                   </TableRow>
                 ))}

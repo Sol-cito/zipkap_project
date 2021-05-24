@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ShowApartChart from "./ShowApartChart";
 
-function GetApart() {
-  const [apartUrl, setApartUrl] = useState("/api/list/apart/apartment_name");
+const GetApart = ({ apartUrl }) => {
   const [apartLists, setApartLists] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -29,17 +28,10 @@ function GetApart() {
   if (!apartLists) return null;
 
   return (
-    <div className="showChart">
-      <button
-        onClick={() => {
-          setApartUrl("/api/list/apart/천성리버타운");
-        }}
-      >
-        아파트별(임시)
-      </button>
+    <div className="showApart">
       <ShowApartChart lists={apartLists} loading={loading}></ShowApartChart>
     </div>
   );
-}
+};
 
 export default GetApart;
