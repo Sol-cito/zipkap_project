@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class RecentVO {
 
+    int rownum;
     String serial_number;
     String apartment_name;
     String area_for_exclusive_use;

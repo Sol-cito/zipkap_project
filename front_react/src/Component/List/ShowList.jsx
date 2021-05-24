@@ -1,114 +1,75 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-} from "recharts";
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@material-ui/core/";
 
-const ShowList = () => {
-  const [button, setButtons] = useState(1);
-  const [day, setDay] = useState("20210101");
-  const [url, setUrl] = useState("/api/list/recent");
-  const [lists, setLists] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    if (button === 1) {
-      setUrl("/api/list/recent");
-      console.log(url);
-    } else if (button === 2) {
-      setUrl("/api/list/dealDay/" + day);
-      console.log(url);
-    }
-
-    const getRecentList = async () => {
-      try {
-        setError(null);
-        setLists(null);
-        setLoading(true);
-        const response = await axios.get(url);
-        setLists(response.data);
-      } catch (e) {
-        setError(e);
-      }
-      setLoading(false);
-    };
-    getRecentList();
-  }, [button]);
-
-  if (loading) return <div>로딩중입니다</div>;
-  if (error) return <div>에러가 발생했습니다</div>;
-  if (!lists) return null;
-
+const ShowList = ({ lists, setApartUrl, loading }) => {
   return (
-    <div className="showList">
-      <div className="getListButton">
-        <button onClick={() => setButtons(1)}>최신목록</button>
-        <button
-          onClick={() => {
-            setButtons(2);
-            setDay("20210102");
-          }}
-        >
-          날짜별목록
-        </button>
+    <>
+      {loading && <div>loading...</div>}
+      <div className="showList">
+        <div className="showTable">
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>순번</TableCell>
+                <TableCell>아파트 이름</TableCell>
+                <TableCell>거래일자</TableCell>
+                <TableCell>거래가격</TableCell>
+                <TableCell>아파트 주소</TableCell>
+                <TableCell>층수</TableCell>
+                <TableCell>면적</TableCell>
+                <TableCell>찜하기</TableCell>
+                <TableCell>상세보기</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {lists &&
+                lists.map((list) => (
+                  <TableRow className="tableRow" key={list.deal_day}>
+                    <TableCell>{list.rownum}</TableCell>
+                    <TableCell
+                      className="tableRowApartName"
+                      onClick={() => {
+                        alert(list.apartment_name + " 차트로 변경합니다");
+                        setApartUrl("/api/list/apart/" + list.apartment_name);
+                      }}
+                    >
+                      {list.apartment_name}
+                    </TableCell>
+                    <TableCell>{list.deal_day}</TableCell>
+                    <TableCell>{list.deal_amount}000원</TableCell>
+                    <TableCell>{list.road_name}</TableCell>
+                    <TableCell>{list.floor}층</TableCell>
+                    <TableCell>
+                      {list.area_for_exclusive_use} 제곱 미터
+                    </TableCell>
+                    <TableCell
+                      className="tableRowLike"
+                      onClick={() => {
+                        alert("장바구니에 추가합니다");
+                      }}
+                    >
+                      좋아요
+                    </TableCell>
+                    <TableCell
+                      className="tableRowGoDetail"
+                      onClick={() => {
+                        alert("상세보기 화면으로 이동합니다");
+                      }}
+                    >
+                      이동
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
-      <div className="showListUl">
-        <ul>
-          {lists.map((list) => (
-            <li key={list.deal_day}>
-              {list.apartment_name} ({list.deal_amount}000원)
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <LineChart
-          width={500}
-          height={300}
-          data={lists}
-          margin={{
-            top: 5,
-            right: 20,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="20 20" />
-          <XAxis dataKey="apartment_name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line dataKey="deal_amount" stroke="#8884d8" activeDot={{ r: 8 }} />
-        </LineChart>
-        <RadarChart
-          cx={300}
-          cy={250}
-          outerRadius={150}
-          width={500}
-          height={500}
-          data={lists}
-        >
-          <PolarGrid />
-          <Tooltip />
-          <Legend />
-          <PolarAngleAxis dataKey="apartment_name" />
-          <PolarRadiusAxis />
-          <Radar dataKey="deal_amount" stroke="#8884d8" fillOpacity={0.6} />
-        </RadarChart>
-      </div>
-    </div>
+    </>
   );
 };
 

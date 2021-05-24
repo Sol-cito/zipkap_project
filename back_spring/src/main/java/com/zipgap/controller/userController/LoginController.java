@@ -34,12 +34,9 @@ public class LoginController {
         if (!isLoginSuccess) { //로그인 실패 시 바로 리턴
             return new ResponseEntity<>(LOGIN_FAIL, null, HttpStatus.OK);
         }
-
-        SessionGetter sessionGetter = new SessionGetter(request);
-        String sessionId = sessionGetter.getSessionId();
-        CookieGetter cookieGetter = new CookieGetter(sessionId);
-        Cookie cookie = cookieGetter.getCookie();
-        response.addCookie(cookie); // 쿠키를 담아서 response에 보냄
+        /* 세션 속성을 세팅 */
+        HttpSession httpSession = request.getSession();
+        httpSession.setAttribute("id", loginInfoDTO.getId());
         return new ResponseEntity<>(LOGIN_SUCCESS, null, HttpStatus.OK);
     }
 }

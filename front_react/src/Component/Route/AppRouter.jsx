@@ -5,6 +5,10 @@ import Login from "../Login/Login";
 import Home from "../Home";
 import Registration from "../Registration/Registration";
 import RegistrationSuccess from "../Registration/RegistrationSuccess";
+import MyPage from "../MyPage/MyPage";
+import Withdrawal from "../MyPage/Withdrawal";
+import PasswordChange from "../MyPage/PasswordChange";
+import Footer from "../Footer";
 
 const AppRouter = () => {
   return (
@@ -20,8 +24,12 @@ const AppRouter = () => {
               path="/RegistrationSuccess"
               component={RegistrationSuccess}
             />
+            <Route path="/MyPage" component={MyPage} />
+            <Route path="/Withdrawal" component={Withdrawal} />
+            <Route path="/PasswordChange" component={PasswordChange} />
           </Switch>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );

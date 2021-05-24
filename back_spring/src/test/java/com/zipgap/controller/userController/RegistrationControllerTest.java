@@ -29,7 +29,7 @@ public class RegistrationControllerTest {
 
     /* 테스트를 위한 VO 생성 */
     UserVO userVO = UserVO.builder()
-            .email("test@test.com")
+            .email("controllerTest@controllerTest.com")
             .name("test")
             .nickName("testNickname")
             .password("testPassword")

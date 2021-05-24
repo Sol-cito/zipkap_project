@@ -1,0 +1,75 @@
+.mypage_div{
+    padding-top: 50px;
+    text-align: center;
+    background-color: rgb(247, 247, 247);
+    width: 100%;
+    height: 100vh;
+}
+
+.mypage_internal_div{
+    max-width: 800px;
+    height: 600px;
+    display: block;
+    margin: 0px auto;
+    border: 0.01px solid rgb(201, 200, 200);
+    background-color: rgb(255, 255, 255);
+}
+
+.mypage_hr{
+    width: 80%;
+    margin: 20px auto 40px auto;
+}
+
+.mypage_title_div{
+    margin: 40px 0 0 80px;
+    text-align: left;
+}
+
+.mypage_p{
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.mypage_span_1{
+    font-size: smaller;
+    color:  rgb(124, 124, 124);
+    font-weight: bold;
+}
+
+.mypage_input_div{
+    display: block;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.mypage_p_2{
+    font-size: 15px;
+    color:  rgb(124, 124, 124);
+    font-weight: bolder;
+    margin: 0 0 10px 80px;
+}
+
+.mypage_Link{
+    font-size: 15px;
+    font-weight: bolder;
+    margin: 0 0 10px 80px;
+    cursor: pointer;
+}
+
+
+.mypage_input{
+    width: 40%;
+    height: 30px;
+    margin: 0 0 0 80px;
+    padding-left: 10px;
+    background-color:rgb(241, 240, 240);
+    border-width: 0.05px;
+    border-color: rgb(175, 175, 175);
+}
+
+.mypage_changeButton{
+    margin-left: 10px;
+    color: blue;
+    cursor: pointer;
+}

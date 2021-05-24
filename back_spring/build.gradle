@@ -30,7 +30,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.session:spring-session-core'
+	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.0'
 }
 
 test {

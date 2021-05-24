@@ -1,8 +1,8 @@
 from zipgapbot import apirequest,configmaker,dbwork,jobs
 from zipgapbot import logger
 import time
-
-
+import json
+import requests
 
 
 def work(job,page,jobConfiguration):
@@ -11,25 +11,23 @@ def work(job,page,jobConfiguration):
     job["ServiceKey"] = jobConfiguration["apikey"]
     resultCode, totalCount, itemlist = apirequest.get_response(jobConfiguration["apiurl"],job)
     while resultCode != "00":
-        time.sleep(1)
+        time.sleep(0.1)
         resultCode, totalCount, itemlist = apirequest.get_response(jobConfiguration["apiurl"],job)
     return totalCount, itemlist
     
 
 def getitemlist(joblist,columnMapper,typeMapper):
-    result = {}
+    global que
     for job in joblist:
-        indb = dbwork.sel_pk(job['DEAL_YMD'],job['LAWD_CD'])
         totalCount, itemlist = work(job,1,jobConfiguration)
-        result.update(insertdata(totalCount,itemlist,indb,columnMapper,typeMapper))
+        insertdata(totalCount,itemlist,None,columnMapper,typeMapper)
         for i in range(1,int(totalCount)//50):
             totalCount, itemlist = work(job,1+i,jobConfiguration)
-            result.update(insertdata(totalCount,itemlist,indb,columnMapper,typeMapper))
-    return result   
-
+            insertdata(totalCount,itemlist,None,columnMapper,typeMapper)
+    flush_que()
 
 def insertdata(totalCount,itemlist,indb,columnMapper,typeMapper):
-    result = {}
+    global que
     for item in itemlist:
         if '일련번호' not in item:
             continue
@@ -42,20 +40,34 @@ def insertdata(totalCount,itemlist,indb,columnMapper,typeMapper):
             del item['일']
         except KeyError:
             pass
-        pk = '+'.join([item['deal_day'],item['일련번호'],item['아파트'],item['층']])
-        if pk in indb:
-            result[pk] = 'already exist'
-        else:
-            item['거래금액'] = item['거래금액'].replace(",","")
-            sql = dbwork.makequery("tb_api00",item,columnMapper,typeMapper)
-            dbwork.execute_commit(sql)
-            result[pk] = 'insert'
-    return result
+        item['거래금액'] = item['거래금액'].replace(",","")
+        item['전용면적'] = int(float(item['전용면적']) * 10000)
 
+
+        citem = {}
+        for key in item:
+            citem[columnMapper[key]] = "" if item[key] == None else item[key]   
+        if len(que) >= 99:
+            flush_que()
+            item
+        else:
+            que.append(citem)
+
+        
+        
+def flush_que():
+    global que
+    jsonval = json.dumps(que)
+    que = []
+    URL = 'http://localhost:8080/api/data/update'
+    res = requests.post(URL, data=jsonval, headers = {'Content-Type':'application/json'}) 
+    print(res.text)
+    time.sleep(0.1)
+    return que
 
 
 if __name__ == "__main__":
-    
+    que = []
     jobConfiguration = (configmaker.readconf("jobConfiguration.json"))
     regnCodes = (configmaker.readconf("regnCodes.json"))
     columnMapper = (configmaker.readconf("columnMapper.json"))
@@ -65,7 +77,7 @@ if __name__ == "__main__":
     jobs.setconfigure(jobConfiguration)
 
     apiurl = jobConfiguration["apiurl"]
-    joblist = jobs.createjob(regnCodes,['202102'])
+    joblist = jobs.createjob(regnCodes,['202104'])
     result = getitemlist(joblist,columnMapper,{'deal_amount':'int'})
 
 

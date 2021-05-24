@@ -56,7 +56,7 @@ function Registration() {
 
         switch (e.target.name) {
             case "email":
-                if(email == null){
+                if (email == null) {
                     return;
                 }
                 checkEmailAndNickNameExistence("email", formData, (response) => {
@@ -64,7 +64,7 @@ function Registration() {
                 })
                 break;
             case "nickName":
-                if(nickName == null){
+                if (nickName == null) {
                     return;
                 }
                 checkEmailAndNickNameExistence("nickName", formData, (response) => {
@@ -173,75 +173,81 @@ function Registration() {
     }
     return (
         <div className="registration_div">
-            <div>
-                <h1>회원가입</h1>
-            </div>
-            <form className="registration_form" onSubmit={submitClick}>
-                <input className="registration_input" name="email" placeholder="이메일 주소" ref={emailRef} onChange={handleFromChange} onBlur={handleOnBlur} />
-                {email !== null ? (isValidEmail ? (
-                    isDuplicateEmail ? (
-                        <div>
-                            <span className="inValidForm">* 중복 Email 입니다</span>
-                        </div>
+            <div className="internalRegistrtionForm_div">
+                <div>
+                    <h1>ZIP GAP</h1>
+                    <p className="subtitle">전국의 집값 정보를 알고 싶으시면 가입하세요.</p>
+                </div>
+                <form className="registration_form" onSubmit={submitClick}>
+                    <input className="registration_input" name="email" placeholder="이메일 주소" ref={emailRef} onChange={handleFromChange} onBlur={handleOnBlur} />
+                    {email !== null ? (isValidEmail ? (
+                        isDuplicateEmail ? (
+                            <div>
+                                <span className="inValidForm">* 중복 Email 입니다</span>
+                            </div>
+                        ) : (
+                            <div>
+                                <span className="validForm">사용가능한 Email 입니다</span>
+                            </div>
+                        )
                     ) : (
                         <div>
-                            <span className="validForm">사용가능한 Email 입니다</span>
-                        </div>
-                    )
-                ) : (
-                    <div>
-                        <span className='inValidForm'>* 잘못된 Email 양식입니다</span>
-                    </div>
-                )) : null}
-                <input id="name" className="registration_input" name="name" placeholder="성명" ref={nameRef} onChange={handleFromChange} />
-                {name !== null ? (isNameFillt ? (
-                    <div>
-                        <span className="validForm">멋진 이름이네요!</span>
-                    </div>
-                ) : (
-                    <div>
-                        <span className='inValidForm'> * 이름을 입력해주세요</span>
-                    </div>
-                )) : null}
-                <input className="registration_input" name="nickName" placeholder="닉네임" ref={nickNameRef} onChange={handleFromChange} onBlur={handleOnBlur} />
-                {nickName !== null ? (isValidNickname ?
-                    isDuplicateNickname ? (
-                        <div>
-                            <span className="inValidForm">* 중복 닉네임 입니다</span>
-                        </div>
-                    ) : (
-                        <div>
-                            <span className="validForm">사용가능한 닉네임입니다</span>
-                        </div>
-                    ) : (
-                        <div>
-                            <span className='inValidForm'>* 닉네임은 1자 이상 8자 이하로 입력하셔야 합니다</span>
+                            <span className='inValidForm'>* 잘못된 Email 양식입니다</span>
                         </div>
                     )) : null}
-                <input className="registration_input" name="password" type="password" placeholder="비밀번호" ref={passwordRef} onChange={handleFromChange} />
-                {password !== null ? (isValidPassword ? (
+                    <input id="name" className="registration_input" name="name" placeholder="성명" ref={nameRef} onChange={handleFromChange} />
+                    {name !== null ? (isNameFillt ? (
+                        <div>
+                            <span className="validForm">멋진 이름이네요!</span>
+                        </div>
+                    ) : (
+                        <div>
+                            <span className='inValidForm'> * 이름을 입력해주세요</span>
+                        </div>
+                    )) : null}
+                    <input className="registration_input" name="nickName" placeholder="닉네임" ref={nickNameRef} onChange={handleFromChange} onBlur={handleOnBlur} />
+                    {nickName !== null ? (isValidNickname ?
+                        isDuplicateNickname ? (
+                            <div>
+                                <span className="inValidForm">* 중복 닉네임 입니다</span>
+                            </div>
+                        ) : (
+                            <div>
+                                <span className="validForm">사용가능한 닉네임입니다</span>
+                            </div>
+                        ) : (
+                            <div>
+                                <span className='inValidForm'>* 닉네임은 1자 이상 8자 이하로 입력하셔야 합니다</span>
+                            </div>
+                        )) : null}
+                    <input className="registration_input" name="password" type="password" placeholder="비밀번호" ref={passwordRef} onChange={handleFromChange} />
+                    {password !== null ? (isValidPassword ? (
+                        <div>
+                            <span className="validForm">사용가능한 비밀번호입니다</span>
+                        </div>
+                    ) : (
+                        <div>
+                            <span className='inValidForm'> * 8~16자 영문 대소문자, 숫자, 특수문자를 사용하세요</span>
+                        </div>
+                    )) : null}
+                    <input className="registration_input" name="passwordCheck" type="password" placeholder="비밀번호 확인" ref={passwordCheckRef} onChange={handleFromChange} />
+                    {passwordCheck !== null ? (isValidPasswordCheck ? (
+                        <div>
+                            <span className="validForm">비밀번호가 일치합니다</span>
+                        </div>
+                    ) : (
+                        <div>
+                            <span className='inValidForm'>* 비밀번호가 일치하지 않습니다</span>
+                        </div>
+                    )) : null}
                     <div>
-                        <span className="validForm">사용가능한 비밀번호입니다</span>
+                        <button className="registration_submit" type="submit">가입하기</button>
+                        <div className="policy_div">
+                            <p className="policyNotice">가입하면 Zipgap의 <b>약관, 데이터 정책 및 쿠키정책</b>에 동의하게 됩니다.</p>
+                        </div>
                     </div>
-                ) : (
-                    <div>
-                        <span className='inValidForm'> * 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요</span>
-                    </div>
-                )) : null}
-                <input className="registration_input" name="passwordCheck" type="password" placeholder="비밀번호 확인" ref={passwordCheckRef} onChange={handleFromChange} />
-                {passwordCheck !== null ? (isValidPasswordCheck ? (
-                    <div>
-                        <span className="validForm">비밀번호가 일치합니다</span>
-                    </div>
-                ) : (
-                    <div>
-                        <span className='inValidForm'>* 비밀번호가 일치하지 않습니다</span>
-                    </div>
-                )) : null}
-                <div>
-                    <button className="registration_submit" type="submit">가입하기</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     );
 }
