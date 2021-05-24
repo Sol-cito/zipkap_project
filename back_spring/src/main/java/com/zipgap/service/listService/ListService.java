@@ -45,4 +45,11 @@ public class ListService implements IListService {
         return fetchList;
     }
 
+//    public List<RecentVO> fetchListByDealAmount(String deal_amount_from, String deal_amount_to) {
+//        System.out.println(deal_amount_from+" "+ deal_amount_to);
+//        System.out.println(6);
+//        List<RecentVO> fetchList = listDao.fetchListByDealAmount(deal_amount_from, deal_amount_to);
+//        return fetchList;
+//    }
+
 }

@@ -1,4 +1,4 @@
-import "./Style.css";
+import "../CSS/Style.css";
 import "../CSS/Home.css";
 import SearchBar from "./SearchBar";
 import GetList from "./List/GetList";

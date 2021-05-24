@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import "./Style.css";
+import "../CSS/Style.css";
 
 function APICallTest() {
   APItest();

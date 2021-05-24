@@ -15,4 +15,7 @@ public interface IListService {
     List<ApartVO> fetchListByApartment(String apartment_name);
 
     List<ApartVO> fetchListByApartment2();
+
+    //List<RecentVO> fetchListByDealAmount(String deal_amount_from, deal_amount_to);
+
 }
