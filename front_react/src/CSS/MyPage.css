@@ -40,7 +40,7 @@
 .mypage_input_div{
     display: block;
     text-align: left;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .mypage_p_2{
@@ -50,9 +50,8 @@
     margin: 0 0 10px 80px;
 }
 
-.mypage_p_clickable{
+.mypage_Link{
     font-size: 15px;
-    color:  rgb(124, 124, 124);
     font-weight: bolder;
     margin: 0 0 10px 80px;
     cursor: pointer;
@@ -63,12 +62,14 @@
     width: 40%;
     height: 30px;
     margin: 0 0 0 80px;
+    padding-left: 10px;
     background-color:rgb(241, 240, 240);
     border-width: 0.05px;
     border-color: rgb(175, 175, 175);
-    pointer-events: none;
 }
 
-.mypage_input::placeholder{
-    padding-left: 10px;
+.mypage_changeButton{
+    margin-left: 10px;
+    color: blue;
+    cursor: pointer;
 }
