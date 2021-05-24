@@ -1,8 +1,8 @@
 import React from "react";
-import "./Style.css";
+import "../CSS/Style.css";
 import SearchResult from "./SearchResult";
 
-function SearchBar() {
+const SearchBar = () => {
   return (
     <div>
       {/*  관련하여 https://ko.reactjs.org/docs/forms.html 참고할 것 */}
@@ -12,6 +12,6 @@ function SearchBar() {
       </form>
     </div>
   );
-}
+};
 
 export default SearchBar;

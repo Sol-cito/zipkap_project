@@ -15,7 +15,7 @@ const ShowApartChart = ({ lists, loading }) => {
     <>
       {loading && <div>loading...</div>}
       {/* 차트 표시 */}
-      <div className="showChart">
+      <div className="showApartChart">
         {lists[0].apartment_name}
         <ScatterChart
           width={500}
