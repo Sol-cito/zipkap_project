@@ -8,6 +8,7 @@ import RegistrationSuccess from "../Registration/RegistrationSuccess";
 import MyPage from "../MyPage/MyPage";
 import Withdrawal from "../MyPage/Withdrawal";
 import PasswordChange from "../MyPage/PasswordChange";
+import Footer from "../Footer";
 
 const AppRouter = () => {
   return (
@@ -28,6 +29,7 @@ const AppRouter = () => {
             <Route path="/PasswordChange" component={PasswordChange} />
           </Switch>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );
