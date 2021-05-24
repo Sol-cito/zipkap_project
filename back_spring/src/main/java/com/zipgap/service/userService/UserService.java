@@ -67,6 +67,7 @@ public class UserService implements IUserService {
         userRepository.deleteById(userId);
     }
 
+    /* 회원 기본 정보를 얻는 메소드 */
     public User getBasicInfo(String id) {
         return userRepository.findById(id).get();
     }
