@@ -15,7 +15,7 @@
         WHERE t.deal_day > '20210300'
         AND t.deal_day < '20210304'
         ORDER BY t.deal_day DESC
-        limit 50
+        limit 100
         ]]>
     </select>
 
@@ -25,7 +25,7 @@
         SELECT @rownum:=@rownum+1 rownum, t.*  FROM tb_api00 t, (select @rownum:=0) tmp
         WHERE t.deal_day > '20210304'
         ORDER BY t.deal_day DESC
-        limit 50
+        limit 100
         ]]>
     </select>
 
@@ -34,7 +34,7 @@
         <![CDATA[
         SELECT @rownum:=@rownum+1 rownum, t.*  FROM tb_api00 t, (select @rownum:=0) tmp
         WHERE t.deal_day = #{dealDay}
-        limit 50
+        limit 100
         ]]>
     </select>
 
@@ -46,9 +46,34 @@
         from
             tb_api00
         where
+            apartment_name = #{apartment_name}
+        order by deal_day
+        ]]>
+    </select>
+
+    <!--특정 아파트의 실거래 내역 조회-->
+    <select id="fetchListByApartment2" resultType="com.zipgap.vo.listVO.ApartVO" parameterType="String">
+        <![CDATA[
+        select
+            *
+        from
+            tb_api00
+        where
             apartment_name = '초원그린타운'
             and road_name = '신촌4로'
         order by deal_day 
+        ]]>
+    </select>
+
+
+    <!--계약일 구간 실거래가 순으로 조회-->
+    <select id="fetchListByDealAmount" resultType="com.zipgap.vo.listVO.RecentVO" parameterType="String">
+        <![CDATA[
+        SELECT @rownum:=@rownum+1 rownum, t.*  FROM tb_api00 t, (select @rownum:=0) tmp
+        WHERE t.deal_day >= {deal_day_from}
+            and t.deal_day <= {deal_day_to}
+        ORDER BY t.deal_amount DESC
+        limit 100
         ]]>
     </select>
 

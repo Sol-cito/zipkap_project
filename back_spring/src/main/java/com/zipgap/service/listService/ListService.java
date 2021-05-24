@@ -33,11 +33,23 @@ public class ListService implements IListService {
         return fetchList;
     }
 
-
-    public List<ApartVO> fetchListByApartment() {
+    public List<ApartVO> fetchListByApartment(String apartment_name) {
         System.out.println(4);
-        List<ApartVO> fetchList = listDao.fetchListByApartment();
+        List<ApartVO> fetchList = listDao.fetchListByApartment(apartment_name);
         return fetchList;
     }
+
+    public List<ApartVO> fetchListByApartment2() {
+        System.out.println(5);
+        List<ApartVO> fetchList = listDao.fetchListByApartment2();
+        return fetchList;
+    }
+
+//    public List<RecentVO> fetchListByDealAmount(String deal_amount_from, String deal_amount_to) {
+//        System.out.println(deal_amount_from+" "+ deal_amount_to);
+//        System.out.println(6);
+//        List<RecentVO> fetchList = listDao.fetchListByDealAmount(deal_amount_from, deal_amount_to);
+//        return fetchList;
+//    }
 
 }

@@ -46,11 +46,19 @@ public class ListController {
         return fetchList;
     }
 
-    @RequestMapping("/apartment_name")
+    @RequestMapping("/apart/{apartment_name}")
     @ResponseBody
-    public List<ApartVO> fetchListByApartment() {
+    public List<ApartVO> fetchListByApartment(@PathVariable String apartment_name) {
         logger.debug("==========로깅 테스트==========");
-        List<ApartVO> fetchList = listService.fetchListByApartment();
+        List<ApartVO> fetchList = listService.fetchListByApartment(apartment_name);
+        return fetchList;
+    }
+
+    @RequestMapping("/apart/apartment_name")
+    @ResponseBody
+    public List<ApartVO> fetchListByApartment2() {
+        logger.debug("==========로깅 테스트==========");
+        List<ApartVO> fetchList = listService.fetchListByApartment2();
         return fetchList;
     }
 }
