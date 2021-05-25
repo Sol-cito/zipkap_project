@@ -73,3 +73,12 @@
     color: blue;
     cursor: pointer;
 }
+
+.withdraw_Checkbox{
+    margin: 10px;
+}
+
+.withdraw_agreement{
+    color:  rgb(124, 124, 124);
+    font-weight: bold;
+}

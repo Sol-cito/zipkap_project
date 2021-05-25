@@ -61,7 +61,7 @@ public class UserService implements IUserService {
         }
         return false;
     }
-
+    
     /* 회원 탈퇴 기능을 수행하는 메소드 */
     public void withdraw(String userId) {
         userRepository.deleteById(userId);
