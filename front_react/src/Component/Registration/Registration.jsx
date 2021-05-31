@@ -79,7 +79,7 @@ function Registration() {
 
 
     /* form input 이 변경될 때마다 hook을 set하는 리스너 함수 */
-    const handleFromChange = (e) => {
+    const handleFormChange = (e) => {
         console.log("핸들 폼 체인지");
         switch (e.target.name) {
             case "email":
@@ -179,7 +179,7 @@ function Registration() {
                     <p className="subtitle">전국의 집값 정보를 알고 싶으시면 가입하세요.</p>
                 </div>
                 <form className="registration_form" onSubmit={submitClick}>
-                    <input className="registration_input" name="email" placeholder="이메일 주소" ref={emailRef} onChange={handleFromChange} onBlur={handleOnBlur} />
+                    <input className="registration_input" name="email" placeholder="이메일 주소" ref={emailRef} onChange={handleFormChange} onBlur={handleOnBlur} />
                     {email !== null ? (isValidEmail ? (
                         isDuplicateEmail ? (
                             <div>
@@ -195,7 +195,7 @@ function Registration() {
                             <span className='inValidForm'>* 잘못된 Email 양식입니다</span>
                         </div>
                     )) : null}
-                    <input id="name" className="registration_input" name="name" placeholder="성명" ref={nameRef} onChange={handleFromChange} />
+                    <input id="name" className="registration_input" name="name" placeholder="성명" ref={nameRef} onChange={handleFormChange} />
                     {name !== null ? (isNameFillt ? (
                         <div>
                             <span className="validForm">멋진 이름이네요!</span>
@@ -205,7 +205,7 @@ function Registration() {
                             <span className='inValidForm'> * 이름을 입력해주세요</span>
                         </div>
                     )) : null}
-                    <input className="registration_input" name="nickName" placeholder="닉네임" ref={nickNameRef} onChange={handleFromChange} onBlur={handleOnBlur} />
+                    <input className="registration_input" name="nickName" placeholder="닉네임" ref={nickNameRef} onChange={handleFormChange} onBlur={handleOnBlur} />
                     {nickName !== null ? (isValidNickname ?
                         isDuplicateNickname ? (
                             <div>
@@ -220,7 +220,7 @@ function Registration() {
                                 <span className='inValidForm'>* 닉네임은 1자 이상 8자 이하로 입력하셔야 합니다</span>
                             </div>
                         )) : null}
-                    <input className="registration_input" name="password" type="password" placeholder="비밀번호" ref={passwordRef} onChange={handleFromChange} />
+                    <input className="registration_input" name="password" type="password" placeholder="비밀번호" ref={passwordRef} onChange={handleFormChange} />
                     {password !== null ? (isValidPassword ? (
                         <div>
                             <span className="validForm">사용가능한 비밀번호입니다</span>
@@ -230,7 +230,7 @@ function Registration() {
                             <span className='inValidForm'> * 8~16자 영문 대소문자, 숫자, 특수문자를 사용하세요</span>
                         </div>
                     )) : null}
-                    <input className="registration_input" name="passwordCheck" type="password" placeholder="비밀번호 확인" ref={passwordCheckRef} onChange={handleFromChange} />
+                    <input className="registration_input" name="passwordCheck" type="password" placeholder="비밀번호 확인" ref={passwordCheckRef} onChange={handleFormChange} />
                     {passwordCheck !== null ? (isValidPasswordCheck ? (
                         <div>
                             <span className="validForm">비밀번호가 일치합니다</span>

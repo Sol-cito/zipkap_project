@@ -61,7 +61,6 @@ public class UserService implements IUserService {
         }
         return false;
     }
-
     /* 회원 탈퇴 기능을 수행하는 메소드 */
     public void withdraw(String userId) {
         userRepository.deleteById(userId);
@@ -70,5 +69,22 @@ public class UserService implements IUserService {
     /* 회원 기본 정보를 얻는 메소드 */
     public User getBasicInfo(String id) {
         return userRepository.findById(id).get();
+    }
+
+    /* 비밀번호를 변경하는 메소드 */
+    public boolean changePassword(String id, String password) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            User targetUser = user.get();
+            User updateUser = User.builder()
+                    .email(targetUser.getEmail())
+                    .name(targetUser.getName())
+                    .nickName(targetUser.getNickName())
+                    .password(password)
+                    .build();
+            userRepository.save(updateUser);
+            return true;
+        }
+        return false;
     }
 }
