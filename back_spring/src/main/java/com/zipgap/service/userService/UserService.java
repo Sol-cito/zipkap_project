@@ -71,4 +71,21 @@ public class UserService implements IUserService {
     public User getBasicInfo(String id) {
         return userRepository.findById(id).get();
     }
+
+    /* 비밀번호를 변경하는 메소드 */
+    public boolean changePassword(String id, String password) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isPresent()) {
+            User targetUser = user.get();
+            User updateUser = User.builder()
+                    .email(targetUser.getEmail())
+                    .name(targetUser.getName())
+                    .nickName(targetUser.getNickName())
+                    .password(password)
+                    .build();
+            userRepository.save(updateUser);
+            return true;
+        }
+        return false;
+    }
 }

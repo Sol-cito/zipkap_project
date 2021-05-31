@@ -31,18 +31,7 @@ function MyPage() {
     /* 회원탈퇴 메소드 */
     const handleWithdrawal = (e) => {
         e.preventDefault(); // 리다이렉트 막음
-        /* 회원탈퇴 함수 호출 --> 비동기이므로 콜백으로 응답을 받는다 */
-        alert("회원 탈퇴 ㄱㄱ");
-        window.location.replace("/Withdrawal"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
-
-        // withdrawalRequestAxios((isWithdrawalSuccess) => {
-        //     console.log("회원탈퇴 콜백 결과 : " + isWithdrawalSuccess);
-        //     /*  회원탈퇴가 이루어졌으면 쿠키를 삭제하고 메인화면으로 간다. */
-        //     if (isWithdrawalSuccess) {
-        //         removeCookie('loginDone', { path: '/' });
-        //         window.location.replace("/"); // 로그아웃 시 새로고침
-        //     }
-        // });
+        window.location.replace("/Withdrawal");
     }
 
     /* 비밀번호 변경 메소드 */
