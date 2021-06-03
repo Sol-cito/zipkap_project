@@ -8,6 +8,7 @@ import RegistrationSuccess from "../Registration/RegistrationSuccess";
 import MyPage from "../MyPage/MyPage";
 import Withdrawal from "../MyPage/Withdrawal";
 import PasswordChange from "../MyPage/PasswordChange";
+import FreeBoard from "../FreeBoard/FreeBoard";
 import Footer from "../Footer";
 
 const AppRouter = () => {
@@ -27,6 +28,7 @@ const AppRouter = () => {
             <Route path="/MyPage" component={MyPage} />
             <Route path="/Withdrawal" component={Withdrawal} />
             <Route path="/PasswordChange" component={PasswordChange} />
+            <Route path="/FreeBoard" component={FreeBoard} />
           </Switch>
         </div>
         <Footer />

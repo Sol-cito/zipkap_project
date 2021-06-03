@@ -41,6 +41,9 @@ function NavigationBar() {
         <Link to="/">ZIP GAP</Link>
       </span>
       <div className="navBlock">
+        <div className="navElement">
+          <Link to="/FreeBoard">자유게시판</Link>
+        </div>
         {isLoginDone ? (
           <div>
             <span>집값에 오신 것을 환영합니당!</span>
