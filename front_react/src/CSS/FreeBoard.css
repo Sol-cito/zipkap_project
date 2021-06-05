@@ -1,7 +1,38 @@
 .freeBoard_div{
     padding-top: 50px;
     text-align: center;
-    background-color: rgb(247, 247, 247);
+    /* background-color: rgb(247, 247, 247); */
     width: 100%;
     height: 100vh;
+}
+
+.freeBoard_Table_div{
+    width: 80%;
+    display: inline-block;
+    background-color: rgb(255, 255, 255);
+}
+
+.postEditor_div{
+    width: 50%;
+    display: inline-block;
+}
+
+.postTitle{
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgb(156, 155, 155);
+    font-size: larger;
+    padding-left: 10px;
+    margin-bottom: 20px;
+    box-sizing : border-box;
+}
+
+input:focus{
+    outline: 2px solid rgb(173, 171, 171);
+}
+
+.postButtonDiv{
+    width: 75%;
+    margin-top: 20px;
+    text-align: right;
 }

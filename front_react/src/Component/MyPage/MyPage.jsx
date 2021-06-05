@@ -28,18 +28,6 @@ function MyPage() {
         )
     }
 
-    /* 회원탈퇴 메소드 */
-    const handleWithdrawal = (e) => {
-        e.preventDefault(); // 리다이렉트 막음
-        window.location.replace("/Withdrawal");
-    }
-
-    /* 비밀번호 변경 메소드 */
-    const handlePasswordChange = (e) => {
-        e.preventDefault(); // 리다이렉트 막음
-        alert("비번변경");
-    }
-
     /* 이름 변경 메소드 */
     const handleChangeName = (e) => {
         e.preventDefault(); // 리다이렉트 막음
@@ -73,10 +61,10 @@ function MyPage() {
                     <input className="mypage_input" value={nickName} onChange={handleChangeNickName}></input>
                 </div>
                 <div className="mypage_input_div">
-                    <Link to='/PasswordChange' className="mypage_Link">비밀번호 변경</Link>
+                    <Link to='/MyPage/PasswordChange' className="mypage_Link">비밀번호 변경</Link>
                 </div>
                 <div className="mypage_input_div">
-                    <Link to='/Withdrawal' className="mypage_Link">회원 탈퇴</Link>
+                    <Link to='/MyPage/Withdrawal' className="mypage_Link">회원 탈퇴</Link>
                 </div>
                 <div>
                     <Button variant="contained" color="primary"> 수정 </Button>
