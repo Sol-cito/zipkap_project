@@ -20,6 +20,12 @@ function Login() {
 
   /* 로그인 성공 시 설정할 react-cookie */
   const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
+  if (cookies.loginDone != undefined) {
+    window.location.replace("/"); // 이미 로그인 한 상태면 홈 화면으로 돌아간다.
+    return ( //아무것도 return하지 않는다.
+      <div></div>
+    )
+  }
 
   const handleOnChange = (e) => {
     if (e.target.name == "id") {
