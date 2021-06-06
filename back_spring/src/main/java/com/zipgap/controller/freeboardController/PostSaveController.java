@@ -18,7 +18,7 @@ public class PostSaveController {
     private final UserService userService;
     private final FreeboardService freeboardService;
 
-    @PostMapping(value = "/api/post/postSave")
+    @PostMapping(value = "/api/freeBoard/postSave")
     @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
     public void savePost(
@@ -29,7 +29,8 @@ public class PostSaveController {
         String userId = (String) request.getSession().getAttribute("id");
         User curUser = userService.getBasicInfo(userId);
         postVO.setAuthor(curUser.getNickName()); // 글쓴이 설정
-        postVO.setDate(new Date()); // 글쓴 날짜 설정\
+        postVO.setDate(new Date()); // 글쓴 날짜 설정
+        postVO.setHit(1); // 최초 조회수 1로 설정 
         System.out.println(postVO);
         freeboardService.savePost(postVO);
     }
