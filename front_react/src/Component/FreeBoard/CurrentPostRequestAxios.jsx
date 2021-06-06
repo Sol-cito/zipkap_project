@@ -1,21 +1,20 @@
 import axios from 'axios';
 
-const PostSaveRequestAxios = (formData, callback) => {
-    console.log("[REACT] PostSaveRequestAxios formData : " + JSON.stringify(formData));
+const CurrentPostRequestAxios = (post_seq, callback) => {
     axios(
         {
-            url: '/api/freeBoard/postSave',
+            url: '/api/freeBoard/getCurrentPost',
             method: 'post',
             headers: {
                 "Content-Type": `application/json ; charset=utf-8`
             }, // data 방식을 json으로 세팅
             // json으로 변환하여 전송
-            data: JSON.stringify(formData)
+            data: JSON.stringify(post_seq)
         }
     ).then(function (response) {
-        console.log("PostSaveRequestAxios 결과 : " + response.status)
+        console.log("CurrentPostRequestAxios 결과 : " + response.data)
         if (response.status === 200) {
-            callback(true);
+            callback(response.data);
         } else {
             callback(false);
         }
@@ -33,4 +32,4 @@ const PostSaveRequestAxios = (formData, callback) => {
     });
 };
 
-export default PostSaveRequestAxios;
+export default CurrentPostRequestAxios;

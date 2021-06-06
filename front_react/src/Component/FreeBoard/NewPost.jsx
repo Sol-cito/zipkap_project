@@ -12,6 +12,13 @@ const NewPost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
+    if (cookies.loginDone == undefined) {
+        window.location.replace("/"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
+        return ( //아무것도 return하지 않는다.
+            <div></div>
+        )
+    }
+
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
     }

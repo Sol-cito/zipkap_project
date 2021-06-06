@@ -10,43 +10,63 @@ import {
     Button,
 } from "@material-ui/core/";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { convertNumberIntoDateFormat } from './convertNumberIntoDateFormat.js'
 
 
 const FreeBoard = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
 
+    const [posts, setPosts] = useState([]); // 각 post를 array에 담음
+    const [loading, setLoading] = useState(false);
+
+    /* 첫 페이지 로딩 시 get 메소드로 게시글을 불러온다 */
+    useEffect(async () => {
+        setLoading(true);
+        const response = await axios.get('/api/freeBoard/');
+        setPosts(response.data);
+    }, []);
+
     return (
         <div className="freeBoard_div">
             <div className="freeBoard_Table_div">
                 <Table>
-                    <TableHead>
-                        <TableCell width="5%">No</TableCell>
-                        <TableCell width="5%">분류</TableCell>
-                        <TableCell width="20%">제목</TableCell>
-                        <TableCell width="5%">글쓴이</TableCell>
-                        <TableCell width="8%">날짜</TableCell>
-                        <TableCell width="5%">추천</TableCell>
-                        <TableCell width="5%">비추</TableCell>
-                        <TableCell width="5%">조회</TableCell>
+                    <TableHead className="freeBoard_TableHead">
+                        <TableCell className="freeBoard_TableHeadCell" width="2%">No</TableCell>
+                        <TableCell className="freeBoard_TableHeadCell" width="5%">분류</TableCell>
+                        <TableCell className="freeBoard_TableHeadCell" width="20%">제목</TableCell>
+                        <TableCell className="freeBoard_TableHeadCell" width="5%">글쓴이</TableCell>
+                        <TableCell className="freeBoard_TableHeadCell" width="8%">작성일</TableCell>
+                        <TableCell className="freeBoard_TableHeadCell" width="5%">추천</TableCell>
+                        <TableCell className="freeBoard_TableHeadCell" width="5%">비추</TableCell>
+                        <TableCell className="freeBoard_TableHeadCell" width="5%">조회</TableCell>
                     </TableHead>
                     <TableBody>
-                        <TableRow>
-                            <TableCell>셀1</TableCell>
-                            <TableCell>셀2</TableCell>
-                            <TableCell>셀3</TableCell>
-                            <TableCell>셀4</TableCell>
-                            <TableCell>셀5</TableCell>
-                            <TableCell>셀6</TableCell>
-                            <TableCell>셀7</TableCell>
-                            <TableCell>셀8</TableCell>
-                        </TableRow>
+                        {posts.map(post => (
+                            <TableRow className="freeBoard_TableBodyRow">
+                                <TableCell key={post.post_seq} className="freeBoard_TableBodyCell">{post.post_seq}</TableCell>
+                                <TableCell className="freeBoard_TableBodyCell">구현중</TableCell>
+                                <TableCell className="freeBoard_TableBodyCell_title">
+                                    <Link to={"/FreeBoard/CurrentPost/" + post.post_seq}>
+                                        {post.title}
+                                    </Link>
+                                </TableCell>
+                                <TableCell className="freeBoard_TableBodyCell">{post.author}</TableCell>
+                                <TableCell className="freeBoard_TableBodyCell">{convertNumberIntoDateFormat(post.date)}</TableCell>
+                                <TableCell className="freeBoard_TableBodyCell">구현중</TableCell>
+                                <TableCell className="freeBoard_TableBodyCell">구현중</TableCell>
+                                <TableCell className="freeBoard_TableBodyCell">{post.hit}</TableCell>
+                            </TableRow>
+                        ))}
                     </TableBody>
                 </Table>
             </div>
             <div>
-                <Link to="/FreeBoard/NewPost">
-                    <Button variant="contained" color="primary">글쓰기</Button>
-                </Link>
+                {cookies.loginDone != undefined ? (
+                    <Link to="/FreeBoard/NewPost">
+                        <Button variant="contained" color="primary">글쓰기</Button>
+                    </Link>
+                ) : null}
             </div>
             <div>
                 <form>

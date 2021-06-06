@@ -33,6 +33,30 @@ input:focus{
 
 .postButtonDiv{
     width: 75%;
-    margin-top: 20px;
+    margin-top: 5px;
     text-align: right;
+}
+
+/* tableHead 클래스 css */
+.MuiTableHead-root.freeBoard_TableHead{
+    background-color: rgb(224, 221, 221);
+}
+
+/* tableHead 클래스 css */
+.MuiTableCell-head.freeBoard_TableHeadCell{
+    text-align: center;
+    font-weight: bold;
+}
+
+/* tableBody cell 클래스 css */
+.MuiTableCell-body.freeBoard_TableBodyCell{
+    text-align: center;
+}
+
+.MuiTableRow-root.freeBoard_TableBodyRow:hover{
+    background-color: rgb(236, 236, 236);
+}
+
+.freeBoard_TableBodyCell_title:hover {
+    cursor: pointer;
 }
