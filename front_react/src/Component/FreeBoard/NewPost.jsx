@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import "../../CSS/FreeBoard.css";
 import { useCookies } from 'react-cookie';
 import EditorComponent from './EditorComponent';
+import PostSaveRequestAxios from './PostSaveRequestAxios';
 import { Button } from "@material-ui/core/";
 
 
@@ -19,10 +20,26 @@ const NewPost = () => {
         setContent(value);
     }
 
+    /* post 데이터를 묶어서 전송할 객체 */
+    const formData = {
+        title: title,
+        content: content
+    }
+
     const handleOnSubmit = (e) => {
         e.preventDefault();
         console.log("전송 title : " + title);
         console.log("전송 content : " + content);
+        if (window.confirm("글을 저장하시겠습니까?")) {
+            PostSaveRequestAxios(formData, (response) => {
+                if (response) {
+                    alert("글이 정상적으로 등록되었습니다.");
+                    window.location.replace("/FreeBoard") // 글 저장 완료 시 게시판으로 이동한다
+                } else {
+                    alert("[ERROR] 글 저장에 문제가 발생하였습니다.");
+                }
+            });
+        }
     }
 
     return (
