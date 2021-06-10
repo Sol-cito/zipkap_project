@@ -37,7 +37,7 @@ class Maps extends Component {
           <Marker position={position}>
             <Popup>
               <span>
-                A pretty CSS3 popup. <br /> Easily customizable.
+                팝업 테스트
               </span>
             </Popup>
           </Marker>

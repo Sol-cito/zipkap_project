@@ -54,11 +54,11 @@ export default () => {
           <BarChart />
           <article>
             <h1>매매가/매매량</h1>
-            <span>Harry Brignull</span>
+            <span>최근 1년 기준</span>
           </article>
         </a>
       </div>
-      
+        
       <h1 />
     </div>
   );

@@ -25,8 +25,6 @@ const data = [
 ];
 
 export default class Example extends PureComponent {
-  static demoUrl = "https://codesandbox.io/s/simple-bar-chart-tpz8r";
-
   render() {
     return (
       <Box height={400}>
