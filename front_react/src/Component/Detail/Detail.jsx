@@ -1,7 +1,13 @@
 import "../../CSS/Detail.scss";
 import Map from "./Map";
 import BarChart from "./BarChart";
+import Comment from "./Comment";
 export default () => {
+  const styleLink = document.createElement("link");
+  styleLink.rel = "stylesheet";
+  styleLink.href =
+    "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
+  document.head.appendChild(styleLink);
   return (
     <div className={"band"}>
       <h1 />
@@ -58,7 +64,24 @@ export default () => {
           </article>
         </a>
       </div>
-        
+      <div className={"item-4"}>
+        <a href="/" className={"card"}>
+          <BarChart />
+          <article>
+            <h1>매매가/매매량</h1>
+            <span>최근 1년 기준</span>
+          </article>
+        </a>
+      </div>
+      <div className={"item-4"}>
+        <div href="/" className={"card"} style={{ textAlign: "left" }}>
+          <article >
+            <hr className={"one"}></hr>
+              <Comment />
+          </article>
+        </div>
+      </div>
+
       <h1 />
     </div>
   );
