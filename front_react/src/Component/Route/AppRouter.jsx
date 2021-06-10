@@ -12,7 +12,7 @@ import FreeBoard from "../FreeBoard/FreeBoard";
 import NewPost from "../FreeBoard/NewPost";
 import CurrentPost from "../FreeBoard/CurrentPost";
 import Footer from "../Footer";
-
+import Detail from "../Detail/Detail"
 const AppRouter = () => {
   return (
     <div>
@@ -33,6 +33,7 @@ const AppRouter = () => {
             <Route path="/FreeBoard" component={FreeBoard} exact />
             <Route path="/FreeBoard/NewPost" component={NewPost} exact />
             <Route path="/FreeBoard/CurrentPost/:post_seq" component={CurrentPost} />
+            <Route path="/Detail" component={Detail} />
           </Switch>
         </div>
         <Footer />
