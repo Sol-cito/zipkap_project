@@ -7,7 +7,7 @@ import {
 } from "@material-ui/core/";
 import { Link } from "react-router-dom";
 
-const ShowList = ({ lists, setApartUrl, loading }) => {
+const ShowCartList = ({ lists, setApartUrl, loading }) => {
   return (
     <>
       {loading && <div>loading...</div>}
@@ -23,7 +23,7 @@ const ShowList = ({ lists, setApartUrl, loading }) => {
                 <TableCell>아파트 주소</TableCell>
                 <TableCell>층수</TableCell>
                 <TableCell>면적</TableCell>
-                <TableCell>찜하기</TableCell>
+                <TableCell>찜취소</TableCell>
                 <TableCell>상세보기</TableCell>
               </TableRow>
             </TableHead>
@@ -51,10 +51,10 @@ const ShowList = ({ lists, setApartUrl, loading }) => {
                     <TableCell
                       className="tableRowLike"
                       onClick={() => {
-                        alert("장바구니에 추가합니다");
+                        alert("장바구니에서 제거합니다");
                       }}
                     >
-                      좋아요
+                      싫어요
                     </TableCell>
                     <TableCell className="tableRowGoDetail">
                       <Link to="/Detail">이동</Link>
@@ -69,4 +69,4 @@ const ShowList = ({ lists, setApartUrl, loading }) => {
   );
 };
 
-export default ShowList;
+export default ShowCartList;

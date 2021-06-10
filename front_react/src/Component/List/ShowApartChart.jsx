@@ -15,7 +15,7 @@ const ShowApartChart = ({ lists, loading }) => {
     <>
       {loading && <div>loading...</div>}
       {/* 차트 표시 */}
-      <div className="showApartChart">
+      <span className="showApartChart">
         {lists[0].apartment_name}
         <ScatterChart
           width={500}
@@ -33,26 +33,7 @@ const ShowApartChart = ({ lists, loading }) => {
           <Tooltip />
           <Scatter name="A school" data={lists} fill="#8884d8" />
         </ScatterChart>
-
-        <LineChart
-          width={500}
-          height={400}
-          data={lists}
-          margin={{
-            top: 50,
-            right: 50,
-            bottom: 50,
-            left: 50,
-          }}
-        >
-          <CartesianGrid strokeDasharray="20 20" />
-          <XAxis dataKey="deal_day" />
-          <YAxis unit="000원" />
-          <Tooltip />
-          <Legend />
-          <Line dataKey="deal_amount" stroke="#8884d8" activeDot={{ r: 10 }} />
-        </LineChart>
-      </div>
+      </span>
     </>
   );
 };

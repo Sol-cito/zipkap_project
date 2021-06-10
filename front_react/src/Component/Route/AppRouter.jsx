@@ -5,6 +5,7 @@ import Login from "../Login/Login";
 import Home from "../Home";
 import Registration from "../Registration/Registration";
 import RegistrationSuccess from "../Registration/RegistrationSuccess";
+import Cart from "../Cart/GetCartList";
 import MyPage from "../MyPage/MyPage";
 import Withdrawal from "../MyPage/Withdrawal";
 import PasswordChange from "../MyPage/PasswordChange";
@@ -12,7 +13,7 @@ import FreeBoard from "../FreeBoard/FreeBoard";
 import NewPost from "../FreeBoard/NewPost";
 import CurrentPost from "../FreeBoard/CurrentPost";
 import Footer from "../Footer";
-import Detail from "../Detail/Detail"
+import Detail from "../Detail/Detail";
 const AppRouter = () => {
   return (
     <div>
@@ -27,12 +28,20 @@ const AppRouter = () => {
               path="/RegistrationSuccess"
               component={RegistrationSuccess}
             />
+            <Route path="/Cart" component={Cart} exact />
             <Route path="/MyPage" component={MyPage} exact />
             <Route path="/MyPage/Withdrawal" component={Withdrawal} exact />
-            <Route path="/MyPage/PasswordChange" component={PasswordChange} exact />
+            <Route
+              path="/MyPage/PasswordChange"
+              component={PasswordChange}
+              exact
+            />
             <Route path="/FreeBoard" component={FreeBoard} exact />
             <Route path="/FreeBoard/NewPost" component={NewPost} exact />
-            <Route path="/FreeBoard/CurrentPost/:post_seq" component={CurrentPost} />
+            <Route
+              path="/FreeBoard/CurrentPost/:post_seq"
+              component={CurrentPost}
+            />
             <Route path="/Detail" component={Detail} />
           </Switch>
         </div>
