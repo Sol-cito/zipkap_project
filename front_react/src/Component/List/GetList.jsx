@@ -20,6 +20,7 @@ const GetList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [listsPerPage] = useState(20);
 
+
   useEffect(() => {
     const getRecentList = async () => {
       try {
@@ -103,14 +104,6 @@ const GetList = () => {
       <ShowChart lists={currentLists(lists)} loading={loading}></ShowChart>
 
       <div className="getApart">
-        <button
-          onClick={() => {
-            setApartUrl("/api/list/apart/천성리버타운");
-          }}
-        >
-          아파트별(임시)
-        </button>
-
         <GetApart apartUrl={apartUrl}></GetApart>
       </div>
     </div>

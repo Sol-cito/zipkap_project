@@ -1,11 +1,11 @@
 package com.zipgap.controller.cartController;
 
-import com.zipgap.service.listService.IListService;
-import com.zipgap.vo.listVO.ApartVO;
-import com.zipgap.vo.listVO.RecentVO;
+import com.zipgap.service.cartService.ICartService;
+import com.zipgap.vo.cartVO.CartVO;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,46 +18,25 @@ public class CartController {
 
     Logger logger = LoggerFactory.getLogger(CartController.class);
 
-    private final IListService listService;
+    private final ICartService cartService;
 
-    @RequestMapping("/recent")
+    @PostMapping(value = "/wishAdd")
     @ResponseBody
-    public List<RecentVO> fetchListByRecentDealDay() {
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<CartVO> wishAdd() {
         logger.debug("==========로깅 테스트==========");
-        List<RecentVO> fetchList = listService.fetchListByRecentDealDay();
-        return fetchList;
-    }
-
-    @RequestMapping("/recent2")
-    @ResponseBody
-    public List<RecentVO> fetchListByRecentDealDay2() {
-        logger.debug("==========로깅 테스트==========");
-        List<RecentVO> fetchList = listService.fetchListByRecentDealDay2();
-        return fetchList;
-    }
-
-    @GetMapping("/{dealDay}")
-    public List<RecentVO> fetchListByDealDay(@PathVariable String dealDay) {
-        logger.debug("==========로깅 테스트==========");
-        System.out.println(dealDay);
         System.out.println(1);
-        List<RecentVO> fetchList = listService.fetchListByDealDay(dealDay);
+        List<CartVO> fetchList = cartService.wishAdd();
         return fetchList;
     }
 
-    @RequestMapping("/apart/{apartment_name}")
+    @PostMapping(value = "/wishGet")
     @ResponseBody
-    public List<ApartVO> fetchListByApartment(@PathVariable String apartment_name) {
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<CartVO> wishGet() {
         logger.debug("==========로깅 테스트==========");
-        List<ApartVO> fetchList = listService.fetchListByApartment(apartment_name);
-        return fetchList;
-    }
-
-    @RequestMapping("/apart/apartment_name")
-    @ResponseBody
-    public List<ApartVO> fetchListByApartment2() {
-        logger.debug("==========로깅 테스트==========");
-        List<ApartVO> fetchList = listService.fetchListByApartment2();
+        System.out.println(1);
+        List<CartVO> fetchList = cartService.wishGet();
         return fetchList;
     }
 }

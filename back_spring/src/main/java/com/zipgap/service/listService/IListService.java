@@ -1,16 +1,16 @@
 package com.zipgap.service.listService;
 
-import com.zipgap.vo.listVO.RecentVO;
+import com.zipgap.vo.listVO.ListVO;
 import com.zipgap.vo.listVO.ApartVO;
 
 import java.util.List;
 
 public interface IListService {
-    List<RecentVO> fetchListByRecentDealDay();
+    List<ListVO> fetchListByRecentDealDay();
 
-    List<RecentVO> fetchListByRecentDealDay2();
+    List<ListVO> fetchListByRecentDealDay2();
 
-    List<RecentVO> fetchListByDealDay(String dealDay);
+    List<ListVO> fetchListByDealDay(String dealDay);
 
     List<ApartVO> fetchListByApartment(String apartment_name);
 

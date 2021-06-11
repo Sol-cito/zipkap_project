@@ -11,18 +11,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CartVO {
 
-    int rownum;
-    String serial_number;
-    String apartment_name;
-    String area_for_exclusive_use;
-    String floor;
-    int deal_amount;
-    String road_name_bonbun;
-    String road_name_bubun;
-    String road_name_sigungu_code;
-    String road_name_seq;
-    String road_name_basement_code;
-    String road_name;
-    String deal_day;
+    String addDate;
+    String cart_email;
+    int cart_seq;
+    String cart_serial_number;
+    int cart_floor;
+    String cart_apartment_name;
+    String cart_deal_day;
 
 }
