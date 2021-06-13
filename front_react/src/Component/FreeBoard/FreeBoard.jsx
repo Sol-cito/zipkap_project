@@ -23,6 +23,7 @@ const FreeBoard = () => {
 
     /* 첫 페이지 로딩 시 get 메소드로 게시글을 불러온다 */
     useEffect(async () => {
+        window.scrollTo(0, 0); // 화면 맨 위로 올리기
         const response = await axios.get('/api/freeBoard/');
         setLoading(true);
         setPosts(response.data);

@@ -12,6 +12,11 @@ const NewPost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
+    /* 첫 페이지 로딩 시 post 메소드로 게시글을 불러온다 */
+    useEffect(async () => {
+        window.scrollTo(0, 0); // 화면 맨 위로 올리기
+    }, []);
+
     if (cookies.loginDone == undefined) {
         window.location.replace("/"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
         return ( //아무것도 return하지 않는다.
