@@ -6,41 +6,8 @@ import {
   TableCell,
 } from "@material-ui/core/";
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import BasicInfoRequestAxios from "../MyPage/BasicInfoRequestAxios";
-import axios from "axios";
 
-const ShowList = ({ lists, setApartUrl, loading }) => {
-  const [isWishChange, setIsWishChange] = useState(false);
-  const [email, setEmail] = useState(null);
-
-  useEffect(() => {
-    BasicInfoRequestAxios((response) => {
-      setEmail(response.data.email);
-    });
-  }, []);
-
-  const wishChangeHandler = ({ list }) => {
-    if (window.confirm("찜 하시겠어요?")) {
-      setIsWishChange(!isWishChange);
-      axios({
-        url: "/api/cart/wishAdd",
-        method: "post",
-        headers: {
-          "Content-Type": `application/json ; charset=utf-8`,
-        },
-        data: JSON.stringify({
-          cart_email: email,
-          cart_serial_number: list.serial_number,
-          cart_floor: list.floor,
-          cart_apartment_name: list.apartment_name,
-          cart_deal_day: list.deal_day,
-          wishState: isWishChange,
-        }),
-      });
-    }
-  };
-
+const ShowCartList = ({ lists, setApartUrl, loading }) => {
   return (
     <>
       {loading && <div>loading...</div>}
@@ -56,7 +23,7 @@ const ShowList = ({ lists, setApartUrl, loading }) => {
                 <TableCell>아파트 주소</TableCell>
                 <TableCell>층수</TableCell>
                 <TableCell>면적</TableCell>
-                <TableCell>찜하기</TableCell>
+                <TableCell>찜취소</TableCell>
                 <TableCell>상세보기</TableCell>
               </TableRow>
             </TableHead>
@@ -84,10 +51,10 @@ const ShowList = ({ lists, setApartUrl, loading }) => {
                     <TableCell
                       className="tableRowLike"
                       onClick={() => {
-                        wishChangeHandler({ list });
+                        alert("장바구니에서 제거합니다");
                       }}
                     >
-                      좋아요
+                      싫어요
                     </TableCell>
                     <TableCell className="tableRowGoDetail">
                       <Link to="/Detail">이동</Link>
@@ -102,4 +69,4 @@ const ShowList = ({ lists, setApartUrl, loading }) => {
   );
 };
 
-export default ShowList;
+export default ShowCartList;

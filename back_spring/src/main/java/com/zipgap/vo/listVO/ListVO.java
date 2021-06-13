@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RecentVO {
+public class ListVO {
 
     int rownum;
     String serial_number;

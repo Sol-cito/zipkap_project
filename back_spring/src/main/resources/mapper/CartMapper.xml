@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zipgap.mapper.CartMapper">
+
+    <select id="wishAdd" resultType="com.zipgap.vo.cartVO.CartVO" parameterType="String">
+        <![CDATA[
+            INSERT INTO zg.tb_cart
+            (addDate, cart_email, cart_serial_number, cart_floor, cart_apartment_name, cart_deal_day, wishState)
+            VALUES('20210611', 'ybg4828@naver.com', '11110-102', 6, '현대뜨레비앙', '20210311', 1);
+        ]]>
+    </select>
+
+    <select id="wishGet" resultType="com.zipgap.vo.cartVO.CartVO" parameterType="String">
+        <![CDATA[
+            select * from tb_cart
+        ]]>
+    </select>
+
+</mapper>

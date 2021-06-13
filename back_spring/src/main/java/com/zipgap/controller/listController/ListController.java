@@ -1,12 +1,11 @@
 package com.zipgap.controller.listController;
 
 import com.zipgap.service.listService.IListService;
-import com.zipgap.vo.listVO.RecentVO;
+import com.zipgap.vo.listVO.ListVO;
 import com.zipgap.vo.listVO.ApartVO;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,26 +22,26 @@ public class ListController {
 
     @RequestMapping("/recent")
     @ResponseBody
-    public List<RecentVO> fetchListByRecentDealDay() {
+    public List<ListVO> fetchListByRecentDealDay() {
         logger.debug("==========로깅 테스트==========");
-        List<RecentVO> fetchList = listService.fetchListByRecentDealDay();
+        List<ListVO> fetchList = listService.fetchListByRecentDealDay();
         return fetchList;
     }
 
     @RequestMapping("/recent2")
     @ResponseBody
-    public List<RecentVO> fetchListByRecentDealDay2() {
+    public List<ListVO> fetchListByRecentDealDay2() {
         logger.debug("==========로깅 테스트==========");
-        List<RecentVO> fetchList = listService.fetchListByRecentDealDay2();
+        List<ListVO> fetchList = listService.fetchListByRecentDealDay2();
         return fetchList;
     }
 
     @GetMapping("/{dealDay}")
-    public List<RecentVO> fetchListByDealDay(@PathVariable String dealDay) {
+    public List<ListVO> fetchListByDealDay(@PathVariable String dealDay) {
         logger.debug("==========로깅 테스트==========");
         System.out.println(dealDay);
         System.out.println(1);
-        List<RecentVO> fetchList = listService.fetchListByDealDay(dealDay);
+        List<ListVO> fetchList = listService.fetchListByDealDay(dealDay);
         return fetchList;
     }
 
