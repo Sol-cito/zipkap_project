@@ -37,13 +37,12 @@ public class FreeBoardController {
             @RequestBody PostVO postVO,
             HttpServletRequest request
     ) {
-        System.out.println("PostVO = " + postVO);
         String userId = (String) request.getSession().getAttribute("id");
         User curUser = userService.getBasicInfo(userId);
         postVO.setAuthor(curUser.getNickName()); // 글쓴이 설정
         postVO.setDate(new Date()); // 글쓴 날짜 설정
-        postVO.setHit(1); // 최초 조회수 1로 설정 
-        System.out.println(postVO);
+        postVO.setHit(1); // 최초 조회수 1로 설정
+        postVO.setAuthor_id(curUser.getEmail()); // 글쓴이 id 설정
         freeboardService.savePost(postVO);
     }
 
