@@ -22,6 +22,7 @@ public class PostVO {
     private String content;
     private Date date;
     private int hit;
+    private String author_id;
 
     /* VO를 JPA Entity 로 변환시켜주는 메소드 */
     public Post toEnity() {
@@ -31,6 +32,7 @@ public class PostVO {
                 .content(content)
                 .date(date)
                 .hit(hit)
+                .author_id(author_id)
                 .build();
     }
 }

@@ -9,5 +9,5 @@ export const convertNumberIntoDateFormat = (curTime) => {
 };
 
 export const convertNumberIntoDateFormatWithDetail = (curTime) => {
-    return moment(new Date(curTime)).format('YYYY-MM-DD HH시 mm분 ss초');
+    return moment(new Date(curTime)).format('YYYY-MM-DD HH:mm:ss');
 };

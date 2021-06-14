@@ -12,6 +12,11 @@ const NewPost = () => {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
+    /* 첫 페이지 로딩 시 post 메소드로 게시글을 불러온다 */
+    useEffect(async () => {
+        window.scrollTo(0, 0); // 화면 맨 위로 올리기
+    }, []);
+
     if (cookies.loginDone == undefined) {
         window.location.replace("/"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
         return ( //아무것도 return하지 않는다.
@@ -20,6 +25,10 @@ const NewPost = () => {
     }
 
     const handleTitleChange = (e) => {
+        if(e.target.value.length >= 50){
+            alert("제목은 50자 이내로 입력하셔야 합니다");
+            return;
+        }
         setTitle(e.target.value);
     }
 
@@ -53,7 +62,7 @@ const NewPost = () => {
         <div className="freeBoard_div">
             <form onSubmit={handleOnSubmit}>
                 <div className="postEditor_div">
-                    <input className="postTitle" name="title" placeholder="제목을 입력해 주세요." onChange={handleTitleChange} />
+                    <input className="postTitle" name="title" placeholder="제목을 50자 이내로 입력해 주세요." maxLength='50' onChange={handleTitleChange} />
                     <EditorComponent value={content} onChange={handleEditorChange} />
                 </div>
                 <div className="postButtonDiv">

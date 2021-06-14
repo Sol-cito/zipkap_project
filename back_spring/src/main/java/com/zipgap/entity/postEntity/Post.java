@@ -32,12 +32,16 @@ public class Post {
     @Column(name = "hit", length = 100, nullable = false)
     private int hit;
 
+    @Column(name = "author_id", length = 100, nullable = false)
+    private String author_id;
+
     @Builder // id가 auto_increment이므로 builder에 넣을 필요 없음
-    public Post(String author, String title, String content, Date date, int hit) {
+    public Post(String author, String title, String content, Date date, int hit, String author_id) {
         this.author = author;
         this.title = title;
         this.content = content;
         this.date = date;
         this.hit = hit;
+        this.author_id = author_id;
     }
 }

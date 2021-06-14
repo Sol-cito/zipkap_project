@@ -11,21 +11,23 @@ import {
 } from "@material-ui/core/";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { convertNumberIntoDateFormat } from './convertNumberIntoDateFormat.js'
+import { convertNumberIntoDateFormat } from './convertNumberIntoDateFormat.js';
+import ReactLoading from 'react-loading';
 
 
 const FreeBoard = () => {
     const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
 
     const [posts, setPosts] = useState([]); // 각 post를 array에 담음
-    const [loading, setLoading] = useState(false);
+    const [loadingDone, setLoading] = useState(false);
 
     /* 첫 페이지 로딩 시 get 메소드로 게시글을 불러온다 */
     useEffect(async () => {
-        setLoading(true);
+        window.scrollTo(0, 0); // 화면 맨 위로 올리기
         const response = await axios.get('/api/freeBoard/');
+        setLoading(true);
         setPosts(response.data);
-    }, []);
+    }, [loadingDone]);
 
     return (
         <div className="freeBoard_div">
@@ -60,6 +62,11 @@ const FreeBoard = () => {
                         ))}
                     </TableBody>
                 </Table>
+                {!loadingDone ? (
+                        <div className="react-spinner_div">
+                            <ReactLoading type={'spin'} color={'grey'} height={'50px'} width={'50px'}/>  
+                        </div>
+                    ) : null}
             </div>
             <div>
                 {cookies.loginDone != undefined ? (

@@ -4,12 +4,12 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../CSS/List.css";
-import ShowList from "./ShowList";
-import ShowChart from "./ShowChart";
-import Pagination from "./Pagination";
-import GetApart from "./GetApart";
+import ShowList from "./ShowCartList";
+import ShowCartChart from "./ShowCartChart";
+import Pagination from "../List/Pagination";
+import GetApart from "../List/GetApart";
 
-const GetList = () => {
+const GetCartList = () => {
   const [url, setUrl] = useState("/api/list/recent");
   const [lists, setLists] = useState([]);
   const [apartUrl, setApartUrl] = useState("/api/list/apart/apartment_name");
@@ -19,7 +19,6 @@ const GetList = () => {
   const [yyyymmdd, setYyyyMmDd] = useState("20210307");
   const [currentPage, setCurrentPage] = useState(1);
   const [listsPerPage] = useState(20);
-
 
   useEffect(() => {
     const getRecentList = async () => {
@@ -52,43 +51,35 @@ const GetList = () => {
 
   return (
     <div className="App">
-      <div className="getListButton">
-        <button
-          onClick={() => {
-            setUrl("/api/list/recent");
-          }}
-        >
-          최신목록
-        </button>
-        <button
-          onClick={() => {
-            setUrl("/api/list/recent2");
-          }}
-        >
-          최신목록2
-        </button>
-      </div>
+      <br></br>
+      <div>장바구니 목록을 확인하세요</div>
+      <ShowCartChart
+        lists={currentLists(lists)}
+        loading={loading}
+      ></ShowCartChart>
+      <button
+        onClick={() => {
+          setUrl("/api/list/recent");
+        }}
+      >
+        장바구니 넣은 순
+      </button>
 
-      <div className="showCalendar">
-        {/* 달력 표시 */}
-        <DatePicker
-          dateFormat="yyyy-MM-dd"
-          selected={day}
-          onChange={(date) => {
-            setYyyyMmDd(moment(date).format("YYYYMMDD"));
-            setDay(date);
-          }}
-        />
-        <button
-          onClick={() => {
-            alert(yyyymmdd);
-            setUrl("/api/list/" + yyyymmdd);
-          }}
-        >
-          날짜별목록
-        </button>
-      </div>
+      <button
+        onClick={() => {
+          setUrl("/api/list/recent");
+        }}
+      >
+        거래량 순
+      </button>
 
+      <button
+        onClick={() => {
+          setUrl("/api/list/recent");
+        }}
+      >
+        매매가 순
+      </button>
       <ShowList
         lists={currentLists(lists)}
         setApartUrl={setApartUrl}
@@ -101,8 +92,6 @@ const GetList = () => {
         paginate={setCurrentPage}
       ></Pagination>
 
-      <ShowChart lists={currentLists(lists)} loading={loading}></ShowChart>
-
       <div className="getApart">
         <GetApart apartUrl={apartUrl}></GetApart>
       </div>
@@ -110,4 +99,4 @@ const GetList = () => {
   );
 };
 
-export default GetList;
+export default GetCartList;
