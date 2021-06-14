@@ -77,12 +77,12 @@ input:focus{
     background-color: white;
     width: 50%;
     height: auto;
-    text-align: left;
     border: 1px solid rgb(207, 207, 207);
 }
 
 .freeboard_content_div{
     margin: 0 20px 0 20px;
+    text-align: left;
 }
 
 .freeboard_post_info{

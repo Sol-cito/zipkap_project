@@ -25,6 +25,10 @@ const NewPost = () => {
     }
 
     const handleTitleChange = (e) => {
+        if(e.target.value.length >= 50){
+            alert("제목은 50자 이내로 입력하셔야 합니다");
+            return;
+        }
         setTitle(e.target.value);
     }
 
@@ -58,7 +62,7 @@ const NewPost = () => {
         <div className="freeBoard_div">
             <form onSubmit={handleOnSubmit}>
                 <div className="postEditor_div">
-                    <input className="postTitle" name="title" placeholder="제목을 입력해 주세요." onChange={handleTitleChange} />
+                    <input className="postTitle" name="title" placeholder="제목을 50자 이내로 입력해 주세요." maxLength='50' onChange={handleTitleChange} />
                     <EditorComponent value={content} onChange={handleEditorChange} />
                 </div>
                 <div className="postButtonDiv">
