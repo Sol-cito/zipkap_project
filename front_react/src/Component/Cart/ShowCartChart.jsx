@@ -1,13 +1,9 @@
 import { Box } from "@material-ui/core";
-import React, { PureComponent } from "react";
+import React from "react";
 import {
   BarChart,
   Bar,
-  Cell,
-  ScatterChart,
-  Scatter,
   XAxis,
-  YAxis,
   CartesianGrid,
   Tooltip,
   Legend,

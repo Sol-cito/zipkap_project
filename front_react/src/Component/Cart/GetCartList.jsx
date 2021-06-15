@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import DatePicker from "react-datepicker";
-import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import "../../CSS/List.css";
 import ShowList from "./ShowCartList";
@@ -15,8 +13,6 @@ const GetCartList = () => {
   const [apartUrl, setApartUrl] = useState("/api/list/apart/apartment_name");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [day, setDay] = useState(new Date());
-  const [yyyymmdd, setYyyyMmDd] = useState("20210307");
   const [currentPage, setCurrentPage] = useState(1);
   const [listsPerPage] = useState(20);
 
