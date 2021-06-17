@@ -6,6 +6,7 @@ import logoutRequestAxios from "./Login/LogoutRequestAxios.jsx";
 import apartment_icon from "../img/apartment_icon.ico";
 import { useCookies } from "react-cookie";
 import PersonOutlineIcon from "@material-ui/icons/PersonOutline";
+import BasicInfoRequestAxios from "./MyPage/BasicInfoRequestAxios";
 
 //패키지 추가 후 로컬 실행하려면 yarn 해줘야함
 function NavigationBar() {
@@ -16,6 +17,13 @@ function NavigationBar() {
   if (cookies.loginDone != undefined && cookies.loginDone && !isLoginDone) {
     setLoginStatus(true);
   }
+
+  const [email, setEmail] = useState(null);
+  useEffect(() => {
+    BasicInfoRequestAxios((response) => {
+      setEmail(response.data.email);
+    });
+  }, []);
 
   /* 로그아웃 시 confirm으로 질의 */
   const handleOnClick = (e) => {
@@ -43,7 +51,7 @@ function NavigationBar() {
       <div className="navBlock">
         {isLoginDone ? (
           <span>
-            <span>집값에 오신 것을 환영합니당! </span>
+            <span>{email} 님 환영합니다! </span>
             <div className="navClickableMenu">
               <Link to="/Cart">장바구니</Link>
             </div>

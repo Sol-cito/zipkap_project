@@ -2,18 +2,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTDMapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zipgap.mapper.CartMapper">
 
-    <select id="wishAdd" resultType="com.zipgap.vo.cartVO.CartVO" parameterType="String">
+    <insert id="insertWish" parameterType="com.zipgap.vo.cartVO.CartVO"  >
         <![CDATA[
-            INSERT INTO zg.tb_cart
-            (addDate, cart_email, cart_serial_number, cart_floor, cart_apartment_name, cart_deal_day, wishState)
-            VALUES('20210611', 'ybg4828@naver.com', '11110-102', 6, '현대뜨레비앙', '20210311', 1);
+            INSERT INTO tb_cart
+            (addDate, cart_email, cart_serial_number, cart_floor, cart_apartment_name, cart_deal_day)
+            VALUES(SYSDATE(), #{cart_email}, #{cart_serial_number}, #{cart_floor}, #{cart_apartment_name}, #{cart_deal_day});
+        ]]>
+    </insert>
+
+    <select id="selectWish" resultType="com.zipgap.vo.listVO.ListVO" parameterType="String">
+        <![CDATA[
+            select @rownum:=@rownum+1 rownum,
+                a.serial_number,
+                a.apartment_name,
+                a.area_for_exclusive_use,
+                a.floor,
+                a.deal_amount,
+                a.road_name_bonbun,
+                a.road_name_bubun,
+                a.road_name_sigungu_code,
+                a.road_name_seq,
+                a.road_name_basement_code,
+                a.road_name,
+                a.deal_day
+            from tb_api00 a,
+                (select *
+                from tb_cart
+                where cart_email = #{cart_email}) c,
+                (select @rownum:=0) tmp
+            where a.serial_number = c.cart_serial_number
+                and a.floor = c.cart_floor
+                and a.apartment_name = c.cart_apartment_name
+                and a.deal_day = c.cart_deal_day
         ]]>
     </select>
 
-    <select id="wishGet" resultType="com.zipgap.vo.cartVO.CartVO" parameterType="String">
+    <delete id="deleteWish" parameterType="com.zipgap.vo.cartVO.CartVO">
         <![CDATA[
-            select * from tb_cart
+            DELETE from tb_cart
+            where cart_email = #{cart_email}
+            and cart_serial_number = #{cart_serial_number}
         ]]>
-    </select>
+    </delete>
 
 </mapper>

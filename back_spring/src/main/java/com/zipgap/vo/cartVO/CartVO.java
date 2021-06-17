@@ -13,7 +13,6 @@ public class CartVO {
 
     String addDate;
     String cart_email;
-    int cart_seq;
     String cart_serial_number;
     int cart_floor;
     String cart_apartment_name;
