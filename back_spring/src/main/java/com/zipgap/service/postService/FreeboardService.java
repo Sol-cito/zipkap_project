@@ -33,17 +33,59 @@ public class FreeboardService implements IFreeboardService {
     }
 
     @Override
-    public void incrementHitOfPost(int post_seq) {
+    public void increaseHitOfPost(int post_seq) {
         Optional<Post> post = postRepository.findById(post_seq);
         if (post.isPresent()) {
             Post curPost = post.get();
             Post updatedPost = Post.builder()
                     .author(curPost.getAuthor())
+                    .author_id(curPost.getAuthor_id())
                     .title(curPost.getTitle())
                     .content(curPost.getContent())
                     .date(curPost.getDate())
                     .hit(curPost.getHit() + 1)
+                    .like_cnt(curPost.getLike_cnt())
+                    .dislike_cnt(curPost.getDislike_cnt())
+                    .build();
+            updatedPost.setCurSeq(post_seq); // 현재 post_seq로 entity의 seq를 세팅.
+            postRepository.save(updatedPost);
+        }
+    }
+
+    @Override
+    public void increaseLikeOfPost(int post_seq) {
+        Optional<Post> post = postRepository.findById(post_seq);
+        if (post.isPresent()) {
+            Post curPost = post.get();
+            Post updatedPost = Post.builder()
+                    .author(curPost.getAuthor())
                     .author_id(curPost.getAuthor_id())
+                    .title(curPost.getTitle())
+                    .content(curPost.getContent())
+                    .date(curPost.getDate())
+                    .hit(curPost.getHit())
+                    .like_cnt(curPost.getLike_cnt() + 1)
+                    .dislike_cnt(curPost.getDislike_cnt())
+                    .build();
+            updatedPost.setCurSeq(post_seq); // 현재 post_seq로 entity의 seq를 세팅.
+            postRepository.save(updatedPost);
+        }
+    }
+
+    @Override
+    public void increaseDislikeOfPost(int post_seq) {
+        Optional<Post> post = postRepository.findById(post_seq);
+        if (post.isPresent()) {
+            Post curPost = post.get();
+            Post updatedPost = Post.builder()
+                    .author(curPost.getAuthor())
+                    .author_id(curPost.getAuthor_id())
+                    .title(curPost.getTitle())
+                    .content(curPost.getContent())
+                    .date(curPost.getDate())
+                    .hit(curPost.getHit())
+                    .like_cnt(curPost.getLike_cnt())
+                    .dislike_cnt(curPost.getDislike_cnt() + 1)
                     .build();
             updatedPost.setCurSeq(post_seq); // 현재 post_seq로 entity의 seq를 세팅.
             postRepository.save(updatedPost);

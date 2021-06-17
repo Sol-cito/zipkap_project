@@ -13,5 +13,9 @@ public interface IFreeboardService {
 
     Post getCurrentPost(int post_seq);
 
-    void incrementHitOfPost(int post_seq);
+    void increaseHitOfPost(int post_seq);
+
+    void increaseLikeOfPost(int post_seq);
+
+    void increaseDislikeOfPost(int post_seq);
 }

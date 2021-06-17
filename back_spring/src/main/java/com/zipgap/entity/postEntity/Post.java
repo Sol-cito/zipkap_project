@@ -20,6 +20,9 @@ public class Post {
     @Column(name = "author", length = 100, nullable = false)
     private String author;
 
+    @Column(name = "author_id", length = 100, nullable = false)
+    private String author_id;
+
     @Column(name = "title", length = 100, nullable = false)
     private String title;
 
@@ -32,20 +35,25 @@ public class Post {
     @Column(name = "hit", length = 100, nullable = false)
     private int hit;
 
-    @Column(name = "author_id", length = 100, nullable = false)
-    private String author_id;
+    @Column(name = "like_cnt", length = 100)
+    private int like_cnt;
+
+    @Column(name = "dislike_cnt", length = 100)
+    private int dislike_cnt;
 
     @Builder // id가 auto_increment이므로 builder에 넣을 필요 없음
-    public Post(String author, String title, String content, Date date, int hit, String author_id) {
+    public Post(String author, String author_id, String title, String content, Date date, int hit, int like_cnt, int dislike_cnt) {
         this.author = author;
+        this.author_id = author_id;
         this.title = title;
         this.content = content;
         this.date = date;
         this.hit = hit;
-        this.author_id = author_id;
+        this.like_cnt = like_cnt;
+        this.dislike_cnt = dislike_cnt;
     }
 
-    // post_seq 는 auto_increment이므로, 함수를 통해 현재 post의 post_seq로 entity를 세팅 
+    // post_seq 는 auto_increment이므로, 함수를 통해 현재 post의 post_seq로 entity를 세팅
     public void setCurSeq(int post_seq){
         this.post_seq = post_seq;
     }

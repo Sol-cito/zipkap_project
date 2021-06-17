@@ -53,7 +53,36 @@ public class FreeBoardController {
     public Post getCurrentPost(
             @RequestBody int post_seq
     ) {
-        freeboardService.incrementHitOfPost(post_seq);
         return freeboardService.getCurrentPost(post_seq);
+    }
+
+    /* 포스트 조회수 늘리기 */
+    @PostMapping(value = "/api/freeBoard/increasePostHit")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public void increasePostHit(
+            @RequestBody int post_seq
+    ) {
+        freeboardService.increaseHitOfPost(post_seq);
+    }
+
+    /* 포스트 좋아요 */
+    @PostMapping(value = "/api/freeBoard/likePost")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public void likePost(
+            @RequestBody int post_seq
+    ) {
+        freeboardService.increaseLikeOfPost(post_seq);
+    }
+
+    /* 포스트 싫어요 */
+    @PostMapping(value = "/api/freeBoard/dislikePost")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public void dislikePost(
+            @RequestBody int post_seq
+    ) {
+        freeboardService.increaseDislikeOfPost(post_seq);
     }
 }

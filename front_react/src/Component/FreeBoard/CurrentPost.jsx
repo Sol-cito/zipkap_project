@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import "../../CSS/FreeBoard.css";
 import { useCookies } from 'react-cookie';
 import CurrentPostRequestAxios from './CurrentPostRequestAxios';
+import IncreasePostHitRequestAxios from './IncreasePostHitRequestAxios';
+import LikeAndDislikeRequestAxios from './LikeAndDislikeRequestAxios';
 import BasicInfoRequestAxios from "../MyPage/BasicInfoRequestAxios";
 import { convertNumberIntoDateFormatWithDetail } from './convertNumberIntoDateFormat.js'
 import ReactLoading from 'react-loading';
@@ -15,19 +17,33 @@ const CurrentPost = ({ match }) => {
     const [loadingDone, setLoading] = useState(false);
     const [loginID, setLoginID] = useState("");
 
+    const [pushLikeOrDislike, setLikeOrDislike] = useState(0);
+
     /* 첫 페이지 로딩 시 post 메소드로 게시글을 불러온다 */
     useEffect(async () => {
         window.scrollTo(0, 0); // 화면 맨 위로 올리기
         BasicInfoRequestAxios((response) => { // 로그인 info를 먼저 체크한 후
             setLoginID(response.data.email);
-            CurrentPostRequestAxios(match.params.post_seq, (response => { // 콜백 함수에서 curPost의 정보를 얻는다.
-                if (response !== false) {
-                    setPost(response);
-                    setLoading(true);
-                }
-            }));
+
+            if (!loadingDone) {
+                IncreasePostHitRequestAxios(match.params.post_seq, (response => { // 콜백 함수에서 조회수를 늘린다
+                    CurrentPostRequestAxios(match.params.post_seq, (response => { // 콜백 함수에서 curPost의 정보를 얻는다.
+                        if (response !== false) {
+                            setPost(response);
+                            setLoading(true);
+                        }
+                    }));
+                }));
+            } else {
+                CurrentPostRequestAxios(match.params.post_seq, (response => { // 콜백 함수에서 curPost의 정보를 얻는다.
+                    if (response !== false) {
+                        setPost(response);
+                        setLoading(true);
+                    }
+                }));
+            }
         });
-    }, [loadingDone]);
+    }, [pushLikeOrDislike]);
 
     const handleDeleteClick = (e) => {
         if (window.confirm("글을 삭제하시겠습니까?")) {
@@ -40,6 +56,24 @@ const CurrentPost = ({ match }) => {
             //     }
             // });
         }
+    }
+
+    const handleLikeAndDislike = (val) => {
+        switch (val) {
+            case "like":
+                LikeAndDislikeRequestAxios(post.post_seq, 1, (response => {
+                    setLikeOrDislike(pushLikeOrDislike + 1);
+                }));
+                break;
+            case "dislike":
+                LikeAndDislikeRequestAxios(post.post_seq, 2, (response => {
+                    setLikeOrDislike(pushLikeOrDislike + 1);
+                }));
+                break;
+            default:
+                break;
+        }
+
     }
 
     return (
@@ -56,17 +90,20 @@ const CurrentPost = ({ match }) => {
                             글쓴이 :<span style={{ fontWeight: "bold", color: "blue" }}> {post.author}</span> |
                             <span> 작성 : {convertNumberIntoDateFormatWithDetail(post.date)} | </span>
                             <span>조회 :  {post.hit} | </span>
-                            <span style={{ fontWeight: "bold", color: "blue" }}> 추천 : post.like</span> |
-                            <span style={{ fontWeight: "bold", color: "red" }}> 비추 : post.dislike </span> |
+                            <span style={{ fontWeight: "bold", color: "blue" }}> 추천 : {post.like_cnt} </span> |
+                            <span style={{ fontWeight: "bold", color: "red" }}> 비추 : {post.dislike_cnt} </span> |
                         </div>
                         <div dangerouslySetInnerHTML={{ __html: post.content }}></div>
                         <div className="freeboard_curPost_footer">
-                            <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }}> 수정 </Button>
                             {post.author_id === loginID ? (
-                                <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }} onClick={handleDeleteClick}> 삭제 </Button>
+                                <div style={{ display: "inline" }}>
+                                    <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }}> 수정 </Button>
+                                    <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }} onClick={() => handleDeleteClick}> 삭제 </Button>
+                                    <Button variant="contained" color="primary" style={{ margin: "0 5px 0 5px" }} onClick={() => { handleLikeAndDislike("like") }}> 추천 </Button>
+                                    <Button variant="contained" name="dislike" color="secondary" style={{ margin: "0 5px 0 5px" }}
+                                        onClick={() => { handleLikeAndDislike("dislike") }}> 비추 </Button>
+                                </div>
                             ) : null}
-                            <Button variant="contained" color="primary" type="submit" style={{ margin: "0 5px 0 5px" }}> 추천 </Button>
-                            <Button variant="contained" color="secondary" type="submit" style={{ margin: "0 5px 0 5px" }}> 비추 </Button>
                         </div>
                         <div style={{ display: "block" }}>
                             <textarea className="freeboard_post_comment" placeholder="댓글 작성"></textarea>
