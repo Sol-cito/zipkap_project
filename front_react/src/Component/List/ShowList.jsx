@@ -13,7 +13,6 @@ import axios from "axios";
 const ShowList = ({ lists, setApartUrl, loading }) => {
   const [isWishChange, setIsWishChange] = useState(false);
   const [email, setEmail] = useState(null);
-
   useEffect(() => {
     BasicInfoRequestAxios((response) => {
       setEmail(response.data.email);
@@ -23,20 +22,21 @@ const ShowList = ({ lists, setApartUrl, loading }) => {
   const wishChangeHandler = ({ list }) => {
     if (window.confirm("찜 하시겠어요?")) {
       setIsWishChange(!isWishChange);
+      const cartData = {
+        cart_email:  email ,
+        cart_serial_number: list.serial_number,
+        cart_floor: list.floor,
+        cart_apartment_name: list.apartment_name,
+        cart_deal_day: list.deal_day,
+      }
+    
       axios({
-        url: "/api/cart/wishAdd",
+        url: "/api/cart/insertWish",
         method: "post",
         headers: {
           "Content-Type": `application/json ; charset=utf-8`,
         },
-        data: JSON.stringify({
-          cart_email: email,
-          cart_serial_number: list.serial_number,
-          cart_floor: list.floor,
-          cart_apartment_name: list.apartment_name,
-          cart_deal_day: list.deal_day,
-          wishState: isWishChange,
-        }),
+        data: JSON.stringify(cartData)
       });
     }
   };
