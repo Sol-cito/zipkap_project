@@ -12,4 +12,6 @@ public interface IFreeboardService {
     List<Post> getAllPosts();
 
     Post getCurrentPost(int post_seq);
+
+    void incrementHitOfPost(int post_seq);
 }
