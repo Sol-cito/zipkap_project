@@ -53,6 +53,7 @@ public class FreeBoardController {
     public Post getCurrentPost(
             @RequestBody int post_seq
     ) {
+        freeboardService.incrementHitOfPost(post_seq);
         return freeboardService.getCurrentPost(post_seq);
     }
 }

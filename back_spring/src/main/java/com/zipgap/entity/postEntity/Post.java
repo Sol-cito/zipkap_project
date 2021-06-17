@@ -44,4 +44,9 @@ public class Post {
         this.hit = hit;
         this.author_id = author_id;
     }
+
+    // post_seq 는 auto_increment이므로, 함수를 통해 현재 post의 post_seq로 entity를 세팅 
+    public void setCurSeq(int post_seq){
+        this.post_seq = post_seq;
+    }
 }
