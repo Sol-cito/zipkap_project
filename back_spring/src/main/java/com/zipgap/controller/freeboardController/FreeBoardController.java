@@ -26,6 +26,7 @@ public class FreeBoardController {
     @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
     public List<Post> getAllPosts() {
+        System.out.println("게시글 가져오기 ");
         return freeboardService.getAllPosts();
     }
 
@@ -61,9 +62,15 @@ public class FreeBoardController {
     @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
     public void increasePostHit(
-            @RequestBody int post_seq
+            @RequestBody int post_seq,
+            HttpServletRequest request
     ) {
-        freeboardService.increaseHitOfPost(post_seq);
+        String clientIP = freeboardService.getClientIP(request);
+        if (!freeboardService.checkClientIPinDB(clientIP, post_seq)) {  // 조회수 기록(IP)이 없으면
+            Post post = freeboardService.getCurrentPost(post_seq); // post객체를 얻고
+            freeboardService.updateClientIpOnPost(clientIP, post); // ClientIP 테이블에 IP를 넣고,
+            freeboardService.increaseHitOfPost(post_seq); // 조회수를 1 늘린다
+        }
     }
 
     /* 포스트 좋아요 */

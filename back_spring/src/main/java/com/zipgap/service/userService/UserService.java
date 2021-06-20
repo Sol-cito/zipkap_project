@@ -36,12 +36,10 @@ public class UserService implements IUserService {
      * Null이 아니면(아이디가 중복되면) true를 반환한다.
      */
     public boolean checkDuplicateEmail(UserVO userVO) {
-        System.out.println("============이메일 중복검사 수행===========");
         return userRepository.existsById(userVO.getEmail());
     }
 
     public boolean checkDuplicateNickName(UserVO userVO) {
-        System.out.println("============닉네임 중복검사 수행===========");
         List<User> userList = userRepository.findAll();
         for (User user : userList) {
             if (user.getNickName().equals(userVO.getNickName())) {

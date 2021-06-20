@@ -1,5 +1,7 @@
 package com.zipgap.service.postService;
 
+import com.zipgap.entity.clientIPEntity.ClientIP;
+import com.zipgap.entity.clientIPEntity.ClientIPRepository;
 import com.zipgap.entity.postEntity.Post;
 import com.zipgap.entity.postEntity.PostRepository;
 import com.zipgap.vo.postVO.PostVO;
@@ -7,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +20,7 @@ import java.util.Optional;
 public class FreeboardService implements IFreeboardService {
 
     private final PostRepository postRepository;
+    private final ClientIPRepository clientIPRepository;
 
     @Override
     public void savePost(PostVO postVO) {
@@ -32,6 +37,51 @@ public class FreeboardService implements IFreeboardService {
         return postRepository.findById(post_seq).get();
     }
 
+    /* Client의 접속 ip를 조회한다 */
+    @Override
+    public String getClientIP(HttpServletRequest request) {
+        String ip = request.getHeader("X-Forwarded-For");
+        if (ip == null) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null) {
+            ip = request.getHeader("WL-Proxy-Client-IP"); // 웹로직
+        }
+        if (ip == null) {
+            ip = request.getHeader("HTTP_CLIENT_IP");
+        }
+        if (ip == null) {
+            ip = request.getHeader("HTTP_X_FORWARDED_FOR");
+        }
+        if (ip == null) {
+            ip = request.getRemoteAddr();
+        }
+        return ip;
+    }
+
+    /* 클라이언트 ip가 db에 있는지 조회한다 */
+    @Override
+    public boolean checkClientIPinDB(String ip, int post_Seq) {
+        List<ClientIP> rowList = clientIPRepository.findAll();
+        for (ClientIP each : rowList) {
+            if (each.getPost().getPost_seq() == post_Seq && each.getUser_IP().equals(ip)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void updateClientIpOnPost(String ip, Post post) {
+        ClientIP clientIP = ClientIP.builder()
+                .post(post)
+                .user_IP(ip)
+                .date(new Date())
+                .build();
+        clientIPRepository.save(clientIP);
+    }
+
+    /* 조회수를 1 증가시킨다 */
     @Override
     public void increaseHitOfPost(int post_seq) {
         Optional<Post> post = postRepository.findById(post_seq);
@@ -52,6 +102,7 @@ public class FreeboardService implements IFreeboardService {
         }
     }
 
+    /* 좋아요 개수를 늘린다 */
     @Override
     public void increaseLikeOfPost(int post_seq) {
         Optional<Post> post = postRepository.findById(post_seq);
@@ -72,6 +123,7 @@ public class FreeboardService implements IFreeboardService {
         }
     }
 
+    /* 싫어요 개수를 늘린다 */
     @Override
     public void increaseDislikeOfPost(int post_seq) {
         Optional<Post> post = postRepository.findById(post_seq);
