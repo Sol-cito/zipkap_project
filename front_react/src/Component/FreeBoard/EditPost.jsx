@@ -1,23 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../../CSS/FreeBoard.css";
 import { useCookies } from 'react-cookie';
 import EditorComponent from './EditorComponent';
 import PostSaveRequestAxios from './PostSaveRequestAxios';
 import { Button } from "@material-ui/core/";
+import { useLocation } from "react-router"; // hist
 
 
-const NewPost = () => {
-    const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
+const EditPost = () => {
+    const [cookies] = useCookies(['loginDone']);
 
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
+    const location = useLocation();
+
     /* 첫 페이지 로딩 시 post 메소드로 게시글을 불러온다 */
-    useEffect(async () => {
+    useEffect(() => {
         window.scrollTo(0, 0); // 화면 맨 위로 올리기
+        if (location.state) { // '수정'을 눌렀을 때 파라미터를 가져왔다면(undefined가 아니면)
+            const post = location.state.post;
+            setTitle(post.title);
+            setContent(post.content);
+        }
     }, []);
 
-    if (cookies.loginDone == undefined) {
+    if (cookies.loginDone === undefined) {
         window.location.replace("/"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
         return ( //아무것도 return하지 않는다.
             <div></div>
@@ -25,7 +33,7 @@ const NewPost = () => {
     }
 
     const handleTitleChange = (e) => {
-        if(e.target.value.length >= 50){
+        if (e.target.value.length >= 50) {
             alert("제목은 50자 이내로 입력하셔야 합니다");
             return;
         }
@@ -62,7 +70,7 @@ const NewPost = () => {
         <div className="freeBoard_div">
             <form onSubmit={handleOnSubmit}>
                 <div className="postEditor_div">
-                    <input className="postTitle" name="title" placeholder="제목을 50자 이내로 입력해 주세요." maxLength='50' onChange={handleTitleChange} />
+                    <input className="postTitle" name="title" placeholder="제목을 50자 이내로 입력해 주세요." maxLength='50' onChange={handleTitleChange} value={title} />
                     <EditorComponent value={content} onChange={handleEditorChange} />
                 </div>
                 <div className="postButtonDiv">
@@ -73,5 +81,5 @@ const NewPost = () => {
     )
 }
 
-export default NewPost;
+export default EditPost;
 

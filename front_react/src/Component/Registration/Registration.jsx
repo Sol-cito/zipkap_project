@@ -91,7 +91,7 @@ function Registration() {
                 setEmail(e.target.value);
                 break;
             case "name":
-                if (e.target.value.length != 0) {
+                if (e.target.value.length !== 0) {
                     setNameValidity(true);
                 } else {
                     setNameValidity(false);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../CSS/MyPage.css'
 import { useCookies } from 'react-cookie';
 import BasicInfoRequestAxios from './BasicInfoRequestAxios';
@@ -20,8 +20,8 @@ function MyPage() {
         });
     }, []);
 
-    const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
-    if (cookies.loginDone == undefined) {
+    const [cookies] = useCookies(['loginDone']);
+    if (cookies.loginDone === undefined) {
         window.location.replace("/"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
         return ( //아무것도 return하지 않는다.
             <div></div>

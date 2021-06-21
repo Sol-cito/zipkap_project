@@ -4,6 +4,7 @@ import com.zipgap.entity.clientIPEntity.ClientIP;
 import com.zipgap.entity.clientIPEntity.ClientIPRepository;
 import com.zipgap.entity.postEntity.Post;
 import com.zipgap.entity.postEntity.PostRepository;
+import com.zipgap.entity.userEntity.User;
 import com.zipgap.vo.postVO.PostVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,11 @@ public class FreeboardService implements IFreeboardService {
     private final ClientIPRepository clientIPRepository;
 
     @Override
-    public void savePost(PostVO postVO) {
+    public void savePost(PostVO postVO, User curUser) {
+        postVO.setAuthor(curUser.getNickName()); // 글쓴이 설정
+        postVO.setDate(new Date()); // 글쓴 날짜 설정
+        postVO.setHit(1); // 최초 조회수 1로 설정
+        postVO.setAuthor_id(curUser.getEmail()); // 글쓴이 id 설정
         postRepository.save(postVO.toEnity());
     }
 

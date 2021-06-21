@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../../CSS/FreeBoard.css";
 import { useCookies } from 'react-cookie';
 import {
@@ -70,7 +70,7 @@ const FreeBoard = () => {
             </div>
             <div>
                 {cookies.loginDone != undefined ? (
-                    <Link to="/FreeBoard/NewPost">
+                    <Link to="/FreeBoard/EditPost">
                         <Button variant="contained" color="primary">글쓰기</Button>
                     </Link>
                 ) : null}

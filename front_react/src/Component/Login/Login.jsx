@@ -19,8 +19,8 @@ function Login() {
   const passwordRef = useRef(null);
 
   /* 로그인 성공 시 설정할 react-cookie */
-  const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
-  if (cookies.loginDone != undefined) {
+  const [cookies, setCookie] = useCookies(['loginDone']);
+  if (cookies.loginDone !== undefined) {
     window.location.replace("/"); // 이미 로그인 한 상태면 홈 화면으로 돌아간다.
     return ( //아무것도 return하지 않는다.
       <div></div>
@@ -28,9 +28,9 @@ function Login() {
   }
 
   const handleOnChange = (e) => {
-    if (e.target.name == "id") {
+    if (e.target.name === "id") {
       setId(e.target.value);
-    } else if (e.target.name == "password") {
+    } else if (e.target.name === "password") {
       setPassword(e.target.value);
     }
   }
@@ -38,10 +38,10 @@ function Login() {
   /* 로그인 최종 유효성 검증, false면 focue를 준다 */
   const finalValidationCheck = () => {
     console.log("유효성 검증");
-    if (id === null || id.length == 0) {
+    if (id === null || id.length === 0) {
       setId("");
       return idRef.current.focus();
-    } else if (password === null || password.length == 0) {
+    } else if (password === null || password.length === 0) {
       setPassword("");
       return passwordRef.current.focus();
     }
@@ -86,7 +86,7 @@ function Login() {
         <form className="login_form" onSubmit={handleOnSubmit}>
           <input className="login_input" name="id" placeholder="아이디(Email)" ref={idRef} onChange={handleOnChange} />
           {id !== null ? (
-            id.length == 0 ? (
+            id.length === 0 ? (
               <div>
                 <span className="inValidForm"> * 아이디를 입력해주세요 </span>
               </div>
@@ -94,7 +94,7 @@ function Login() {
           ) : null}
           <input className="login_input" type="password" name="password" placeholder="비밀번호" ref={passwordRef} onChange={handleOnChange} />
           {password !== null ? (
-            password.length == 0 ? (
+            password.length === 0 ? (
               <div>
                 <span className="inValidForm"> * 비밀번호를 입력해주세요 </span>
               </div>

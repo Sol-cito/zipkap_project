@@ -10,7 +10,7 @@ import MyPage from "../MyPage/MyPage";
 import Withdrawal from "../MyPage/Withdrawal";
 import PasswordChange from "../MyPage/PasswordChange";
 import FreeBoard from "../FreeBoard/FreeBoard";
-import NewPost from "../FreeBoard/NewPost";
+import EditPost from "../FreeBoard/EditPost";
 import CurrentPost from "../FreeBoard/CurrentPost";
 import Footer from "../Footer";
 import Detail from "../Detail/Detail";
@@ -37,7 +37,7 @@ const AppRouter = () => {
               exact
             />
             <Route path="/FreeBoard" component={FreeBoard} exact />
-            <Route path="/FreeBoard/NewPost" component={NewPost} exact />
+            <Route path="/FreeBoard/EditPost" component={EditPost} exact />
             <Route
               path="/FreeBoard/CurrentPost/:post_seq"
               component={CurrentPost}
