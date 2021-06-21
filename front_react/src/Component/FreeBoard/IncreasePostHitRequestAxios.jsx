@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const CurrentPostRequestAxios = (post_seq, callback) => {
+const IncreasePostHitRequestAxios = (post_seq, callback) => {
     axios(
         {
-            url: '/api/freeBoard/getCurrentPost',
+            url: '/api/freeBoard/increasePostHit',
             method: 'post',
             headers: {
                 "Content-Type": `application/json ; charset=utf-8`
@@ -12,7 +12,7 @@ const CurrentPostRequestAxios = (post_seq, callback) => {
             data: JSON.stringify(post_seq)
         }
     ).then(function (response) {
-        console.log("CurrentPostRequestAxios 결과 : " + response.data)
+        console.log("IncreatePostHitRequestAxios 결과 : " + response.data)
         if (response.status === 200) {
             callback(response.data);
         } else {
@@ -31,4 +31,4 @@ const CurrentPostRequestAxios = (post_seq, callback) => {
     });
 };
 
-export default CurrentPostRequestAxios;
+export default IncreasePostHitRequestAxios;

@@ -55,18 +55,18 @@ const FreeBoard = () => {
                                 </TableCell>
                                 <TableCell className="freeBoard_TableBodyCell">{post.author}</TableCell>
                                 <TableCell className="freeBoard_TableBodyCell">{convertNumberIntoDateFormat(post.date)}</TableCell>
-                                <TableCell className="freeBoard_TableBodyCell">구현중</TableCell>
-                                <TableCell className="freeBoard_TableBodyCell">구현중</TableCell>
+                                <TableCell style={{ color: "blue" }} className="freeBoard_TableBodyCell">{post.like_cnt}</TableCell>
+                                <TableCell style={{ color: "red" }} className="freeBoard_TableBodyCell">{post.dislike_cnt}</TableCell>
                                 <TableCell className="freeBoard_TableBodyCell">{post.hit}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
                 {!loadingDone ? (
-                        <div className="react-spinner_div">
-                            <ReactLoading type={'spin'} color={'grey'} height={'50px'} width={'50px'}/>  
-                        </div>
-                    ) : null}
+                    <div className="react-spinner_div">
+                        <ReactLoading type={'spin'} color={'grey'} height={'50px'} width={'50px'} />
+                    </div>
+                ) : null}
             </div>
             <div>
                 {cookies.loginDone != undefined ? (

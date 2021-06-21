@@ -26,6 +26,7 @@ public class FreeBoardController {
     @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
     public List<Post> getAllPosts() {
+        System.out.println("게시글 가져오기 ");
         return freeboardService.getAllPosts();
     }
 
@@ -54,5 +55,41 @@ public class FreeBoardController {
             @RequestBody int post_seq
     ) {
         return freeboardService.getCurrentPost(post_seq);
+    }
+
+    /* 포스트 조회수 늘리기 */
+    @PostMapping(value = "/api/freeBoard/increasePostHit")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public void increasePostHit(
+            @RequestBody int post_seq,
+            HttpServletRequest request
+    ) {
+        String clientIP = freeboardService.getClientIP(request);
+        if (!freeboardService.checkClientIPinDB(clientIP, post_seq)) {  // 조회수 기록(IP)이 없으면
+            Post post = freeboardService.getCurrentPost(post_seq); // post객체를 얻고
+            freeboardService.updateClientIpOnPost(clientIP, post); // ClientIP 테이블에 IP를 넣고,
+            freeboardService.increaseHitOfPost(post_seq); // 조회수를 1 늘린다
+        }
+    }
+
+    /* 포스트 좋아요 */
+    @PostMapping(value = "/api/freeBoard/likePost")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public void likePost(
+            @RequestBody int post_seq
+    ) {
+        freeboardService.increaseLikeOfPost(post_seq);
+    }
+
+    /* 포스트 싫어요 */
+    @PostMapping(value = "/api/freeBoard/dislikePost")
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
+    public void dislikePost(
+            @RequestBody int post_seq
+    ) {
+        freeboardService.increaseDislikeOfPost(post_seq);
     }
 }

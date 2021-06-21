@@ -70,8 +70,8 @@
     <select id="fetchListByDealAmount" resultType="com.zipgap.vo.listVO.ListVO" parameterType="String">
         <![CDATA[
         SELECT @rownum:=@rownum+1 rownum, t.*  FROM tb_api00 t, (select @rownum:=0) tmp
-        WHERE t.deal_day >= {deal_day_from}
-            and t.deal_day <= {deal_day_to}
+        WHERE t.deal_day >= #{deal_day_from}
+            and t.deal_day <= #{deal_day_to}
         ORDER BY t.deal_amount DESC
         limit 100
         ]]>

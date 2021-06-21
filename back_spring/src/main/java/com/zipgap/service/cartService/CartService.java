@@ -2,6 +2,7 @@ package com.zipgap.service.cartService;
 
 import com.zipgap.dao.CartDao;
 import com.zipgap.vo.cartVO.CartVO;
+import com.zipgap.vo.listVO.ListVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,13 +16,19 @@ public class CartService implements ICartService {
 
     private final CartDao cartDao;
 
-    public List<CartVO> wishAdd() {
-        List<CartVO> fetchList = cartDao.wishAdd();
+    public void insertWish(CartVO cart) {
+        System.out.println(2);
+        cartDao.insertWish(cart);
+    }
+
+    public List<ListVO> selectWish(String cart_email) {
+        List<ListVO> fetchList = cartDao.selectWish(cart_email);
+        System.out.println(2);
         return fetchList;
     }
 
-    public List<CartVO> wishGet() {
-        List<CartVO> fetchList = cartDao.wishGet();
-        return fetchList;
+    public void deleteWish(CartVO cart) {
+        System.out.println(2);
+        cartDao.deleteWish(cart);
     }
 }

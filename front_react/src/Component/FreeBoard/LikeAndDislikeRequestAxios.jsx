@@ -1,9 +1,16 @@
 import axios from 'axios';
 
-const CurrentPostRequestAxios = (post_seq, callback) => {
+const LikeAndDislikeRequestAxios = (post_seq, bit, callback) => {
+    var targetUrl = '';
+    if (bit === 1) {
+        targetUrl = '/api/freeBoard/likePost';
+    } else if (bit === 2) {
+        targetUrl = '/api/freeBoard/dislikePost';
+    }
+
     axios(
         {
-            url: '/api/freeBoard/getCurrentPost',
+            url: targetUrl,
             method: 'post',
             headers: {
                 "Content-Type": `application/json ; charset=utf-8`
@@ -12,7 +19,7 @@ const CurrentPostRequestAxios = (post_seq, callback) => {
             data: JSON.stringify(post_seq)
         }
     ).then(function (response) {
-        console.log("CurrentPostRequestAxios 결과 : " + response.data)
+        console.log("LikeAndDislikeRequestAxios 결과 : " + response.data)
         if (response.status === 200) {
             callback(response.data);
         } else {
@@ -31,4 +38,4 @@ const CurrentPostRequestAxios = (post_seq, callback) => {
     });
 };
 
-export default CurrentPostRequestAxios;
+export default LikeAndDislikeRequestAxios;

@@ -35,7 +35,6 @@ const ShowCartList = ({ lists, setApartUrl, loading }) => {
                     <TableCell
                       className="tableRowApartName"
                       onClick={() => {
-                        alert(list.apartment_name + " 차트로 변경합니다");
                         setApartUrl("/api/list/apart/" + list.apartment_name);
                       }}
                     >
