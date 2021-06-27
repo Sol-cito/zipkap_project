@@ -29,7 +29,7 @@ const GetCartList = () => {
         setError(null);
         setLists(null);
         setLoading(true);
-        const response = await axios.get("/api/cart/"+email);
+        const response = await axios.get("/api/cart/" + email);
         setLists(response.data);
         setLoading(false);
       } catch (e) {

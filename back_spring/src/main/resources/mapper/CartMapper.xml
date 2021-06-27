@@ -10,6 +10,14 @@
         ]]>
     </insert>
 
+    <delete id="deleteWish" parameterType="com.zipgap.vo.cartVO.CartVO">
+        <![CDATA[
+            DELETE from tb_cart
+            where cart_email = #{cart_email}
+            and cart_serial_number = #{cart_serial_number}
+        ]]>
+    </delete>
+
     <select id="selectWish" resultType="com.zipgap.vo.listVO.ListVO" parameterType="String">
         <![CDATA[
             select @rownum:=@rownum+1 rownum,
@@ -36,13 +44,5 @@
                 and a.deal_day = c.cart_deal_day
         ]]>
     </select>
-
-    <delete id="deleteWish" parameterType="com.zipgap.vo.cartVO.CartVO">
-        <![CDATA[
-            DELETE from tb_cart
-            where cart_email = #{cart_email}
-            and cart_serial_number = #{cart_serial_number}
-        ]]>
-    </delete>
 
 </mapper>
