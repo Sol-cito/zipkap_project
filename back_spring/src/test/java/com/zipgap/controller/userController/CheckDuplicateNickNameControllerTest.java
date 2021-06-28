@@ -37,9 +37,9 @@ public class CheckDuplicateNickNameControllerTest {
 
     /*테스트 전 환경 세팅 */
     @BeforeEach
-    void setMvc(@Autowired CheckDuplicateEmailController checkDuplicateEmailController) {
+    void setMvc(@Autowired UserController userController) {
         /* 컨트롤러 빌드*/
-        mvc = MockMvcBuilders.standaloneSetup(checkDuplicateEmailController).build();
+        mvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
 
     /* 테스트가 끝나고 나서는 DB에서 테스트데이터를 지워야 한다 */
