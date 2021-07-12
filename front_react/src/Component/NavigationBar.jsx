@@ -11,7 +11,7 @@ import BasicInfoRequestAxios from "./MyPage/BasicInfoRequestAxios";
 //패키지 추가 후 로컬 실행하려면 yarn 해줘야함
 function NavigationBar() {
   /* 리액트 전역 쿠키로 메뉴를 변경한다 */
-  const [cookies, removeCookie] = useCookies(["loginDone"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["loginDone"]);
   const [isLoginDone, setLoginStatus] = useState(false);
 
   if (cookies.loginDone !== undefined && cookies.loginDone && !isLoginDone) {

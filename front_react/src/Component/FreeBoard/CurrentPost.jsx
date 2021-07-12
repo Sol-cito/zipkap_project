@@ -3,6 +3,7 @@ import "../../CSS/FreeBoard.css";
 import CurrentPostRequestAxios from './CurrentPostRequestAxios';
 import IncreasePostHitRequestAxios from './IncreasePostHitRequestAxios';
 import LikeAndDislikeRequestAxios from './LikeAndDislikeRequestAxios';
+import PostDeleteRequestAxios from './PostDeleteRequestAxios';
 import BasicInfoRequestAxios from "../MyPage/BasicInfoRequestAxios";
 import { convertNumberIntoDateFormatWithDetail } from './convertNumberIntoDateFormat.js'
 import ReactLoading from 'react-loading';
@@ -43,14 +44,14 @@ const CurrentPost = ({ match, history }) => {
 
     const handleDeleteClick = (e) => {
         if (window.confirm("글을 삭제하시겠습니까?")) {
-            // PostSaveRequestAxios(formData, (response) => {
-            //     if (response) {
-            //         alert("글이 정상적으로 등록되었습니다.");
-            //         window.location.replace("/FreeBoard") // 글 저장 완료 시 게시판으로 이동한다
-            //     } else {
-            //         alert("[ERROR] 글 저장에 문제가 발생하였습니다.");
-            //     }
-            // });
+            PostDeleteRequestAxios(post.post_seq, (response) => {
+                if (response) {
+                    alert("글이 정상적으로 삭제되었습니다.");
+                    window.location.replace("/FreeBoard") // 글 저장 완료 시 게시판으로 이동한다
+                } else {
+                    alert("[ERROR] 글 삭제에 문제가 발생하였습니다.");
+                }
+            });
         }
     }
 

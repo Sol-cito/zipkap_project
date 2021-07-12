@@ -41,6 +41,15 @@ public class FreeBoardController {
         iFreeboardService.savePost(postVO, curUser);
     }
 
+    /* 포스트 삭제 */
+    @PostMapping(value = "/api/freeBoard/postDelete")
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deletePost(
+            @RequestBody int post_seq
+    ) {
+        iFreeboardService.deletePost(post_seq);
+    }
+
     /* 포스트 읽기 */
     @PostMapping(value = "/api/freeBoard/getCurrentPost")
     @ResponseBody

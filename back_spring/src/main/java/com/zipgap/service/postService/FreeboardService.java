@@ -34,6 +34,18 @@ public class FreeboardService implements IFreeboardService {
     }
 
     @Override
+    public void deletePost(int post_Seq) {
+        /* ClientIP는 post_seq를 FK로 쓰고있으므로, 함께 삭제해준다 */
+        List<ClientIP> clientIPList = clientIPRepository.findAll();
+        for (ClientIP clientIP : clientIPList) {
+            if (clientIP.getPost().getPost_seq() == post_Seq){
+                clientIPRepository.delete(clientIP);
+            }
+        }
+        postRepository.deleteById(post_Seq);
+    }
+
+    @Override
     public List<Post> getAllPosts() {
         return postRepository.findAll(Sort.by(Sort.Direction.DESC, "date")); // 내림차순 정렬로 가져온다(최신순)
     }

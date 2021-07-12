@@ -10,6 +10,8 @@ import java.util.List;
 public interface IFreeboardService {
     void savePost(PostVO postVO, User curUser);
 
+    void deletePost(int post_Seq);
+
     List<Post> getAllPosts();
 
     Post getCurrentPost(int post_seq);
