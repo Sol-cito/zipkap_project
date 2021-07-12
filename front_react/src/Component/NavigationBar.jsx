@@ -14,7 +14,7 @@ function NavigationBar() {
   const [cookies, setCookie, removeCookie] = useCookies(["loginDone"]);
   const [isLoginDone, setLoginStatus] = useState(false);
 
-  if (cookies.loginDone != undefined && cookies.loginDone && !isLoginDone) {
+  if (cookies.loginDone !== undefined && cookies.loginDone && !isLoginDone) {
     setLoginStatus(true);
   }
 

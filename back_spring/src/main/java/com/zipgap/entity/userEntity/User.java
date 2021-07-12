@@ -26,6 +26,9 @@ public class User {
     @Column(name = "password", length = 100, nullable = false)
     private String password;
 
+    @Column(name = "withdrawalflag") // default - 'N'
+    private String withdrawalflag;
+
     /*
      * JPA Entity 클래스에서는 setter를 사용하지 않는다.
      * setter를 사용하면 중간에 값이 바뀌어버릴 수 있고,
@@ -35,10 +38,14 @@ public class User {
      * 빌드패턴은 굉장히 명확하게 인지 가능하므로 빌더패턴이 선호된다.
      * */
     @Builder
-    public User(String email, String name, String nickName, String password) {
+    public User(String email, String name, String nickName, String password) { // 탈퇴 플래그는 default가 있으므로 제외
         this.email = email;
         this.name = name;
         this.nickName = nickName;
         this.password = password;
+    }
+
+    public void switchWithdrawalFlag() {
+        this.withdrawalflag = "Y";
     }
 }

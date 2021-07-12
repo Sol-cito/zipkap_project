@@ -6,8 +6,40 @@ import {
   TableCell,
 } from "@material-ui/core/";
 import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import BasicInfoRequestAxios from "../MyPage/BasicInfoRequestAxios";
+import axios from "axios";
 
 const ShowCartList = ({ lists, setApartUrl, loading }) => {
+  const [isWishChange, setIsWishChange] = useState(false);
+  const [email, setEmail] = useState(null);
+  useEffect(() => {
+    BasicInfoRequestAxios((response) => {
+      setEmail(response.data.email);
+    });
+  }, []);
+
+  const wishChangeHandler = ({ list }) => {
+    if (window.confirm("찜을 삭제하시겠어요?")) {
+      setIsWishChange(!isWishChange);
+      const cartData = {
+        cart_email: email,
+        cart_serial_number: list.serial_number,
+      };
+
+      axios({
+        url: "/api/cart/deleteWish",
+        method: "post",
+        headers: {
+          "Content-Type": `application/json ; charset=utf-8`,
+        },
+        data: JSON.stringify(cartData),
+      });
+    }
+  };
+
+  useEffect(() => {}, [isWishChange]);
+
   return (
     <>
       {loading && <div>loading...</div>}
@@ -50,7 +82,7 @@ const ShowCartList = ({ lists, setApartUrl, loading }) => {
                     <TableCell
                       className="tableRowLike"
                       onClick={() => {
-                        alert("장바구니에서 제거합니다");
+                        wishChangeHandler({ list });
                       }}
                     >
                       싫어요

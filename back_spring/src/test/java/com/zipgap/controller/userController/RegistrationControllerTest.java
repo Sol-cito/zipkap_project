@@ -37,9 +37,9 @@ public class RegistrationControllerTest {
 
     /*테스트 전 환경 세팅 */
     @BeforeEach
-    void setMvc(@Autowired RegistrationController registrationController) {
+    void setMvc(@Autowired UserController userController) {
         /* 컨트롤러 빌드*/
-        mvc = MockMvcBuilders.standaloneSetup(registrationController).build();
+        mvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
 
     /* objectMapper 를 이용해 VO를 jsonString으로 변환 */

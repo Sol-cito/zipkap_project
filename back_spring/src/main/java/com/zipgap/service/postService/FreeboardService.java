@@ -4,8 +4,10 @@ import com.zipgap.entity.clientIPEntity.ClientIP;
 import com.zipgap.entity.clientIPEntity.ClientIPRepository;
 import com.zipgap.entity.postEntity.Post;
 import com.zipgap.entity.postEntity.PostRepository;
+import com.zipgap.entity.userEntity.User;
 import com.zipgap.vo.postVO.PostVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,13 +25,29 @@ public class FreeboardService implements IFreeboardService {
     private final ClientIPRepository clientIPRepository;
 
     @Override
-    public void savePost(PostVO postVO) {
+    public void savePost(PostVO postVO, User curUser) {
+        postVO.setAuthor(curUser.getNickName()); // 글쓴이 설정
+        postVO.setDate(new Date()); // 글쓴 날짜 설정
+        postVO.setHit(1); // 최초 조회수 1로 설정
+        postVO.setAuthor_id(curUser.getEmail()); // 글쓴이 id 설정
         postRepository.save(postVO.toEnity());
     }
 
     @Override
+    public void deletePost(int post_Seq) {
+        /* ClientIP는 post_seq를 FK로 쓰고있으므로, 함께 삭제해준다 */
+        List<ClientIP> clientIPList = clientIPRepository.findAll();
+        for (ClientIP clientIP : clientIPList) {
+            if (clientIP.getPost().getPost_seq() == post_Seq){
+                clientIPRepository.delete(clientIP);
+            }
+        }
+        postRepository.deleteById(post_Seq);
+    }
+
+    @Override
     public List<Post> getAllPosts() {
-        return postRepository.findAll();
+        return postRepository.findAll(Sort.by(Sort.Direction.DESC, "date")); // 내림차순 정렬로 가져온다(최신순)
     }
 
     @Override

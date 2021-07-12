@@ -3,16 +3,16 @@ import { useCookies } from 'react-cookie';
 import '../../CSS/PasswordChange.css'
 import { Button } from '@material-ui/core';
 /* 회원가입 검증 로직에서 password 유효성 검증 함수 import */
-import { checkEmailValidity, checkNicknameValidity, checkPasswordValidity } from '../Registration/RegistrationRegExp';
+import { checkPasswordValidity } from '../Registration/RegistrationRegExp';
 import { checkCurPasswordRequestAxios, changePasswordRequestAxios } from "./PasswordChangeRequestAxios";
 
 function PasswordChange() {
     const [curPassword, setCurPW] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [newPasswordcheck, setnewPasswordcheck] = useState("");
-    const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
+    const [cookies] = useCookies(['loginDone']);
     
-    if (cookies.loginDone == undefined) {
+    if (cookies.loginDone === undefined) {
         window.location.replace("/"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
         return ( //아무것도 return하지 않는다.
             <div></div>
@@ -22,7 +22,7 @@ function PasswordChange() {
     const handleSubmit = (e) => {
         e.preventDefault();
         /* 세 값 중 하나라도 입력되지 않았을 때 */
-        if (curPassword.length == 0 || newPassword.length == 0 || newPasswordcheck.length == 0) {
+        if (curPassword.length === 0 || newPassword.length === 0 || newPasswordcheck.length === 0) {
             alert("입력되지 않은 값이 있습니다.");
             return;
         }

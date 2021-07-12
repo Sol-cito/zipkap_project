@@ -10,7 +10,7 @@ const RegistrationSuccess = () => {
     }, 1000);
   }); //
 
-  if (second == 0) {
+  if (second === 0) {
     return <Redirect to="/" />;
   }
   return (

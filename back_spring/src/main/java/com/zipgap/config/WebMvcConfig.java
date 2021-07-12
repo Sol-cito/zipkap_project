@@ -17,6 +17,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
                 .addPathPatterns("/api/user/withdrawal")
                 .addPathPatterns("/api/user/getBasicInfo")
                 .addPathPatterns("/api/user/checkCurPassword")
-                .addPathPatterns("/api/user/changePassword");
+                .addPathPatterns("/api/user/changePassword")
+                .addPathPatterns("/api/freeBoard/dislikePost")
+                .addPathPatterns("/api/freeBoard/postSave")
+                .addPathPatterns("/api/freeBoard/postDelete");
     }
 }

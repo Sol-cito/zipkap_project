@@ -39,9 +39,9 @@ public class CartController {
         return fetchList;
     }
 
-    @DeleteMapping(value = "/deleteWish")
     @ResponseBody
     @ResponseStatus(value = HttpStatus.OK)
+    @PostMapping(value = "/deleteWish")
     public void deleteWish(@RequestBody CartVO cart) {
         logger.debug("==========로깅 테스트==========");
         System.out.println(1);

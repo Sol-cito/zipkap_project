@@ -6,10 +6,10 @@ import withdrawalRequestAxios from './WithdrawalRequestAxios';
 
 
 function Withdrawal() {
-    const [cookies, setCookie, removeCookie] = useCookies(['loginDone']);
+    const [cookies, removeCookie] = useCookies(['loginDone']);
     const [agreement, setAgreement] = useState(false);
     
-    if (cookies.loginDone == undefined) {
+    if (cookies.loginDone === undefined) {
         window.location.replace("/"); // 로그인 한 상태 아니면 메인화면으로 리다이렉트
         return ( //아무것도 return하지 않는다.
             <div></div>
