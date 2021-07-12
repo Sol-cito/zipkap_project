@@ -104,11 +104,13 @@ const CurrentPost = ({ match, history }) => {
                                 <div style={{ display: "inline" }}>
                                     <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }} onClick={() => handleModificationClick()}> 수정 </Button>
                                     <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }} onClick={() => handleDeleteClick()}> 삭제 </Button>
-                                    <Button variant="contained" color="primary" style={{ margin: "0 5px 0 5px" }} onClick={() => { handleLikeAndDislike("like") }}> 추천 </Button>
-                                    <Button variant="contained" name="dislike" color="secondary" style={{ margin: "0 5px 0 5px" }}
-                                        onClick={() => { handleLikeAndDislike("dislike") }}> 비추 </Button>
                                 </div>
                             ) : null}
+                            <div style={{ display: "inline" }}>
+                                <Button variant="contained" color="primary" style={{ margin: "0 5px 0 5px" }} onClick={() => { handleLikeAndDislike("like") }}> 추천 </Button>
+                                <Button variant="contained" name="dislike" color="secondary" style={{ margin: "0 5px 0 5px" }}
+                                    onClick={() => { handleLikeAndDislike("dislike") }}> 비추 </Button>
+                            </div>
                         </div>
                         <div style={{ display: "block" }}>
                             <textarea className="freeboard_post_comment" placeholder="댓글 작성"></textarea>

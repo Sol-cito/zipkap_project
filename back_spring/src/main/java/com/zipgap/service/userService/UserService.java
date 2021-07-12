@@ -53,15 +53,23 @@ public class UserService implements IUserService {
     public boolean loginUser(LoginInfoDTO loginInfoDTO) {
         List<User> userList = userRepository.findAll();
         for (User user : userList) {
-            if (user.getEmail().equals(loginInfoDTO.getId()) && user.getPassword().equals(loginInfoDTO.getPassword())) {
+            if (user.getEmail().equals(loginInfoDTO.getId())
+                    && user.getPassword().equals(loginInfoDTO.getPassword())
+                    && user.getWithdrawalflag().equals("N")) {
                 return true;
             }
         }
         return false;
     }
+
     /* 회원 탈퇴 기능을 수행하는 메소드 */
     public void withdraw(String userId) {
-        userRepository.deleteById(userId);
+        Optional<User> user = userRepository.findById(userId);
+        if (user.isPresent()) {
+            User targetUser = user.get();
+            targetUser.switchWithdrawalFlag();
+            userRepository.save(targetUser);
+        }
     }
 
     /* 회원 기본 정보를 얻는 메소드 */

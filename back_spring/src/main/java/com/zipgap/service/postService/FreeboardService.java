@@ -7,6 +7,7 @@ import com.zipgap.entity.postEntity.PostRepository;
 import com.zipgap.entity.userEntity.User;
 import com.zipgap.vo.postVO.PostVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +35,7 @@ public class FreeboardService implements IFreeboardService {
 
     @Override
     public List<Post> getAllPosts() {
-        return postRepository.findAll();
+        return postRepository.findAll(Sort.by(Sort.Direction.DESC, "date")); // 내림차순 정렬로 가져온다(최신순)
     }
 
     @Override
