@@ -7,12 +7,13 @@ import PostDeleteRequestAxios from './PostDeleteRequestAxios';
 import BasicInfoRequestAxios from "../MyPage/BasicInfoRequestAxios";
 import { convertNumberIntoDateFormatWithDetail } from './convertNumberIntoDateFormat.js'
 import ReactLoading from 'react-loading';
-import { Button } from "@material-ui/core/";
+import { Button, Modal } from "@material-ui/core";
 
 const CurrentPost = ({ match, history }) => {
     const [post, setPost] = useState(null);
     const [loadingDone, setLoading] = useState(false);
     const [loginID, setLoginID] = useState("");
+    const [modalShow, setModalShow] = useState(false);
 
     const [pushLikeOrDislike, setLikeOrDislike] = useState(0);
 
@@ -43,16 +44,15 @@ const CurrentPost = ({ match, history }) => {
     }, [pushLikeOrDislike]);
 
     const handleDeleteClick = (e) => {
-        if (window.confirm("글을 삭제하시겠습니까?")) {
-            PostDeleteRequestAxios(post.post_seq, (response) => {
-                if (response) {
-                    alert("글이 정상적으로 삭제되었습니다.");
-                    window.location.replace("/FreeBoard") // 글 저장 완료 시 게시판으로 이동한다
-                } else {
-                    alert("[ERROR] 글 삭제에 문제가 발생하였습니다.");
-                }
-            });
-        }
+        alert("삭제 함수");
+        // PostDeleteRequestAxios(post.post_seq, (response) => {
+        //     if (response) {
+        //         alert("글이 정상적으로 삭제되었습니다.");
+        //         window.location.replace("/FreeBoard") // 글 저장 완료 시 게시판으로 이동한다
+        //     } else {
+        //         alert("[ERROR] 글 삭제에 문제가 발생하였습니다.");
+        //     }
+        // });
     }
 
     const handleModificationClick = () => {
@@ -104,7 +104,22 @@ const CurrentPost = ({ match, history }) => {
                             {post.author_id === loginID ? (
                                 <div style={{ display: "inline" }}>
                                     <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }} onClick={() => handleModificationClick()}> 수정 </Button>
-                                    <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }} onClick={() => handleDeleteClick()}> 삭제 </Button>
+                                    <Button variant="contained" color="default" type="submit" style={{ margin: "0 5px 0 5px" }} onClick={() => setModalShow(true)}> 삭제 </Button>
+                                    <Modal
+                                        open={modalShow}
+                                        onClose={() => setModalShow(false)}
+                                        aria-labelledby="simple-modal-title"
+                                        aria-describedby="simple-modal-description"
+                                    >
+                                        <div style={{ textAlign: "center", margin: "0 0 15px 0" }}>
+                                            <div style={{ background: "white"}}>
+                                                <h2>게시글 삭제</h2>
+                                                <p>게시글을 삭제하시겠습니까?</p>
+                                                <Button onClick={() => alert("테스트")}>삭제</Button>
+                                                <Button onClick={() => alert("테스트")}>취소</Button>
+                                            </div>
+                                        </div>
+                                    </Modal>
                                 </div>
                             ) : null}
                             <div style={{ display: "inline" }}>
