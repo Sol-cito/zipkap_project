@@ -18,4 +18,6 @@ public interface IUserService {
     User getBasicInfo(String id);
 
     boolean changePassword(String id, String password);
+
+    boolean changeProfile(UserVO userVO);
 }

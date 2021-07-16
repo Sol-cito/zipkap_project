@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import '../../CSS/MyPage.css'
 import { useCookies } from 'react-cookie';
 import BasicInfoRequestAxios from './BasicInfoRequestAxios';
-import { Button } from '@material-ui/core'; 
+import ProfileChangeAxios from './ProfileChangeAxios';
+import { Button } from '@material-ui/core';
 import { Link } from "react-router-dom";
 
 
@@ -12,11 +13,17 @@ function MyPage() {
     const [name, setName] = useState(null);
     const [nickName, setNickName] = useState(null);
 
+    const [prevName, setPrevName] = useState('false');
+    const [prevNickName, setPrevNickName] = useState('false');
+
     useEffect(() => {
         BasicInfoRequestAxios((response) => {
             setEmail(response.data.email);
             setName(response.data.name);
             setNickName(response.data.nickName);
+
+            setPrevName(response.data.name);
+            setPrevNickName(response.data.nickName);
         });
     }, []);
 
@@ -38,6 +45,20 @@ function MyPage() {
     const handleChangeNickName = (e) => {
         e.preventDefault(); // 리다이렉트 막음
         setNickName(e.target.value);
+    }
+
+    const handleProfileChangeOnClick = (e) => {
+        const profileInfo = {
+            email,
+            name,
+            nickName
+        }
+        ProfileChangeAxios(profileInfo, (res) => {
+            if (res) {
+                alert("프로필 정보가 수정되었습니다.");
+                window.location.replace("/MyPage");
+            }
+        })
     }
 
     return (
@@ -67,7 +88,14 @@ function MyPage() {
                     <Link to='/MyPage/Withdrawal' className="mypage_Link">회원 탈퇴</Link>
                 </div>
                 <div>
-                    <Button variant="contained" color="primary"> 수정 </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        disabled={name == prevName && nickName == prevNickName}
+                        onClick={handleProfileChangeOnClick}
+                    >
+                        수정
+                    </Button>
                 </div>
             </div>
         </div>
