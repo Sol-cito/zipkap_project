@@ -1,8 +1,8 @@
 package com.zipgap.service.userService;
 
+import com.zipgap.dto.LoginInfoDTO;
 import com.zipgap.entity.userEntity.User;
 import com.zipgap.entity.userEntity.UserRepository;
-import com.zipgap.dto.LoginInfoDTO;
 import com.zipgap.vo.userVO.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -87,6 +87,23 @@ public class UserService implements IUserService {
                     .name(targetUser.getName())
                     .nickName(targetUser.getNickName())
                     .password(password)
+                    .build();
+            userRepository.save(updateUser);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean changeProfile(UserVO userVO) {
+        Optional<User> user = userRepository.findById(userVO.getEmail());
+        if (user.isPresent()) {
+            User targetUser = user.get();
+            User updateUser = User.builder()
+                    .email(targetUser.getEmail())
+                    .name(userVO.getName())
+                    .nickName(userVO.getNickName())
+                    .password(targetUser.getPassword())
                     .build();
             userRepository.save(updateUser);
             return true;

@@ -32,7 +32,6 @@ public class UserController {
             @RequestBody LoginInfoDTO loginInfoDTO,
             HttpServletRequest request,
             HttpServletResponse response) {
-        System.out.println("로그인 컨트롤러");
         boolean isLoginSuccess = userService.loginUser(loginInfoDTO);
 
         if (!isLoginSuccess) { //로그인 실패 시 바로 리턴
@@ -50,11 +49,9 @@ public class UserController {
                                         HttpServletResponse response) {
         HttpSession httpSession = request.getSession();
         if (httpSession.getAttribute("id") == null) {
-            System.out.println("로그아웃 실패");
             return new ResponseEntity<>(LOGOUT_FAIL, null, HttpStatus.OK);
         }
         httpSession.invalidate();
-        System.out.println("로그아웃 성공");
         return new ResponseEntity<>(LOGOUT_SUCCESS, null, HttpStatus.OK);
     }
 
@@ -91,6 +88,13 @@ public class UserController {
         basicInfoDTO.setNickName(user.getNickName());
 
         return basicInfoDTO;
+    }
+
+    @PatchMapping(value = "/api/user/changeProfile")
+    public boolean changeProfile(
+            @RequestBody UserVO userVO
+    ) {
+        return userService.changeProfile(userVO);
     }
 
     @PostMapping(value = "/api/user/checkDuplicateNickName")

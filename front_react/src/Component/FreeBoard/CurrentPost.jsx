@@ -3,7 +3,6 @@ import "../../CSS/FreeBoard.css";
 import CurrentPostRequestAxios from './CurrentPostRequestAxios';
 import IncreasePostHitRequestAxios from './IncreasePostHitRequestAxios';
 import LikeAndDislikeRequestAxios from './LikeAndDislikeRequestAxios';
-import PostDeleteRequestAxios from './PostDeleteRequestAxios';
 import BasicInfoRequestAxios from "../MyPage/BasicInfoRequestAxios";
 import { convertNumberIntoDateFormatWithDetail } from './convertNumberIntoDateFormat.js'
 import ReactLoading from 'react-loading';
